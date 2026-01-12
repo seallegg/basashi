@@ -34,5 +34,8 @@ in {
       package = pkgs.niri-unstable;
       config = monitorConfig + dotfiles.niri "config.kdl";
     };
+    environment.systemPackages = with pkgs; [
+      xwayland-satellite
+    ];
   };
 }
