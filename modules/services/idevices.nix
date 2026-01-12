@@ -9,10 +9,7 @@
 in {
   options.cfg.services.idevices.enable = mkEnableOption "IOS device support";
   config = mkIf cfg.enable {
-    services.usbmuxd = {
-      enable = true;
-      #    package = pkgs.usbmuxd2;
-    };
+    services.usbmuxd.enable = true
     environment.systemPackages = with pkgs; [
       libimobiledevice
       ifuse
