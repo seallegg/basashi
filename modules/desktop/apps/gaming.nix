@@ -23,6 +23,7 @@ in {
       mangohud
       protonup-qt
       apotris
+      lutris
 
       (prismlauncher.override {
         additionalPrograms = [ffmpeg]; # required by some mods
