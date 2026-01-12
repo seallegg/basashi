@@ -12,10 +12,10 @@ in {
       kitty
       floorp-bin
       mpv
-      vscodium
+      zed-editor
       obsidian
       vesktop
-      vscodium
+      gimp
     ];
   };
 }
