@@ -21,6 +21,7 @@ in {
       nvidia = {
         modesetting.enable = true;
         open = true;
+        nvidiaSettings = false;
       };
     };
 
