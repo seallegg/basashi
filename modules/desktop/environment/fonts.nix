@@ -5,7 +5,7 @@
   lib,
   ...
 }: let
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib) mkIf;
   cfg = config.cfg.desktop.environment;
 in {
   imports = [inputs.apple-fonts.nixosModules.default];
