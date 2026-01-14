@@ -17,9 +17,13 @@ in {
       enable = true;
       description = "Wayland wallpaper daemon";
       partOf = ["graphical-session.target"];
+      wantedBy = ["graphical-session.target"];
+      after = ["graphical-session.target"];
+      unitConfig.ConditionEnvironment = "WAYLAND_DISPLAY";
       serviceConfig = {
         ExecStart = "${pkgs.swww}/bin/swww-daemon";
-        Restart = "on-failure";
+        Type = "simple";
+        Restart = "always";
       };
     };
   };
