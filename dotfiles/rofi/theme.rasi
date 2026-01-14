@@ -1,0 +1,131 @@
+* {
+    font: "sans-serif 16";
+    text-color: White;
+    background-color: transparent;
+    vertical-align: 0.5;
+}
+window {
+    location: center;
+    anchor:   center;
+    transparency: "real";
+    border-radius: 12px;
+    children:  [mainbox];
+    orientation: horizontal;
+    width: 30%;
+}
+mainbox {
+    border: 1px;
+    spacing: 0;
+    background-color: #1c1c1cf9;
+    border-color: #333333;
+    border-radius: 12px;
+    children: [ inputbar, message, listview ];
+}
+message {
+    border-color: White;
+    border:  0px 2px 2px 2px;
+    border-radius: 12px;
+    padding: 5;
+    background-color: Cyan;
+    color: Black;
+}
+inputbar {
+    color: White;
+    padding: 12px;
+    background-color: #252528;
+}
+prompt {
+    padding: 0.2em 0.3em;
+    margin: 0 0.2em 0 0;
+    background-color: Cyan;
+    border-radius: 12px;
+    color: Black;
+    font: "sans-serif Bold 20";
+}
+listview {
+    margin: 8px;
+    dynamic: true;
+    fixed-height: false;
+    lines: 10;
+    spacing: 5px;
+}
+
+element {
+    padding: 4px;
+    vertical-align: 0.5;
+    border: 2px 0px;
+    border-radius: 4px;
+    border-color: #222222;
+    background-color: transparent;
+    color: White;
+}
+element-text {
+    margin: 0 0 0 0.2em;
+    text-color:       inherit;
+}
+element selected.normal {
+    background-color: Cyan;
+    color: Black;
+}
+element normal active {
+    foreground: Cyan;
+}
+element normal urgent {
+    foreground: Red;
+}
+element alternate normal {
+}
+element alternate active {
+    foreground: Cyan;
+}
+element alternate urgent {
+    foreground: Red;
+}
+element selected active {
+    background-color: Cyan;
+    foreground: Green;
+}
+element selected urgent {
+    background-color: Red;
+    foreground: Green;
+}
+element normal normal {
+}
+element-icon {
+    size: 2em;
+}
+vertb {
+    expand: false;
+    children: [ dummy0, mode-switcher, dummy1  ];
+}
+dummy0,  dummy1 {
+    expand: true;
+}
+mode-switcher {
+    expand: false;
+    orientation: vertical;
+    spacing: 0px;
+    border: 0px 0px 0px 0px;
+}
+button {
+    padding: 6px;
+    border: 2px 0px 2px 2px;
+    border-radius: 4px 0px 0px 4px;
+    background-color: Grey;
+    border-color: White;
+    color: White;
+    horizontal-align: 0.5;
+}
+button selected normal {
+    color: Black;
+    border: 2px 0px 2px 2px;
+    background-color: Blue;
+    border-color: White;
+}
+error-message {
+    expand: true;
+    background-color: red;
+    border-color: darkred;
+    border: 2px;
+    padding: 1em;
+}
