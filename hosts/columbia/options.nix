@@ -28,6 +28,8 @@
     services = {
       sddm.enable = true;
       swww.enable = true;
+      flatpak.enable = true;
+      idevices.enable = true;
     };
   };
 }
