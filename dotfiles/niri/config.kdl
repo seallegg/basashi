@@ -1,31 +1,26 @@
+// Visual
 prefer-no-csd
-screenshot-path "~/Pictures/Screenshots/%Y-%m-%d %H-%M-%S.png"
 layout {
     gaps 16
     center-focused-column "never"
-
     preset-column-widths {
         proportion 0.33333
         proportion 0.5
         proportion 0.66667
     }
-
     default-column-width { proportion 0.5; }
-
     focus-ring {
         off
         width 2
         active-color "#7fc8ff"
         inactive-color "#505050"
     }
-
     border {
         width 2
         active-color "#7fc8ff"
         inactive-color "#505050"
         urgent-color "#9b0000"
     }
-
     shadow {
          on
         softness 30
@@ -33,7 +28,6 @@ layout {
         offset x=0 y=5
         color "#0007"
     }
-
     struts {
         left 16
         right 16
@@ -41,13 +35,32 @@ layout {
         bottom 32
     }
 }
+
 animations {
 }
+
 window-rule {
     geometry-corner-radius 12
     clip-to-geometry true
 }
 
+cursor {
+    xcursor-theme "Vimix-cursors"
+    xcursor-size 32
+}
+
+// Misc
+clipboard {
+    disable-primary
+}
+
+screenshot-path "~/Pictures/Screenshots/%Y-%m-%d %H-%M-%S.png"
+
+hotkey-overlay {
+    skip-at-startup
+}
+
+// HID
 input {
     touchpad {
         tap
@@ -65,11 +78,6 @@ input {
      warp-mouse-to-focus
      focus-follows-mouse max-scroll-amount="0%"
 }
-
-hotkey-overlay {
-    skip-at-startup
-}
-
 binds {
     // Applications
     Mod+Q repeat=false { close-window; }
@@ -214,6 +222,7 @@ binds {
     Ctrl+Alt+Delete { quit; }
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
     Print { screenshot; }
+    Mod+Shift+S { screenshot; }
     Ctrl+Print { screenshot-screen; }
     Alt+Print { screenshot-window; }
 }
