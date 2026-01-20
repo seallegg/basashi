@@ -33,6 +33,11 @@ in {
       enable = true;
       package = pkgs.niri-unstable;
       config = monitorConfig + dotfiles.niri "config.kdl";
+      extraVariables = {
+        XDG_SESSION_TYPE = "wayland";
+        XDG_CURRENT_DESKTOP = "niri";
+        ELECTRON_OZONE_PLATFORM_HINT = "auto";
+      };
     };
     environment.systemPackages = with pkgs; [
       xwayland-satellite
