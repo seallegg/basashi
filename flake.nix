@@ -28,6 +28,9 @@
     niri.url = "github:sodiboo/niri-flake";
     niri.inputs.nixpkgs.follows = "nixpkgs";
 
+    qt6ct-kde.url = "github:SeallEgg/qt6ct-kde-flake";
+    qt6ct-kde.inputs.nixpkgs.follows = "nixpkgs";
+
     apple-fonts.url = "github:SeallEgg/apple-fonts-flake";
   };
 }

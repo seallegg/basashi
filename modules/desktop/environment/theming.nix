@@ -2,16 +2,20 @@
   pkgs,
   config,
   lib,
+  inputs,
   ...
 }: let
   inherit (lib) mkIf;
   cfg = config.cfg.desktop.environment;
 in {
-  config = mkIf cfg.niri.enable or cfg.plasma.enable {
+  config = mkIf cfg.niri.enable {
+    nixpkgs.overlays = [inputs.qt6ct-kde.overlays.default];
+
     hj = {
       packages = with pkgs; [
         papirus-icon-theme
         colloid-gtk-theme
+        vimix-cursors
         kdePackages.breeze
         qt6Packages.qt6ct
         qt6Packages.qtstyleplugin-kvantum
@@ -19,10 +23,11 @@ in {
       rum.misc.gtk = {
         enable = true;
         settings = {
-          application-prefer-dark-theme = true;
+          theme-name = "Colloid-Dark";
           icon-theme-name = "Papirus-Dark";
           font-name = "Sans 11";
-          theme-name = "Colloid-Dark";
+          application-prefer-dark-theme = true;
+          enable-primary-paste = false;
         };
       };
       xdg.config.files."qt6ct/qt6ct.conf" = {
@@ -41,11 +46,9 @@ in {
           };
         };
       };
-      environment = {
-        sessionVariables = {
-          QT_QPA_PLATFORMTHEME = "qt6ct";
-          GTK_THEME = "Colloid-Dark";
-        };
+      rum.desktops.niri.extraVariables = {
+        QT_QPA_PLATFORMTHEME = "qt6ct";
+        GTK_THEME = "Colloid-Dark";
       };
     };
   };
