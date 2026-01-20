@@ -23,7 +23,7 @@ in {
       serviceConfig = {
         ExecStart = "${pkgs.swww}/bin/swww-daemon";
         Type = "simple";
-        Restart = "always";
+        Restart = "on-failure";
       };
     };
   };
