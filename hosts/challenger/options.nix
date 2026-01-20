@@ -21,6 +21,7 @@
     services = {
       sddm.enable = true;
       swww.enable = true;
+      swaync.enable = true;
       flatpak.enable = true;
     };
   };
