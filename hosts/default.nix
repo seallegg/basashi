@@ -6,7 +6,7 @@
   lib,
   ...
 }: let
-  inherit (lib) genAttrs nixosSystem filterAttrs optionalAttrs;
+  inherit (lib) genAttrs nixosSystem filterAttrs;
   inherit (builtins) attrNames readDir;
 
   # Filter readDir to only include directories
