@@ -17,12 +17,5 @@ in {
       vesktop
       gimp
     ];
-    xdg.mime.defaultApplications = {
-      "inode/directory" = "org.kde.dolphin.desktop";
-      "text/*" = "nvim.desktop";
-      "image/*" = "org.kde.gwenview.desktop";
-      "video/*" = "mpv.desktop";
-      "audio/*" = "mpv.desktop";
-    };
   };
 }
