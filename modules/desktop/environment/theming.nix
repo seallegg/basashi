@@ -25,8 +25,8 @@ in {
         settings = {
           theme-name = "Colloid-Dark";
           icon-theme-name = "Papirus-Dark";
-          font-name = "Sans 11";
-          application-prefer-dark-theme = true;
+          font-name = "Sans 12";
+          application-prefer-dark-theme = "1";
           enable-primary-paste = false;
         };
       };
@@ -35,14 +35,14 @@ in {
         value = {
           Appearance = {
             custom_palette = true;
-            color_scheme_path = "/home/seal/.config/qt6ct/colors/darker.conf";
+            color_scheme_path = "~/.config/qt6ct/colors/darker.conf";
             icon_theme = "Papirus-Dark";
             standard_dialogs = "xdgdesktopportal";
             style = "kvantum-dark";
           };
           Fonts = {
-            fixed = ''"monospace,11,-1,5,400,0,0,0,0,0,0,0,0,0,0,1"'';
-            general = ''"sans-serif,11,-1,5,400,0,0,0,0,0,0,0,0,0,0,1"'';
+            fixed = ''"monospace,12,-1,5,400,0,0,0,0,0,0,0,0,0,0,1"'';
+            general = ''"Sans Serif,12,-1,5,400,0,0,0,0,0,0,0,0,0,0,1"'';
           };
         };
       };
