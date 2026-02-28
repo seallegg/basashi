@@ -1,15 +1,15 @@
 {
   cfg = {
     core = {
+      kernel = "latest";
       username = "seal";
-      amdgpu.enable = true;
+      nvidia.enable = true;
       git.name = "SeallEgg";
       git.email = "seallegg@gmail.com";
     };
 
     desktop = {
       environment = {
-        plasma.enable = true;
         niri.enable = true;
         rofi.enable = true;
       };
@@ -19,10 +19,12 @@
     };
 
     services = {
-      sddm.enable = true;
+      networkmanager.enable = true;
+      powersaving.enable = true;
+      greetd.enable = true;
       swww.enable = true;
       swaync.enable = true;
-      flatpak.enable = true;
+      automounting.enable = true;
     };
   };
 }
