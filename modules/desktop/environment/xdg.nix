@@ -4,7 +4,7 @@
   config,
   ...
 }: let
-  inherit (lib) mkIf mkForce;
+  inherit (lib) mkIf;
 in {
   config = mkIf config.cfg.desktop.environment.niri.enable {
     xdg = {
@@ -18,12 +18,10 @@ in {
       portal = {
         enable = true;
         extraPortals = [
-          pkgs.xdg-desktop-portal-gtk
           pkgs.kdePackages.xdg-desktop-portal-kde
-          pkgs.xdg-desktop-portal-gnome
+          pkgs.xdg-desktop-portal-gtk
         ];
-        config.niri.default = mkForce ["kde" "gtk" "gnome"];
-        configPackages = [pkgs.niri];
+        config.common.default = ["kde" "gtk"];
       };
     };
   };
