@@ -1,11 +1,10 @@
 {
   config,
   lib,
-  pkgs,
   hostConfig,
   ...
 }: let
-  inherit (lib) mkOption mkEnableOption types mkMerge mkIf;
+  inherit (lib) mkOption mkEnableOption types mkIf;
 
   cfg = config.cfg.core.forceCompiledPkgs;
   flags =
