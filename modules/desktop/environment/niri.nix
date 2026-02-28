@@ -7,17 +7,25 @@
   dotfiles,
   ...
 }: let
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib) mkEnableOption mkIf imap0;
   cfg = config.cfg.desktop.environment.niri;
   monitorConfig =
-    lib.concatMapStringsSep "\n" (m: ''
-      output "${m.name}" {
-          mode "${m.res}"
-          position x=${toString m.pos.x} y=${toString m.pos.y}
-          scale ${toString m.scale}
-      }
-    '')
-    hostConfig.monitors;
+    if hostConfig.monitors != null
+    then
+      lib.concatStringsSep "\n" (imap0 (i: m: ''
+          output "${m.name}" {
+              mode "${m.res}"
+              position x=${toString m.pos.x} y=${toString m.pos.y}
+              scale ${toString m.scale}
+              ${
+            if i == 0
+            then "focus-at-startup" # The first monitor is set as main
+            else ""
+          }
+          }
+        '')
+        hostConfig.monitors)
+    else "";
 in {
   options.cfg.desktop.environment.niri = {
     enable = mkEnableOption "niri";
