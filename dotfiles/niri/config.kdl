@@ -50,6 +50,9 @@ cursor {
 }
 
 // Misc
+
+spawn-at-startup "swwww" "restore"
+
 clipboard {
     disable-primary
 }
@@ -89,6 +92,7 @@ binds {
     Mod+U { spawn "floorp"; }
     Mod+I { spawn "vesktop"; }
     Mod+O { spawn "obsidian"; }
+    Mod+P { spawn "zeditor"; }
 
     // Navigation - windows/columns
     Mod+Left  { focus-column-left; }
