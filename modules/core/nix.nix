@@ -51,10 +51,12 @@ in {
 
     programs.nh = {
       enable = true;
-      clean.enable = true; # cleans weekly
-      clean.extraArgs = "--keep 3";
+      clean = {
+        enable = true;
+        dates = "monthly";
+        extraArgs = "--keep 10";
+      };
     };
-
     environment.systemPackages = with pkgs; [
       alejandra
       nixd
