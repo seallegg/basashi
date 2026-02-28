@@ -1,0 +1,73 @@
+"$schema" = "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json"
+final_space = true
+version = 3
+
+[palette]
+grey = "#201b29"
+white = "#ebebeb"
+blue = "#00e1ed"
+green = "#4FFF4F"
+
+
+[transient_prompt]
+background = "transparent"
+foreground = "white"
+template = " ❱ "
+
+[[blocks]]
+alignment = "left"
+type = "prompt"
+
+  [[blocks.segments]]
+  background = "p:grey"
+  foreground = "p:blue"
+  style = "diamond"
+  trailing_diamond = ""
+  leading_diamond = ""
+  template = "{{.Icon}} "
+  type = "os"
+
+  [[blocks.segments]]
+  background = "p:blue"
+  foreground = "p:grey"
+  style = "diamond"
+  leading_diamond = ""
+  trailing_diamond = ""
+  template = "  <b>{{ .UserName }}</b> "
+  type = "session"
+
+  [[blocks.segments]]
+  background = "p:white"
+  foreground = "p:grey"
+  style = "diamond"
+  leading_diamond = ""
+  trailing_diamond = ""
+  template = " {{ .Path }} "
+  type = "path"
+
+    [blocks.segments.properties]
+    folder_icon = "  "
+    folder_separator_icon = " <transparent></> "
+    home_icon = " "
+    style = "agnoster_short"
+
+  [[blocks.segments]]
+  background = "p:grey"
+  foreground = "p:green"
+  style = "diamond"
+  leading_diamond = "<#4FFF4F,transparent></>"
+  trailing_diamond = " "
+  template = " {{ .HEAD }} "
+  type = "git"
+
+    [blocks.segments.properties]
+    branch_icon = " "
+    cherry_pick_icon = " "
+    commit_icon = " "
+    fetch_status = false
+    fetch_upstream_icon = false
+    merge_icon = " "
+    no_commits_icon = " "
+    rebase_icon = " "
+    revert_icon = " "
+    tag_icon = " "
