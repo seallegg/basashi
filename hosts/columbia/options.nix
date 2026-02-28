@@ -4,7 +4,6 @@
       kernel = "custom";
       username = "seal";
       nvidia.enable = true;
-      networkmanager.enable = true;
       git.name = "SeallEgg";
       git.email = "seallegg@gmail.com";
       forceCompiledPkgs = {
@@ -27,6 +26,7 @@
     };
 
     services = {
+      networkmanager.enable = true;
       greetd.enable = true;
       swww.enable = true;
       swaync.enable = true;

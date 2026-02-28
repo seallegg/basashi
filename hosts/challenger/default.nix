@@ -1,8 +1,4 @@
-{
-  inputs,
-  lib,
-  ...
-}: {
+{inputs, ...}: {
   networking.hostName = "challenger";
   system.stateVersion = "25.11";
 

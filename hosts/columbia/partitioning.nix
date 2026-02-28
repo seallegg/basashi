@@ -1,5 +1,5 @@
 {lib, ...}:
-# sudo nix --experimental-features "nix-command flakes" run 'github:nix-community/disko/latest#disko-install' -- --flake basashi#columbia
+# sudo nix --experimental-features "nix-command flakes" run 'github:nix-community/disko/latest#disko-install' -- --flake 'github:SeallEgg/basashi#columbia'
 {
   disko.devices = {
     disk.main = {
