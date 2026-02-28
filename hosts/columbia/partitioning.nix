@@ -8,25 +8,23 @@
       content = {
         type = "gpt";
         partitions = {
-          # EFI system partition
-          ESP = {
-            name = "ESP";
-            size = "100M";
+          boot = {
+            size = "1G";
             type = "EF00";
             content = {
               type = "filesystem";
               format = "vfat";
-              mountpoint = "/boot/efi";
+              mountpoint = "/boot";
+              mountOptions = ["umask=0077"];
             };
           };
           root = {
-            name = "rootfs";
             size = "100%";
             content = {
               type = "btrfs";
               extraArgs = ["-f"];
               subvolumes = {
-                "/root" = {
+                "/" = {
                   mountpoint = "/";
                   mountOptions = ["subvol=root" "compress=zstd:1" "noatime"];
                 };
@@ -38,7 +36,6 @@
                   mountpoint = "/var";
                   mountOptions = ["subvol=var" "compress=zstd:1" "noatime" "nodatacow" "nodatasum"];
                 };
-                # Snapshot these
                 "/home" = {
                   mountpoint = "/home";
                   mountOptions = ["subvol=home" "compress=zstd:1" "noatime"];

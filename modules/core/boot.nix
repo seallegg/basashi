@@ -1,22 +1,11 @@
-{
-  pkgs,
-  lib,
-  config,
-  hostConfig,
-  ...
-}: {
+{hostConfig, ...}: {
   boot = {
     loader = {
-      efi = {
-        canTouchEfiVariables = true;
-        efiSysMountPoint = "/boot/efi";
-      };
-      grub = {
-        device = "nodev";
-        efiSupport = true;
-      };
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+      timeout = 0; # hold space to access boot menu
     };
-
+    initrd.systemd.enable = true;
     kernelParams = map (m: "video=${m.name}:${m.res}") hostConfig.monitors;
 
     tmp = {
@@ -24,7 +13,6 @@
       tmpfsSize = "50%";
     };
   };
-
   services.swapspace.enable = true;
   zramSwap.enable = true;
 
