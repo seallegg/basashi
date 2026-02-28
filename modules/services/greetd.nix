@@ -12,8 +12,9 @@ in {
     services.greetd = {
       enable = true;
       settings = {
-        defaultSession = {
-          command = "${pkgs.niri}/bin/niri-session";
+        default_session = {
+          command = "${pkgs.tuigreet}/bin/tuigreet";
+          user = "${config.cfg.core.username}";
         };
       };
     };
