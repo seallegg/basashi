@@ -3,7 +3,7 @@
     core = {
       kernel = "latest";
       username = "seal";
-      nvidia.enable = true;
+      amdgpu.enable = true;
       git.name = "SeallEgg";
       git.email = "seallegg@gmail.com";
     };
