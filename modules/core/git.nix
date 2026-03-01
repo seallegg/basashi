@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: let
   inherit (lib) mkOption types;
@@ -19,15 +20,16 @@ in {
     };
   };
   config = {
-    hj.rum.programs.git = {
+    programs.git = {
       enable = true;
-      settings = {
+      config = {
         user = {
           inherit (cfg) name email;
         };
-        url."https://github.com/".InsteadOf = "github:";
+        url."https://github.com/".InsteadOf = ["github:" "gh"];
         init.defaultBranch = "main";
       };
     };
+    hj.packages = [pkgs.gh];
   };
 }
