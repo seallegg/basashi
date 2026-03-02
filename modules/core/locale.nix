@@ -7,4 +7,8 @@
     };
   };
   time.timeZone = "America/Sao_Paulo";
+  services.xserver.xkb = {
+    layout = "us";
+    Variant = "intl";
+  };
 }
