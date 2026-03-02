@@ -25,7 +25,7 @@ in {
         settings = {
           theme-name = "Colloid-Dark";
           icon-theme-name = "Papirus-Dark";
-          font-name = "Sans 12";
+          font-name = "sans-serif 12";
           application-prefer-dark-theme = "1";
           enable-primary-paste = false;
         };
@@ -42,7 +42,7 @@ in {
           };
           Fonts = {
             fixed = ''"monospace,12,-1,5,400,0,0,0,0,0,0,0,0,0,0,1"'';
-            general = ''"Sans Serif,12,-1,5,400,0,0,0,0,0,0,0,0,0,0,1"'';
+            general = ''"sans-serif,12,-1,5,400,0,0,0,0,0,0,0,0,0,0,1"'';
           };
         };
       };
