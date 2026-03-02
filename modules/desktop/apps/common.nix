@@ -17,6 +17,7 @@ in {
       obsidian
       vesktop
       gimp
+      libreoffice-qt-fresh
     ];
   };
 }
