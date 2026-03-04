@@ -68,6 +68,7 @@ input {
     touchpad {
         tap
         scroll-method "two-finger"
+        natural-scroll
     }
     mouse {
         accel-profile "flat"
