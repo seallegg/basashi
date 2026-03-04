@@ -17,7 +17,7 @@ in {
         cursor_trail 1
         cursor_trail_start_threshold 0
 
-        window_margin_width 8
+        window_margin_width 4
         font size 12
 
         background #1a1b26
