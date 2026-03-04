@@ -19,6 +19,7 @@
     };
 
     services = {
+      plymouth.enable = true;
       networkmanager.enable = true;
       powersaving.enable = true;
       greetd.enable = true;
