@@ -18,6 +18,7 @@ in {
       vesktop
       gimp
       libreoffice-qt-fresh
+      zapzap
     ];
   };
 }
