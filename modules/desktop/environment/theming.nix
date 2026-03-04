@@ -11,6 +11,23 @@ in {
   config = mkIf cfg.niri.enable {
     nixpkgs.overlays = [inputs.qt6ct-kde.overlays.default];
 
+    programs.dconf.profiles.user.databases = [
+      {
+        lockAll = true;
+        settings = {
+          "org/gnome/desktop/interface" = {
+            gtk-theme = "Colloid-Dark";
+            icon-theme = "Papirus-Dark";
+            font-name = "Sans Regular 12";
+            document-font-name = "Sans Regular 12";
+            monospace-font-name = "Monospace Regular 12";
+            color-scheme = "prefer-dark";
+            gtk-enable-primary-paste = false;
+          };
+          "org/gnome/desktop/wm/preferences".button-layout = ":";
+        };
+      }
+    ];
     hj = {
       packages = with pkgs; [
         papirus-icon-theme
@@ -20,16 +37,6 @@ in {
         qt6Packages.qt6ct
         qt6Packages.qtstyleplugin-kvantum
       ];
-      rum.misc.gtk = {
-        enable = true;
-        settings = {
-          theme-name = "Colloid-Dark";
-          icon-theme-name = "Papirus-Dark";
-          font-name = "sans-serif 12";
-          application-prefer-dark-theme = "1";
-          enable-primary-paste = false;
-        };
-      };
       xdg.config.files."qt6ct/qt6ct.conf" = {
         generator = lib.generators.toINI {};
         value = {
