@@ -51,8 +51,6 @@ cursor {
 
 // Misc
 
-spawn-at-startup "swwww" "restore"
-
 clipboard {
     disable-primary
 }

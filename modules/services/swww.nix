@@ -22,6 +22,7 @@ in {
       unitConfig.ConditionEnvironment = "WAYLAND_DISPLAY";
       serviceConfig = {
         ExecStart = "${pkgs.swww}/bin/swww-daemon";
+        ExecStartPost = "${pkgs.swww}/bin/swww restore";
         Type = "simple";
         Restart = "on-failure";
       };
