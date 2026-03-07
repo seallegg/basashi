@@ -11,7 +11,6 @@ in {
     hj.packages = with pkgs; [
       kitty
       floorp-bin
-      thunderbird
       mpv
       zed-editor
       obsidian

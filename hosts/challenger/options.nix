@@ -15,6 +15,7 @@
       };
       apps = {
         gaming.enable = true;
+        thunderbird.enable = true;
       };
     };
 
@@ -22,8 +23,7 @@
       plymouth.enable = true;
       networkmanager.enable = true;
       powersaving.enable = true;
-      greetd.enable = true;
-      swww.enable = true;
+      sddm.enable = true;
       swaync.enable = true;
       automounting.enable = true;
     };
