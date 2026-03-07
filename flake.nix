@@ -22,6 +22,9 @@
     hjem-rum.url = "github:snugnug/hjem-rum";
     hjem-rum.inputs.nixpkgs.follows = "nixpkgs";
 
+    nixdg-ninja.url = "github:notashelf/nixdg-ninja";
+    nixdg-ninja.inputs.nixpkgs.follows = "nixpkgs";
+
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
 
