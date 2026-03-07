@@ -1,10 +1,10 @@
 {
   config,
-  lib,
   hostConfig,
+  lib,
   ...
 }: let
-  inherit (lib) mkOption mkEnableOption types mkIf;
+  inherit (lib) types;
 
   cfg = config.cfg.core.forceCompiledPkgs;
   flags =
@@ -42,8 +42,8 @@
     );
 in {
   options.cfg.core.forceCompiledPkgs = {
-    enable = mkEnableOption "forced optimized compilation of selected packages";
-    pkgs = mkOption {
+    enable = lib.mkEnableOption "forced optimized compilation of selected packages";
+    pkgs = lib.mkOption {
       type = types.listOf types.str;
       default = [];
       description = ''
@@ -54,7 +54,7 @@ in {
     };
   };
 
-  config = mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
     nixpkgs.overlays = [
       (final: prev: makeOverlay cfg.pkgs prev)
     ];

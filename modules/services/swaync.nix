@@ -1,14 +1,11 @@
 {
+  config,
   lib,
   pkgs,
-  config,
   ...
-}: let
-  inherit (lib) mkIf mkEnableOption;
-  cfg = config.cfg.services.swaync;
-in {
-  options.cfg.services.swaync.enable = mkEnableOption "swaync";
-  config = mkIf cfg.enable {
+}: {
+  options.cfg.services.swaync.enable = lib.mkEnableOption "swaync";
+  config = lib.mkIf config.cfg.services.swaync.enable {
     environment.systemPackages = with pkgs; [
       swaynotificationcenter
     ];
@@ -26,4 +23,4 @@ in {
       };
     };
   };
- }
+}

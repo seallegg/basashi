@@ -1,14 +1,11 @@
 {
-  pkgs,
   config,
-  lib,
   inputs,
+  lib,
+  pkgs,
   ...
-}: let
-  inherit (lib) mkIf;
-  cfg = config.cfg.desktop.environment;
-in {
-  config = mkIf cfg.niri.enable {
+}: {
+  config = lib.mkIf config.cfg.desktop.environment.niri.enable {
     nixpkgs.overlays = [inputs.qt6ct-kde.overlays.default];
 
     programs.dconf.profiles.user.databases = [

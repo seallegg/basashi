@@ -1,14 +1,11 @@
 {
-  lib,
   config,
+  lib,
   pkgs,
   ...
-}: let
-  inherit (lib) mkEnableOption mkIf;
-  cfg = config.cfg.services.idevices;
-in {
-  options.cfg.services.idevices.enable = mkEnableOption "IOS device support";
-  config = mkIf cfg.enable {
+}: {
+  options.cfg.services.idevices.enable = lib.mkEnableOption "IOS device support";
+  config = lib.mkIf config.cfg.services.idevices.enable {
     services.usbmuxd.enable = true;
     environment.systemPackages = with pkgs; [
       libimobiledevice

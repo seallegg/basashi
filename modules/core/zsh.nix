@@ -1,7 +1,7 @@
 {
-  pkgs,
-  dotfiles,
   config,
+  dotfiles,
+  pkgs,
   ...
 }: {
   environment = {

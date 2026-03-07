@@ -2,12 +2,9 @@
   config,
   lib,
   ...
-}: let
-  inherit (lib) mkEnableOption mkIf;
-  cfg = config.cfg.desktop.apps.thunderbird;
-in {
-  options.cfg.desktop.apps.thunderbird.enable = mkEnableOption "rofi";
-  config = mkIf cfg.enable {
+}: {
+  options.cfg.desktop.apps.thunderbird.enable = lib.mkEnableOption "rofi";
+  config = lib.mkIf config.cfg.desktop.apps.thunderbird.enable {
     programs.thunderbird = {
       enable = true;
     };

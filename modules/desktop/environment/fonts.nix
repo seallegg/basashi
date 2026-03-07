@@ -1,15 +1,14 @@
 {
-  pkgs,
-  inputs,
   config,
+  inputs,
   lib,
+  pkgs,
   ...
 }: let
-  inherit (lib) mkIf;
   cfg = config.cfg.desktop.environment;
 in {
   imports = [inputs.apple-fonts.nixosModules.default];
-  config = mkIf cfg.niri.enable or cfg.plasma.enable {
+  config = lib.mkIf cfg.niri.enable or cfg.plasma.enable {
     fonts = {
       apple-fonts.enable = true;
       packages = with pkgs; [

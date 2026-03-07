@@ -1,13 +1,12 @@
 {
-  lib,
   config,
+  lib,
   ...
 }: let
-  inherit (lib) mkEnableOption mkIf;
-  cfg = config.cfg.services.powersaving;
+  inherit (lib) mkIf;
 in {
-  options.cfg.services.powersaving.enable = mkEnableOption "power saving optimizations";
-  config = mkIf cfg.enable {
+  options.cfg.services.powersaving.enable = lib.mkEnableOption "power saving optimizations";
+  config = mkIf config.cfg.services.powersaving.enable {
     networking.networkmanager.wifi.powersave = mkIf config.cfg.services.networkmanager.enable true;
     #powerManagement.powertop.enable = true;
   };

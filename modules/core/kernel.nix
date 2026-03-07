@@ -1,10 +1,9 @@
 {
+  config,
   lib,
   pkgs,
-  config,
   ...
 }: let
-  inherit (lib) mkOption types;
   cfg = config.cfg.core.kernel;
   kernelPackage =
     if cfg == "lts"
@@ -15,8 +14,8 @@
     then pkgs.linuxPackages_zen # i know this isn't quite custom yet but i don't want to work on this right now
     else throw "Kernel: Unknown kernel type!";
 in {
-  options.cfg.core.kernel = mkOption {
-    type = types.enum [
+  options.cfg.core.kernel = lib.mkOption {
+    type = lib.types.enum [
       "latest"
       "lts"
       "custom"

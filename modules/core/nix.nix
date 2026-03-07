@@ -1,13 +1,12 @@
 # such a stupid file name
 {
+  inputs,
   lib,
   pkgs,
-  inputs,
   ...
 }: let
-  inherit (lib) mapAttrsToList;
   inherit (builtins) mapAttrs;
-  nixPath = mapAttrsToList (n: _: "${n}=flake:${n}") inputs;
+  nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") inputs;
 in {
   config = {
     nix = {

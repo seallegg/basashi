@@ -5,7 +5,6 @@
   ...
 }: let
   inherit (lib) mkOption types;
-  cfg = config.cfg.core.git;
 in {
   options.cfg.core.git = {
     name = mkOption {
@@ -24,7 +23,7 @@ in {
       enable = true;
       config = {
         user = {
-          inherit (cfg) name email;
+          inherit (config.cfg.core.git) name email;
         };
         url."https://github.com/".InsteadOf = ["github:" "gh"];
         init.defaultBranch = "main";

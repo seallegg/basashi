@@ -1,8 +1,8 @@
 {
   config,
+  hostConfig,
   lib,
   pkgs,
-  hostConfig,
   ...
 }: let
   inherit (lib) mkIf;
@@ -26,17 +26,17 @@ in {
       enable = true;
       wayland = {
         enable = true;
-        compositorCommand =
-          mkIf config.cfg.desktop.environment.plasma.enable
-          "${lib.getExe pkgs.weston} --shell=kiosk -c ${westonIni}";
+        #   compositorCommand =
+        #     mkIf config.cfg.desktop.environment.plasma.enable
+        #     "${lib.getExe pkgs.weston} --shell=kiosk -c ${westonIni}";
       };
     };
-    systemd.services."display-manager" = mkIf config.cfg.services.plymouth.enable {
-      conflicts = ["plymouth-quit.service"];
-      preStart = "${pkgs.plymouth}/bin/plymouth deactivate";
-      script = "/run/current-system/sw/bin/sddm";
-      postStart = "/bin/sh -c 'sleep 5 && ${pkgs.plymouth}/bin/plymouth quit --retain-splash'";
-      enable = true;
-    };
+    # systemd.services."display-manager" = mkIf config.cfg.services.plymouth.enable {
+    #   conflicts = ["plymouth-quit.service"];
+    #   preStart = "${pkgs.plymouth}/bin/plymouth deactivate";
+    #   script = "/run/current-system/sw/bin/sddm";
+    #   postStart = "/bin/sh -c 'sleep 5 && ${pkgs.plymouth}/bin/plymouth quit --retain-splash'";
+    #   enable = true;
+    # };
   };
 }

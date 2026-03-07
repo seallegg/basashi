@@ -1,13 +1,10 @@
 {
-  lib,
   config,
+  lib,
   ...
-}: let
-  inherit (lib) mkEnableOption mkIf;
-  cfg = config.cfg.services.plymouth;
-in {
-  options.cfg.services.plymouth.enable = mkEnableOption "Plymouth";
-  config = mkIf cfg.enable {
+}: {
+  options.cfg.services.plymouth.enable = lib.mkEnableOption "Plymouth";
+  config = lib.mkIf config.cfg.services.plymouth.enable {
     boot = {
       plymouth = {
         enable = true;

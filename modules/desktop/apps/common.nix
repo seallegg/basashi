@@ -1,13 +1,12 @@
 {
-  pkgs,
-  lib,
   config,
+  lib,
+  pkgs,
   ...
 }: let
-  inherit (lib) mkIf;
   cfg = config.cfg.desktop.environment;
 in {
-  config = mkIf cfg.niri.enable or cfg.plasma.enable {
+  config = lib.mkIf cfg.niri.enable or cfg.plasma.enable {
     hj.packages = with pkgs; [
       kitty
       floorp-bin

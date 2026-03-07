@@ -3,15 +3,12 @@
   lib,
   pkgs,
   ...
-}: let
-  inherit (lib) mkEnableOption mkIf;
-  cfg = config.cfg.core.amdgpu;
-in {
+}: {
   options.cfg.core.amdgpu = {
-    enable = mkEnableOption "amdgpu";
+    enable = lib.mkEnableOption "amdgpu";
   };
 
-  config = mkIf cfg.enable {
+  config = lib.mkIf config.cfg.core.amdgpu.enable {
     hardware = {
       graphics = {
         enable = true;

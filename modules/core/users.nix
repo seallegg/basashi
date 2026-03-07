@@ -1,16 +1,15 @@
 {
-  lib,
   config,
   inputs,
   inputs',
+  lib,
   ...
 }: let
-  inherit (lib) mkOption types;
   inherit (lib.modules) mkAliasOptionModule;
   inherit (config.cfg.core) username;
 in {
-  options.cfg.core.username = mkOption {
-    type = types.str;
+  options.cfg.core.username = lib.mkOption {
+    type = lib.types.str;
     default = "user";
     description = "Sets the username for the system.";
   };

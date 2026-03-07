@@ -1,18 +1,16 @@
 {
   config,
+  dotfiles,
+  hostConfig,
+  inputs,
   lib,
   pkgs,
-  inputs,
-  hostConfig,
-  dotfiles,
   ...
 }: let
-  inherit (lib) mkEnableOption mkIf imap0;
-  cfg = config.cfg.desktop.environment.niri;
   monitorConfig =
     if hostConfig.monitors != null
     then
-      lib.concatStringsSep "\n" (imap0 (i: m: ''
+      lib.concatStringsSep "\n" (lib.imap0 (i: m: ''
           output "${m.name}" {
               mode "${m.res}"
               position x=${toString m.pos.x} y=${toString m.pos.y}
@@ -28,10 +26,10 @@
     else "";
 in {
   options.cfg.desktop.environment.niri = {
-    enable = mkEnableOption "niri";
+    enable = lib.mkEnableOption "niri";
   };
 
-  config = mkIf cfg.enable {
+  config = lib.mkIf config.cfg.desktop.environment.niri.enable {
     nixpkgs.overlays = [inputs.niri.overlays.niri];
     programs.niri = {
       enable = true;

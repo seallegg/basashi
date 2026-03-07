@@ -1,16 +1,15 @@
 {
-  pkgs,
-  lib,
   config,
+  lib,
+  pkgs,
   ...
 }: let
-  inherit (lib) mkEnableOption mkIf;
 in {
   options.cfg.desktop.apps.gaming = {
-    enable = mkEnableOption "gaming";
+    enable = lib.mkEnableOption "gaming";
   };
 
-  config = mkIf config.cfg.desktop.apps.gaming.enable {
+  config = lib.mkIf config.cfg.desktop.apps.gaming.enable {
     programs.steam = {
       enable = true;
       gamescopeSession.enable = true;

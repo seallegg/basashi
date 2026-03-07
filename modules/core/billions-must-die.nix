@@ -1,6 +1,5 @@
 {lib, ...}: let
-  inherit (lib) mkDefault;
 in {
-  environment.defaultPackages = mkDefault [];
+  environment.defaultPackages = lib.mkDefault [];
   programs.nano.enable = false;
 }

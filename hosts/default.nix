@@ -1,16 +1,15 @@
 {
-  self,
   inputs,
-  pins,
-  withSystem,
   lib,
+  pins,
+  self,
+  withSystem,
   ...
 }: let
-  inherit (lib) genAttrs nixosSystem filterAttrs;
   inherit (builtins) attrNames readDir;
 
   # Filter readDir to only include directories
-  dirs = filterAttrs (_: type: type == "directory") (readDir ./.);
+  dirs = lib.filterAttrs (_: type: type == "directory") (readDir ./.);
 
   mkSystem = hostName: let
     hostConfig = import ./${hostName}/system.nix;
@@ -28,7 +27,7 @@
       self',
       ...
     }:
-      nixosSystem {
+      lib.nixosSystem {
         specialArgs = {
           inherit self self' inputs inputs' hostName pins hostConfig dotfiles;
         };
@@ -50,5 +49,5 @@
         ];
       });
 in {
-  flake.nixosConfigurations = genAttrs (attrNames dirs) mkSystem;
+  flake.nixosConfigurations = lib.genAttrs (attrNames dirs) mkSystem;
 }

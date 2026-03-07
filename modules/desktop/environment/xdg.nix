@@ -1,12 +1,11 @@
 {
-  pkgs,
-  lib,
   config,
+  lib,
+  pkgs,
   ...
 }: let
-  inherit (lib) mkIf;
 in {
-  config = mkIf config.cfg.desktop.environment.niri.enable {
+  config = lib.mkIf config.cfg.desktop.environment.niri.enable {
     xdg = {
       mime.defaultApplications = {
         "inode/directory" = "org.kde.dolphin.desktop";

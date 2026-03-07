@@ -3,15 +3,12 @@
   lib,
   pkgs,
   ...
-}: let
-  inherit (lib) mkEnableOption mkIf;
-  cfg = config.cfg.services.swww;
-in {
+}: {
   options.cfg.services.swww = {
-    enable = mkEnableOption "swww";
+    enable = lib.mkEnableOption "swww";
   };
 
-  config = mkIf cfg.enable {
+  config = lib.mkIf config.cfg.services.swww.enable {
     environment.systemPackages = with pkgs; [swww];
     systemd.user.services.swww = {
       enable = true;

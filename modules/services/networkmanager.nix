@@ -1,13 +1,10 @@
 {
-  lib,
   config,
+  lib,
   ...
-}: let
-  inherit (lib) mkEnableOption mkIf;
-  cfg = config.cfg.services.networkmanager;
-in {
-  options.cfg.services.networkmanager.enable = mkEnableOption "NetworkManager";
-  config = mkIf cfg.enable {
+}: {
+  options.cfg.services.networkmanager.enable = lib.mkEnableOption "NetworkManager";
+  config = lib.mkIf config.cfg.services.networkmanager.enable {
     programs.nm-applet.enable = true;
     networking = {
       networkmanager = {

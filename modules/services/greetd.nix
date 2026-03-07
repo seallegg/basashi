@@ -3,12 +3,9 @@
   lib,
   pkgs,
   ...
-}: let
-  inherit (lib) mkEnableOption mkIf;
-  cfg = config.cfg.services.greetd;
-in {
-  options.cfg.services.greetd.enable = mkEnableOption "greetd";
-  config = mkIf cfg.enable {
+}: {
+  options.cfg.services.greetd.enable = lib.mkEnableOption "greetd";
+  config = lib.mkIf config.cfg.services.greetd.enable {
     services.greetd = {
       enable = true;
       settings = {

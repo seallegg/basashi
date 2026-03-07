@@ -3,14 +3,13 @@
   lib,
   ...
 }: let
-  inherit (lib) mkEnableOption mkIf mkMerge;
-  cfg = config.cfg.core.nvidia;
+  inherit (lib) mkIf;
 in {
   options.cfg.core.nvidia = {
-    enable = mkEnableOption "nvidia";
+    enable = lib.mkEnableOption "nvidia";
   };
 
-  config = mkIf cfg.enable {
+  config = mkIf config.cfg.core.nvidia.enable {
     hardware = {
       graphics = {
         enable = true;
@@ -41,7 +40,7 @@ in {
         "nvidia_uvm"
         "nvidia_drm"
       ];
-      kernelParams = mkMerge [
+      kernelParams = lib.mkMerge [
         [
           "nvidia.NVreg_UsePageAttributeTable=1"
           "nvidia.NVreg_EnableResizableBar=1"

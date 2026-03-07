@@ -1,13 +1,10 @@
 {
-  lib,
   config,
+  lib,
   pkgs,
   ...
-}: let
-  inherit (lib) mkIf;
-  cfg = config.cfg.desktop.environment.niri;
-in {
-  config = mkIf cfg.enable {
+}: {
+  config = lib.mkIf config.cfg.desktop.environment.niri.enable {
     security.polkit.enable = true;
     systemd.user.services.mate-polkit = {
       enable = true;
