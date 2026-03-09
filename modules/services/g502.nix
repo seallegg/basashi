@@ -6,11 +6,25 @@
 }: {
   options.cfg.services.g502.enable = lib.mkEnableOption "g502";
   config = lib.mkIf config.cfg.services.g502.enable {
-    hardware.logitech.wireless.enable = true;
-    hardware.logitech.wireless.enableGraphical = true; # Installs Solaar and udev rules
-    environment.systemPackages = with pkgs; [
-      input-remapper
-      usbutils
-    ];
+    hardware.logitech.wireless = {
+      enable = true;
+      enableGraphical = true;
+    };
+    services.input-remapper = {
+      enable = true;
+      enableUdevRules = true;
+    };
+    systemd.user.services.solaar = {
+      enable = true;
+      description = "Solaar autostart";
+      after = ["graphical-session.target"];
+      wantedBy = ["graphical-session.target"];
+      before = ["input-remapper.service"];
+      serviceConfig = {
+        ExecStart = "${pkgs.solaar}/bin/solaar -w hide";
+        ExecStartPost = "input-remapper-control --command autoload";
+        Type = "simple";
+      };
+    };
   };
 }
