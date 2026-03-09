@@ -56,10 +56,6 @@ in {
         extraArgs = "--keep 10";
       };
     };
-    environment.systemPackages = with pkgs; [
-      alejandra
-      nixd
-    ];
 
     documentation.nixos.enable = false;
   };

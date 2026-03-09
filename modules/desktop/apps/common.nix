@@ -11,7 +11,6 @@ in {
       kitty
       floorp-bin
       mpv
-      zed-editor
       obsidian
       vesktop
       gimp
