@@ -15,9 +15,9 @@
           "org/gnome/desktop/interface" = {
             gtk-theme = "Colloid-Dark";
             icon-theme = "Papirus-Dark";
-            font-name = "Sans Regular 12";
-            document-font-name = "Sans Regular 12";
-            monospace-font-name = "Monospace Regular 12";
+            font-name = "Sans Regular 13";
+            document-font-name = "Sans Regular 13";
+            monospace-font-name = "Monospace Regular 13";
             color-scheme = "prefer-dark";
             gtk-enable-primary-paste = false;
           };
@@ -45,13 +45,15 @@
             style = "kvantum-dark";
           };
           Fonts = {
-            fixed = ''"monospace,12,-1,5,400,0,0,0,0,0,0,0,0,0,0,1"'';
-            general = ''"sans-serif,12,-1,5,400,0,0,0,0,0,0,0,0,0,0,1"'';
+            fixed = ''"monospace,13,-1,5,400,0,0,0,0,0,0,0,0,0,0,1"'';
+            general = ''"sans-serif,13,-1,5,400,0,0,0,0,0,0,0,0,0,0,1"'';
           };
         };
       };
       rum.desktops.niri.extraVariables = {
+        QT_QPA_PLATFORM = "wayland;xcb";
         QT_QPA_PLATFORMTHEME = "qt6ct";
+        QT_QPA_PLATFORMTHEME_QT6 = "qt6ct";
         GTK_THEME = "Colloid-Dark";
       };
     };

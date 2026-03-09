@@ -32,8 +32,10 @@ in {
         value = {
           General = {
             TerminalApplication = "kitty";
+            BrowserApplication = "floorp.desktop";
           };
-          Icons.Theme = "papirus-dark";
+          Icons.Theme = "Papirus-Dark";
+          UiSettings.ColorScheme = "qt6ct";
         };
       };
     };
