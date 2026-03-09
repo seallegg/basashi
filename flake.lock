@@ -88,11 +88,11 @@
         "smfh": "smfh"
       },
       "locked": {
-        "lastModified": 1771212460,
-        "narHash": "sha256-1RfmXbDIxgwP2/SrYSYd9zdArUaJEm6C3FXpdRlmeso=",
+        "lastModified": 1772990437,
+        "narHash": "sha256-8+Chcqj8ci4L51j8jjuJ/+QLFbx+PQ6ZjvjXL8NgE9A=",
         "owner": "feel-co",
         "repo": "hjem",
-        "rev": "7f2880d705edf541955d98f56cb78f9507384423",
+        "rev": "8a10f5832df75b06115c7f951ed67b67dd0a3eb0",
         "type": "github"
       },
       "original": {
@@ -111,11 +111,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1771501078,
-        "narHash": "sha256-Z2bux6QPs4lBzdiw5NdgPqk+BPF1H4lEu3C68ID7bYg=",
+        "lastModified": 1772915389,
+        "narHash": "sha256-xM7gYCLOUH2fnPgdst7HcPpEn6GlEOf7nelJVxJZ040=",
         "owner": "snugnug",
         "repo": "hjem-rum",
-        "rev": "57175e2f6ab7caf212dd985ef810ec1cd9abf755",
+        "rev": "3506a77b5cbb35640f7dac595f98b10bdbe07b15",
         "type": "github"
       },
       "original": {
@@ -244,6 +244,26 @@
         "type": "github"
       }
     },
+    "nixdg-ninja": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1753801159,
+        "narHash": "sha256-o61kRCyWVksQX/wxOuBy7GKKgOw5qqDRs9OVU9Nlzfc=",
+        "owner": "notashelf",
+        "repo": "nixdg-ninja",
+        "rev": "8c4a567632c453f3456abc177e2cda9cb311faed",
+        "type": "github"
+      },
+      "original": {
+        "owner": "notashelf",
+        "repo": "nixdg-ninja",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1771848320,
@@ -361,6 +381,7 @@
         "hjem": "hjem",
         "hjem-rum": "hjem-rum",
         "niri": "niri",
+        "nixdg-ninja": "nixdg-ninja",
         "nixpkgs": "nixpkgs_3",
         "qt6ct-kde": "qt6ct-kde",
         "systems": "systems_3"
