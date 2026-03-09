@@ -22,10 +22,12 @@
       };
       apps = {
         gaming.enable = true;
+        thunderbird.enable = true;
       };
     };
 
     services = {
+      plymouth.enable = true;
       networkmanager.enable = true;
       greetd.enable = true;
       swww.enable = true;
@@ -33,6 +35,7 @@
       flatpak.enable = true;
       automounting.enable = true;
       idevices.enable = true;
+      g502.enable = true;
     };
   };
 }
