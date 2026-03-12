@@ -26,6 +26,7 @@ in {
         kdePackages.ark
         kdePackages.filelight
         kdePackages.ktorrent
+        kdePackages.okular
       ];
       xdg.config.files."kdeglobals" = {
         generator = lib.generators.toINI {};
@@ -34,8 +35,9 @@ in {
             TerminalApplication = "kitty";
             BrowserApplication = "floorp.desktop";
           };
-          Icons.Theme = "Papirus-Dark";
+          KDE.widgetStyle = "qt6ct";
           UiSettings.ColorScheme = "qt6ct";
+          Icons.Theme = "Papirus-Dark";
         };
       };
     };
