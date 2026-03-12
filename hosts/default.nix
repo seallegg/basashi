@@ -12,15 +12,10 @@
   dirs = lib.filterAttrs (_: type: type == "directory") (readDir ./.);
 
   mkSystem = hostName: let
-    hostConfig = import ./${hostName}/system.nix;
+    hostConfig = import ./${hostName}/host-config.nix;
     system = hostConfig.system; # used for pre-selecting platforms using flake-parts
     arch = hostConfig.arch or null; # for optional tuning
-    dotfiles = builtins.listToAttrs ( # this is unnecessary but it's nicer to look at imo :^)
-      map (dir: {
-        name = dir;
-        value = file: builtins.readFile (self + "/dotfiles/${dir}/${file}");
-      }) (builtins.attrNames (builtins.readDir (self + "/dotfiles")))
-    );
+    dotfiles = self + "/dotfiles";
   in
     withSystem system ({
       inputs',
@@ -29,10 +24,11 @@
     }:
       lib.nixosSystem {
         specialArgs = {
-          inherit self self' inputs inputs' hostName pins hostConfig dotfiles;
+          inherit self self' inputs inputs' hostName pins dotfiles;
         };
         modules = [
           self.nixosModules.default # ${self}/modules directory as a nixosModule
+          ./host-options.nix
 
           ./${hostName}
           {
@@ -44,7 +40,11 @@
                 "kvm"
                 "nixos-test"
               ]
-              ++ (lib.lists.optional (hostConfig.arch != null) "gccarch-${arch}");
+              ++ (lib.lists.optional (arch != null) "gccarch-${arch}");
+
+            cfg.hardware.monitors = hostConfig.monitors or [];
+            cfg.hardware.arch = arch;
+            cfg.hardware.system = system;
           }
         ];
       });

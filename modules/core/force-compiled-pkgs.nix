@@ -1,6 +1,5 @@
 {
   config,
-  hostConfig,
   lib,
   ...
 }: let
@@ -8,8 +7,8 @@
 
   cfg = config.cfg.core.forceCompiledPkgs;
   flags =
-    if hostConfig.arch != null
-    then " -O3 -march=${hostConfig.arch} -mtune=${hostConfig.arch}" # mind the space
+    if config.cfg.hardware.arch != null
+    then " -O3 -march=${config.cfg.hardware.arch} -mtune=${config.cfg.hardware.arch}" # mind the space
     else builtins.warn "forceCompiledPkgs: You may want to set this host's arch." " -O3";
 
   # fetches both env and top-level NIX_CFLAGS_COMPILE

@@ -1,4 +1,4 @@
-{hostConfig, ...}: {
+{config, ...}: {
   boot = {
     loader = {
       systemd-boot.enable = true;
@@ -6,7 +6,7 @@
       timeout = 0; # hold space to access boot menu
     };
     initrd.systemd.enable = true;
-    kernelParams = map (m: "video=${m.name}:${m.res}") hostConfig.monitors;
+    kernelParams = map (m: "video=${m.name}:${m.res}") config.cfg.hardware.monitors;
 
     tmp = {
       useTmpfs = true;

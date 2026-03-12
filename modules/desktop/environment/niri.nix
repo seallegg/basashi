@@ -1,14 +1,13 @@
 {
   config,
   dotfiles,
-  hostConfig,
   inputs,
   lib,
   pkgs,
   ...
 }: let
   monitorConfig =
-    if hostConfig.monitors != null
+    if config.cfg.hardware.monitors != []
     then
       lib.concatStringsSep "\n" (lib.imap0 (i: m: ''
           output "${m.name}" {
@@ -22,7 +21,7 @@
           }
           }
         '')
-        hostConfig.monitors)
+        config.cfg.hardware.monitors)
     else "";
 in {
   options.cfg.desktop.environment.niri = {
@@ -38,7 +37,7 @@ in {
     hj.rum.desktops.niri = {
       enable = true;
       package = pkgs.niri-unstable;
-      config = monitorConfig + dotfiles.niri "config.kdl";
+      config = monitorConfig + builtins.readFile "${dotfiles}/niri/config.kdl";
       extraVariables = {
         XDG_SESSION_TYPE = "wayland";
         XDG_CURRENT_DESKTOP = "niri";

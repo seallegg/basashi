@@ -1,6 +1,5 @@
 {
   config,
-  hostConfig,
   lib,
   pkgs,
   ...
@@ -12,7 +11,7 @@
       name=${m.name}
       mode=${m.res}
     '')
-    hostConfig.monitors;
+    config.cfg.hardware.monitors;
   westonIni =
     ''
       [keyboard]

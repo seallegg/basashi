@@ -55,5 +55,5 @@
       eval "$(oh-my-posh init zsh --config ~/.config/zsh/prompt.toml)"
     '';
   };
-  hj.xdg.config.files."zsh/prompt.toml".text = dotfiles.ohmyposh "prompt.toml";
+  hj.xdg.config.files."zsh/prompt.toml".text = builtins.readFile "${dotfiles}/ohmyposh/prompt.toml";
 }
