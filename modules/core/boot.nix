@@ -11,10 +11,13 @@
     tmp = {
       useTmpfs = true;
       tmpfsSize = "50%";
+      tmpfsHugeMemoryPages = "within_size"; # not sure how much of a difference this makes
     };
   };
-  services.swapspace.enable = true;
-  zramSwap.enable = true;
+  zramSwap = {
+    enable = true;
+    algorithm = "lz4";
+  };
 
   hardware.enableRedistributableFirmware = true;
 }
