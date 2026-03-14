@@ -58,7 +58,7 @@
       eval "$(zoxide init --cmd cd zsh)"
       if [ "$TERM" = "linux" ]; then
       else
-        export SUDO_PROMPT="\033[1;30;107m Password  \033[0m\n"
+        export SUDO_PROMPT="\033[1;30;107m Password  \033[0m"
         eval "$(oh-my-posh init zsh --config ~/.config/zsh/prompt.toml)"
       fi
     '';
