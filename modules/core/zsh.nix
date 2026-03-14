@@ -36,6 +36,10 @@
     syntaxHighlighting.enable = true;
 
     shellAliases = {
+      ns = "nh os switch";
+      nsu = "nh os switch -u";
+      nb = "nh os boot";
+      nbu = "nh os boot -u";
     };
 
     interactiveShellInit = ''
@@ -52,7 +56,11 @@
 
       eval "$(fzf --zsh)"
       eval "$(zoxide init --cmd cd zsh)"
-      eval "$(oh-my-posh init zsh --config ~/.config/zsh/prompt.toml)"
+      if [ "$TERM" = "linux" ]; then
+      else
+        export SUDO_PROMPT="\033[1;30;107m Password  \033[0m\n"
+        eval "$(oh-my-posh init zsh --config ~/.config/zsh/prompt.toml)"
+      fi
     '';
   };
   hj.xdg.config.files."zsh/prompt.toml".text = builtins.readFile "${dotfiles}/ohmyposh/prompt.toml";
