@@ -18,8 +18,6 @@
       kernel = "custom";
       username = "seal";
       nvidia.enable = true;
-      git.name = "SeallEgg";
-      git.email = "seallegg@gmail.com";
       forceCompiledPkgs = {
         enable = true;
         pkgs = [
@@ -50,6 +48,10 @@
       automounting.enable = true;
       idevices.enable = true;
       g502.enable = true;
+    };
+    terminal = {
+      git.name = "SeallEgg";
+      git.email = "seallegg@gmail.com";
     };
   };
 }

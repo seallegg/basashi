@@ -16,8 +16,6 @@
       kernel = "latest";
       username = "seal";
       amdgpu.enable = true;
-      git.name = "SeallEgg";
-      git.email = "seallegg@gmail.com";
     };
 
     desktop = {
@@ -39,6 +37,10 @@
       sddm.enable = true;
       swaync.enable = true;
       automounting.enable = true;
+    };
+    terminal = {
+      git.name = "SeallEgg";
+      git.email = "seallegg@gmail.com";
     };
   };
 }
