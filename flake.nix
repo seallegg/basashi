@@ -28,6 +28,8 @@
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
 
+    cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel";
+
     niri.url = "github:sodiboo/niri-flake";
     niri.inputs.nixpkgs.follows = "nixpkgs";
     niri.inputs.niri-unstable.url = "github:niri-wm/niri/wip/branch";
