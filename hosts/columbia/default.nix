@@ -18,7 +18,6 @@
       kernel = "custom";
       username = "seal";
       nvidia.enable = true;
-      };
     };
 
     desktop = {
@@ -43,6 +42,7 @@
       idevices.enable = true;
       g502.enable = true;
     };
+
     terminal = {
       git.name = "SeallEgg";
       git.email = "seallegg@gmail.com";
