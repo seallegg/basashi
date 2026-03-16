@@ -36,12 +36,19 @@ layout {
     }
 }
 
-animations {
+blur {
+    passes 2
+    offset 5
+    noise 0.02
+    saturation 1.5
 }
 
 window-rule {
     geometry-corner-radius 12
     clip-to-geometry true
+    background-effect {
+        blur true
+    }
 }
 
 cursor {

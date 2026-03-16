@@ -13,6 +13,11 @@ in {
         allow_remote_control yes
         shell_integration zsh
 
+        enable_audio_bell yes
+        visual_bell_duration 1 ease-out
+        window_alert_on_bell yes
+
+        cursor_shape beam
         cursor_trail 1
         cursor_trail_start_threshold 0
 
@@ -26,6 +31,8 @@ in {
         url_color #73daca
         cursor #c0caf5
         cursor_text_color #1a1b26
+
+        background_opacity 0.8
 
         # Tabs
         active_tab_background #7aa2f7

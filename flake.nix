@@ -30,6 +30,7 @@
 
     niri.url = "github:sodiboo/niri-flake";
     niri.inputs.nixpkgs.follows = "nixpkgs";
+    niri.inputs.niri-unstable.url = "github:niri-wm/niri/wip/branch";
 
     millennium.url = "github:SteamClientHomebrew/Millennium?dir=packages/nix";
     millennium.inputs.nixpkgs.follows = "nixpkgs";
