@@ -16,6 +16,7 @@ in {
       gimp
       libreoffice-qt-fresh
       zapzap
+      cider-2
     ];
   };
 }
