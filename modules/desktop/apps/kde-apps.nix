@@ -22,6 +22,7 @@ in {
     hj = {
       packages = with pkgs; [
         kdePackages.dolphin
+        kdePackages.kfind
         kdePackages.gwenview
         kdePackages.ark
         kdePackages.filelight
