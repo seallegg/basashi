@@ -1,5 +1,6 @@
 {
   config,
+  inputs,
   lib,
   pkgs,
   ...
@@ -10,8 +11,11 @@ in {
   };
 
   config = lib.mkIf config.cfg.desktop.apps.gaming.enable {
+    nixpkgs.overlays = [inputs.millennium.overlays.default];
+
     programs.steam = {
       enable = true;
+      package = pkgs.millennium-steam;
       gamescopeSession.enable = true;
       remotePlay.openFirewall = true;
     };
