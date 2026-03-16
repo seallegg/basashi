@@ -18,12 +18,6 @@
       kernel = "custom";
       username = "seal";
       nvidia.enable = true;
-      forceCompiledPkgs = {
-        enable = true;
-        pkgs = [
-          "nix"
-          "gcc"
-        ];
       };
     };
 
