@@ -19,9 +19,12 @@
             document-font-name = "Sans Regular 12";
             monospace-font-name = "Monospace Regular 12";
             color-scheme = "prefer-dark";
+            cursor-theme = "Posy_Cursor_Black";
+            cursor-size = "pidn32";
             gtk-enable-primary-paste = false;
           };
           "org/gnome/desktop/wm/preferences".button-layout = ":";
+          "org.gnome.desktop.sound".theme-name = "ocean";
         };
       }
     ];
@@ -29,9 +32,10 @@
       packages = with pkgs; [
         papirus-icon-theme
         colloid-gtk-theme
-        vimix-cursors
+        posy-cursors
         qt6Packages.qt6ct
         qt6Packages.qtstyleplugin-kvantum
+        kdePackages.ocean-sound-theme
       ];
       xdg.config.files."qt6ct/qt6ct.conf" = {
         generator = lib.generators.toINI {};
