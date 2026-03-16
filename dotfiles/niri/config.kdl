@@ -52,7 +52,7 @@ window-rule {
 }
 
 cursor {
-    xcursor-theme "Vimix-cursors"
+    xcursor-theme "Posy_Cursor_Black"
     xcursor-size 32
 }
 
