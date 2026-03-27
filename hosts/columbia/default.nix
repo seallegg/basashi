@@ -32,8 +32,12 @@
     };
 
     services = {
+      networking = {
+        networkmanager.enable = true;
+        DoT.enable = true;
+        ipv6.enable = false;
+      };
       plymouth.enable = true;
-      networkmanager.enable = true;
       greetd.enable = true;
       swww.enable = true;
       swaync.enable = true;

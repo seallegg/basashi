@@ -7,7 +7,7 @@
 in {
   options.cfg.services.powersaving.enable = lib.mkEnableOption "power saving optimizations";
   config = mkIf config.cfg.services.powersaving.enable {
-    networking.networkmanager.wifi.powersave = mkIf config.cfg.services.networkmanager.enable true;
+    networking.networkmanager.wifi.powersave = config.cfg.services.networking.networkmanager.enable;
     #powerManagement.powertop.enable = true;
   };
 }
