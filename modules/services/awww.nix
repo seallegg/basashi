@@ -4,13 +4,13 @@
   pkgs,
   ...
 }: {
-  options.cfg.services.swww = {
-    enable = lib.mkEnableOption "swww";
+  options.cfg.services.awww = {
+    enable = lib.mkEnableOption "awww";
   };
 
-  config = lib.mkIf config.cfg.services.swww.enable {
-    environment.systemPackages = with pkgs; [swww];
-    systemd.user.services.swww = {
+  config = lib.mkIf config.cfg.services.awww.enable {
+    environment.systemPackages = [pkgs.awww];
+    systemd.user.services.awww = {
       enable = true;
       description = "Wayland wallpaper daemon";
       partOf = ["graphical-session.target"];
@@ -18,8 +18,8 @@
       after = ["graphical-session.target"];
       unitConfig.ConditionEnvironment = "WAYLAND_DISPLAY";
       serviceConfig = {
-        ExecStart = "${pkgs.swww}/bin/swww-daemon";
-        ExecStartPost = "${pkgs.swww}/bin/swww restore";
+        ExecStart = "${pkgs.awww}/bin/awww-daemon";
+        ExecStartPost = "${pkgs.awww}/bin/awww restore";
         Type = "simple";
         Restart = "on-failure";
       };
