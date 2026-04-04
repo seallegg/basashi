@@ -12,7 +12,7 @@
       description = "udiskie daemon";
       after = ["udisks2.service" "graphical-session.target"];
       partOf = ["graphical-session.target"];
-      serviceConfig.ExecStart = "${lib.getExe pkgs.udiskie} --smart-tray";
+      serviceConfig.ExecStart = "${pkgs.udiskie}/bin/udiskie --smart-tray";
     };
   };
 }
