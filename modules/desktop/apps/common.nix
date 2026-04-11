@@ -18,5 +18,8 @@ in {
       zapzap
       cider-2
     ];
+    environment.systemPackages = with pkgs; [
+      obs-studio # god knows why this can´t be installed as a user package
+    ];
   };
 }
