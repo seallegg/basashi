@@ -27,7 +27,7 @@
       };
       apps = {
         gaming.enable = true;
-        thunderbird.enable = true;
+        coolercontrol.enable = true;
       };
     };
 
