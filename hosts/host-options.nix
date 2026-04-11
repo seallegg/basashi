@@ -23,6 +23,10 @@ in {
             type = types.float;
             default = 1.0;
           };
+          VRR = mkOption {
+            type = types.bool;
+            default = false;
+          };
         };
       });
       default = [];

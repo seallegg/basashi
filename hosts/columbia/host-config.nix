@@ -10,6 +10,7 @@
         y = 0;
       };
       scale = 1.0;
+      VRR = true;
     }
     {
       name = "HDMI-A-1";

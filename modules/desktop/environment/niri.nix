@@ -19,6 +19,11 @@
             then "focus-at-startup" # The first monitor is set as main
             else ""
           }
+            ${
+            if m.VRR
+            then "variable-refresh-rate on-demand=true"
+            else ""
+          }
           }
         '')
         config.cfg.hardware.monitors)
