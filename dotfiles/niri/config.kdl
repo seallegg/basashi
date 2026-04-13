@@ -19,21 +19,15 @@ layout {
     focus-ring {
         on
         width 1
-        active-color "#ffffff"
-        urgent-color "#9b0000"
     }
     border {
         width 1
-        active-color "#ffffff"
-        inactive-color "#333333"
-        urgent-color "#9b0000"
     }
     shadow {
         on
         softness 15
         spread 1
         offset x=0 y=5
-        color "#000"
     }
 
 }
