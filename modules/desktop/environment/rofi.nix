@@ -13,7 +13,22 @@
     hj = {
       packages = [pkgs.rofi];
       xdg.config.files = {
-        "rofi/config.rasi".text = builtins.readFile "${dotfiles}/rofi/config.rasi";
+        "rofi/config.rasi".text = ''
+          configuration {
+            show-icons: true;
+            display-drun:  "Rofi";
+            require-input: true;
+              timeout {
+                  action: "kb-cancel";
+                  delay:  0;
+              }
+              filebrowser {
+                  directories-first: true;
+                  sorting-method:    "name";
+              }
+          }
+          @theme "./theme.rasi"
+        '';
         "rofi/theme.rasi".text = builtins.readFile "${dotfiles}/rofi/theme.rasi";
       };
     };

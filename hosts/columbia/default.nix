@@ -24,6 +24,8 @@
       environment = {
         niri.enable = true;
         rofi.enable = true;
+        quickshell.enable = true;
+        matugen.enable = true;
       };
       apps = {
         gaming.enable = true;
@@ -38,8 +40,8 @@
         ipv6.enable = false;
       };
       plymouth.enable = true;
-      greetd.enable = true;
-      swww.enable = true;
+      sddm.enable = true;
+      awww.enable = true;
       swaync.enable = true;
       flatpak.enable = true;
       automounting.enable = true;

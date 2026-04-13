@@ -1,7 +1,13 @@
 // Visual
 prefer-no-csd
 layout {
-    gaps 16
+    gaps 12
+    struts {
+        left 8
+        right 8
+        top 4
+        bottom 4
+    }
     center-focused-column "never"
     preset-column-widths {
         proportion 0.33333
@@ -9,55 +15,67 @@ layout {
         proportion 0.66667
     }
     default-column-width { proportion 0.5; }
+
     focus-ring {
-        off
-        width 2
-        active-color "#7fc8ff"
-        inactive-color "#505050"
+        on
+        width 1
+        active-color "#ffffff"
+        urgent-color "#9b0000"
     }
     border {
-        width 2
-        active-color "#7fc8ff"
-        inactive-color "#505050"
+        width 1
+        active-color "#ffffff"
+        inactive-color "#333333"
         urgent-color "#9b0000"
     }
     shadow {
-         on
-        softness 30
-        spread 5
+        on
+        softness 15
+        spread 1
         offset x=0 y=5
-        color "#0007"
+        color "#000"
     }
-    struts {
-        left 16
-        right 16
-        top 32
-        bottom 32
-    }
+
 }
 
 blur {
-    passes 2
-    offset 5
-    noise 0.02
-    saturation 1.5
+    passes 3
+    offset 3.7
+    noise 0.04
+    saturation 2
 }
 
 window-rule {
-    geometry-corner-radius 12
+    geometry-corner-radius 16
     clip-to-geometry true
     background-effect {
         blur true
     }
 }
 
+window-rule {
+    match is-floating=true
+    background-effect {
+        xray false
+    }
+}
+
+layer-rule {
+    match namespace="rofi"
+    background-effect {
+        blur true
+        xray false
+    }
+}
+
 cursor {
     xcursor-theme "Posy_Cursor_Black"
     xcursor-size 32
+    hide-when-typing
+    hide-after-inactive-ms 20000
 }
 
 // Misc
-
 clipboard {
     disable-primary
 }
@@ -81,7 +99,7 @@ input {
     trackpoint {
         accel-profile "flat"
         scroll-method "on-button-down"
-        scroll-button 273
+        scroll-button 274
         middle-emulation
     }
      warp-mouse-to-focus
@@ -96,7 +114,7 @@ binds {
 
     Mod+Y { spawn "dolphin"; }
     Mod+U { spawn "floorp"; }
-    Mod+I { spawn "vesktop"; }
+    Mod+I { spawn "equibop"; }
     Mod+O { spawn "obsidian"; }
     Mod+P { spawn "zeditor"; }
 

@@ -1,0 +1,134 @@
+[ColorEffects:Disabled]
+Color=56,56,56
+ColorAmount=0
+ColorEffect=0
+ContrastAmount=0.65
+ContrastEffect=1
+IntensityAmount=0.1
+IntensityEffect=2
+
+[ColorEffects:Inactive]
+ChangeSelectionColor=true
+Color=112,111,110
+ColorAmount=0.025
+ColorEffect=2
+ContrastAmount=0.1
+ContrastEffect=2
+Enable=false
+IntensityAmount=0
+IntensityEffect=0
+
+[Colors:Button]
+BackgroundAlternate=30,87,116
+BackgroundNormal=41,44,48
+DecorationFocus={{ colors.primary_container.default.hex }}
+DecorationHover={{ colors.primary_container.default.hex }}
+ForegroundActive={{ colors.primary_container.default.hex }}
+ForegroundInactive=161,169,177
+ForegroundLink=29,153,243
+ForegroundNegative=218,68,83
+ForegroundNeutral=246,116,0
+ForegroundNormal={{ colors.on_surface.default.hex }}
+ForegroundPositive=39,174,96
+ForegroundVisited=155,89,182
+
+[Colors:Complementary]
+BackgroundAlternate=30,87,116
+BackgroundNormal={{ colors.surface.default.hex_stripped }}
+DecorationFocus={{ colors.primary_container.default.hex }}
+DecorationHover={{ colors.primary_container.default.hex }}
+ForegroundActive={{ colors.primary_container.default.hex }}
+ForegroundInactive=161,169,177
+ForegroundLink=29,153,243
+ForegroundNegative=218,68,83
+ForegroundNeutral=246,116,0
+ForegroundNormal={{ colors.on_surface.default.hex }}
+ForegroundPositive=39,174,96
+ForegroundVisited=155,89,182
+
+[Colors:Header]
+BackgroundAlternate=41,44,48
+BackgroundNormal=#9e{{ colors.surface.default.hex_stripped }}
+DecorationFocus={{ colors.primary_container.default.hex }}
+DecorationHover={{ colors.primary_container.default.hex }}
+ForegroundActive={{ colors.primary_container.default.hex }}
+ForegroundInactive=161,169,177
+ForegroundLink=29,153,243
+ForegroundNegative=218,68,83
+ForegroundNeutral=246,116,0
+ForegroundNormal={{ colors.on_surface.default.hex }}
+ForegroundPositive=39,174,96
+ForegroundVisited=155,89,182
+
+
+[Colors:Selection]
+BackgroundAlternate=30,87,116
+BackgroundNormal={{ colors.primary_container.default.hex }}
+DecorationFocus={{ colors.primary_container.default.hex }}
+DecorationHover={{ colors.primary_container.default.hex }}
+ForegroundActive={{ colors.on_surface.default.hex }}
+ForegroundInactive=161,169,177
+ForegroundLink=253,188,75
+ForegroundNegative=176,55,69
+ForegroundNeutral=198,92,0
+ForegroundNormal={{ colors.on_surface.default.hex }}
+ForegroundPositive=23,104,57
+ForegroundVisited=155,89,182
+
+[Colors:Tooltip]
+BackgroundAlternate={{ colors.surface.default.hex_stripped }}
+BackgroundNormal=41,44,48
+DecorationFocus={{ colors.primary_container.default.hex }}
+DecorationHover={{ colors.primary_container.default.hex }}
+ForegroundActive={{ colors.primary_container.default.hex }}
+ForegroundInactive=161,169,177
+ForegroundLink=29,153,243
+ForegroundNegative=218,68,83
+ForegroundNeutral=246,116,0
+ForegroundNormal={{ colors.on_surface.default.hex }}
+ForegroundPositive=39,174,96
+ForegroundVisited=155,89,182
+
+[Colors:View]
+BackgroundAlternate={{ colors.surface_container_high.default.hex }}
+BackgroundNormal={{ colors.surface_container.default.hex }}
+DecorationFocus={{ colors.primary_container.default.hex }}
+DecorationHover={{ colors.primary_container.default.hex }}
+ForegroundActive={{ colors.primary_container.default.hex }}
+ForegroundInactive=161,169,177
+ForegroundLink=29,153,243
+ForegroundNegative=218,68,83
+ForegroundNeutral=246,116,0
+ForegroundNormal={{ colors.on_surface.default.hex }}
+ForegroundPositive=39,174,96
+ForegroundVisited=155,89,182
+
+[Colors:Window]
+BackgroundAlternate=41,44,48
+BackgroundNormal=#9e{{ colors.surface.default.hex_stripped }}
+DecorationFocus={{ colors.primary_container.default.hex }}
+DecorationHover={{ colors.primary_container.default.hex }}
+ForegroundActive={{ colors.primary_container.default.hex }}
+ForegroundInactive=161,169,177
+ForegroundLink=29,153,243
+ForegroundNegative=218,68,83
+ForegroundNeutral=246,116,0
+ForegroundNormal={{ colors.on_surface.default.hex }}
+ForegroundPositive=39,174,96
+ForegroundVisited=155,89,182
+
+[General]
+ColorScheme=Darkly
+Name=Darkly
+shadeSortColumn=true
+
+[KDE]
+contrast=4
+
+[WM]
+activeBackground=39,44,49
+activeBlend={{ colors.on_surface.default.hex }}
+activeForeground={{ colors.on_surface.default.hex }}
+inactiveBackground=32,36,40
+inactiveBlend=161,169,177
+inactiveForeground=161,169,177

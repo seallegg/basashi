@@ -12,7 +12,7 @@ in {
       floorp-bin
       mpv
       obsidian
-      vesktop
+      equibop
       gimp
       libreoffice-qt-fresh
       zapzap

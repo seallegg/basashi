@@ -35,6 +35,7 @@ in {
 
   config = lib.mkIf config.cfg.desktop.environment.niri.enable {
     nixpkgs.overlays = [inputs.niri.overlays.niri];
+    services.gnome.gnome-keyring.enable = lib.mkForce false; # ew.
     programs.niri = {
       enable = true;
       package = pkgs.niri-unstable;
@@ -46,6 +47,7 @@ in {
       extraVariables = {
         XDG_SESSION_TYPE = "wayland";
         XDG_CURRENT_DESKTOP = "niri";
+        QT_QPA_PLATFORM = "wayland;xcb";
         ELECTRON_OZONE_PLATFORM_HINT = "auto";
       };
     };

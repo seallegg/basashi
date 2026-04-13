@@ -37,7 +37,7 @@ in {
             BrowserApplication = "floorp.desktop";
           };
           KDE.widgetStyle = "qt6ct";
-          UiSettings.ColorScheme = "qt6ct";
+          UiSettings.ColorScheme = "Darkly";
           Icons.Theme = "Papirus-Dark";
         };
       };

@@ -22,10 +22,10 @@
       environment = {
         niri.enable = true;
         rofi.enable = true;
+        matugen.enable = true;
       };
       apps = {
         gaming.enable = true;
-        thunderbird.enable = true;
       };
     };
 
@@ -37,8 +37,8 @@
       };
       plymouth.enable = true;
       powersaving.enable = true;
-      swww.enable = true;
       sddm.enable = true;
+      awww.enable = true;
       swaync.enable = true;
       automounting.enable = true;
     };
