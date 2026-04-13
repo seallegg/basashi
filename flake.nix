@@ -34,6 +34,9 @@
     niri.inputs.nixpkgs.follows = "nixpkgs";
     niri.inputs.niri-unstable.url = "github:niri-wm/niri/wip/branch";
 
+    helium.url = "github:schembriaiden/helium-browser-nix-flake";
+    helium.inputs.nixpkgs.follows = "nixpkgs";
+
     millennium.url = "github:SteamClientHomebrew/Millennium?dir=packages/nix";
     millennium.inputs.nixpkgs.follows = "nixpkgs";
 
