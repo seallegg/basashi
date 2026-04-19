@@ -37,7 +37,7 @@
       networking = {
         networkmanager.enable = true;
         DoT.enable = true;
-        ipv6.enable = false;
+        IPv6.enable = false;
       };
       plymouth.enable = true;
       sddm.enable = true;
