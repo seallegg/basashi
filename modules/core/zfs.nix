@@ -13,7 +13,10 @@
     nixpkgs.overlays = [inputs.cachyos-kernel.overlays.default];
     boot = {
       supportedFilesystems = ["zfs"];
-      zfs.package = config.boot.kernelPackages.zfs_cachyos;
+      zfs = {
+        package = config.boot.kernelPackages.zfs_cachyos;
+        forceImportAll = true;
+      };
     };
 
     services.zfs = {
