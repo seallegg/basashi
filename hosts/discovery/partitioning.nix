@@ -44,7 +44,6 @@
             content = {
               type = "zfs";
               pool = "tankPool";
-              vdev_role = "cache";
             };
           };
           fast = {
@@ -155,7 +154,21 @@
 
       tankPool = {
         type = "zpool";
-        mode = "raidz1";
+        mode = {
+          topology = {
+            type = "topology";
+            vdev = [
+              {
+                mode = "raidz1";
+                members = ["hdd1" "hdd2" "hdd3"];
+              }
+            ];
+            cache = ["l2arc"];
+          };
+        };
+        options = {
+          ashift = "12";
+        };
         rootFsOptions = {
           compression = "zstd-3";
           xattr = "sa";
