@@ -1,5 +1,4 @@
-{lib, ...}:
-# sudo nix --experimental-features "nix-command flakes" run 'github:nix-community/disko/latest#disko-install' -- --flake 'github:SeallEgg/basashi#discovery'
+# sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko/latest -- --mode destroy,format,mount /tmp/basashi/hosts/discovery/partitioning.nix
 {
   disko.devices = {
     disk.main = {

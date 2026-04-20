@@ -1,9 +1,8 @@
-{lib, ...}:
-# sudo nix --experimental-features "nix-command flakes" run 'github:nix-community/disko/latest#disko-install' -- --flake 'github:SeallEgg/basashi#challenger'
+# sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko/latest -- --mode destroy,format,mount /tmp/basashi/hosts/challenger/partitioning.nix
 {
   disko.devices = {
     disk.main = {
-      device = lib.mkDefault "/dev/nvme0n1";
+      device = "/dev/disk/by-id/nvme-eui.5cdfb8038100270a";
       type = "disk";
       content = {
         type = "gpt";

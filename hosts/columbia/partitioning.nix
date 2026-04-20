@@ -1,9 +1,8 @@
-{lib, ...}:
-# sudo nix --experimental-features "nix-command flakes" run 'github:nix-community/disko/latest#disko-install' -- --flake 'github:SeallEgg/basashi#columbia'
+# sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko/latest -- --mode destroy,format,mount /tmp/basashi/hosts/columbia/partitioning.nix
 {
   disko.devices = {
     disk.main = {
-      device = lib.mkDefault "/dev/nvme0n1";
+      device = "/dev/disk/by-id/nvme-Corsair_MP700_A72XB402003VYB";
       type = "disk";
       content = {
         type = "gpt";
