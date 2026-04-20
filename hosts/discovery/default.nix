@@ -26,8 +26,8 @@
       networking = {
         defaultGateway = "192.168.0.1";
         staticIP = {
-          eno1 = "192.168.0.87/24";
-          wlan0 = "192.168.5.87/24";
+          enp4s0 = "192.168.0.87/24";
+          wlp5s0 = "192.168.5.87/24";
         };
         DoT.enable = true;
         IPv6.enable = false;

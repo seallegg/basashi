@@ -3,7 +3,7 @@
 {
   disko.devices = {
     disk.main = {
-      device = lib.mkDefault "/dev/nvme0n1";
+      device = "/dev/disk/by-id/nvme-KINGSTON_SNV3S500G_50026B7687606BEB";
       type = "disk";
       content = {
         type = "gpt";
@@ -34,7 +34,7 @@
     };
 
     disk.secondary = {
-      device = lib.mkDefault "/dev/nvme1n1";
+      device = "/dev/disk/by-id/nvme-KINGSTON_SNV2S1000G_50026B7686C937B8";
       type = "disk";
       content = {
         type = "gpt";
@@ -44,6 +44,7 @@
             content = {
               type = "zfs";
               pool = "tankPool";
+              vdev_role = "cache";
             };
           };
           fast = {
@@ -58,7 +59,7 @@
     };
 
     disk.hdd1 = {
-      device = lib.mkDefault "/dev/sda";
+      device = "/dev/disk/by-id/ata-WDC_WD80EFPX-68C4ZN0_WD-RD33UTXG";
       type = "disk";
       content = {
         type = "gpt";
@@ -72,7 +73,7 @@
       };
     };
     disk.hdd2 = {
-      device = lib.mkDefault "/dev/sdb";
+      device = "/dev/disk/by-id/ata-WDC_WD80EFPX-68C4ZN0_WD-RD33Z20G";
       type = "disk";
       content = {
         type = "gpt";
@@ -86,7 +87,7 @@
       };
     };
     disk.hdd3 = {
-      device = lib.mkDefault "/dev/sdc";
+      device = "/dev/disk/by-id/ata-WDC_WD80EFPX-68C4ZN0_WD-RD342YSG";
       type = "disk";
       content = {
         type = "gpt";
