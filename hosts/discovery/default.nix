@@ -32,8 +32,9 @@
         DoT.enable = true;
         IPv6.enable = false;
       };
-      networkFileSharing = {
-        enable = true;
+
+      samba.shares = {tank = "/mnt/tank";};
+      nfs = {
         shares = {
           tank = "/mnt/tank";
           fast = "/mnt/fast";
