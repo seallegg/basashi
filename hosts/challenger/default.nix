@@ -35,6 +35,7 @@
         DoT.enable = true;
         IPv6.enable = false;
       };
+      avahi.enable = true;
       plymouth.enable = true;
       powersaving.enable = true;
       sddm.enable = true;

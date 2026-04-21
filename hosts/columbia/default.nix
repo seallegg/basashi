@@ -39,6 +39,7 @@
         DoT.enable = true;
         IPv6.enable = false;
       };
+      avahi.enable = true;
       plymouth.enable = true;
       sddm.enable = true;
       awww.enable = true;

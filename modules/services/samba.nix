@@ -8,6 +8,7 @@
       "path" = path;
       "read only" = "no";
       "guest ok" = "yes";
+      "browseable" = "yes";
       "force user" = "${config.cfg.core.username}";
     })
     config.cfg.services.samba.shares;
@@ -26,12 +27,15 @@ in {
       settings =
         {
           global = {
+            "workgroup" = "WORKGROUP";
+            "server string" = "Samba Server";
+            "netbios name" = "${config.networking.hostName}";
             "invalid users" = ["root"];
             "passwd program" = "/run/wrappers/bin/passwd %u";
             "server role" = "standalone server";
             "map to guest" = "Bad user";
             "usershare allow guests" = "yes";
-            "hosts allow" = "192.168.0.0/16";
+            "hosts allow" = "192.168.0.0/16 127.0.0.1 localhost";
             "hosts deny" = "0.0.0.0/0";
             "security" = "user";
 
@@ -52,16 +56,25 @@ in {
       openFirewall = true;
     };
 
-    services.avahi = {
-      enable = true;
-      nssmdns4 = true;
-      openFirewall = true;
-      publish = {
-        enable = true;
-        addresses = true;
-        workstation = true;
-        userServices = true;
-      };
-    };
+    services.avahi.extraServiceFiles.smb = ''
+      <?xml version="1.0" standalone='no'?><!--*-nxml-*-->
+      <!DOCTYPE service-group SYSTEM "avahi-service.dtd">
+      <service-group>
+        <name replace-wildcards="yes">%h</name>
+        <service>
+          <type>_smb._tcp</type>
+          <port>445</port>
+        </service>
+        <service>
+          <type>_device-info._tcp</type>
+          <port>0</port>
+          <txt-record>model=MacSamba</txt-record>
+        </service>
+      </service-group>
+    '';
+
+    systemd.tmpfiles.rules = lib.mapAttrsToList (name: path: "d ${path} 0775 ${config.cfg.core.username} users - -") config.cfg.services.samba.shares;
+
+    cfg.services.avahi.enable = true;
   };
 }
