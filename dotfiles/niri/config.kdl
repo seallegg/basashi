@@ -107,7 +107,7 @@ binds {
     Alt+Tab repeat=false { toggle-overview; }
 
     Mod+Y { spawn "dolphin"; }
-    Mod+U { spawn "floorp"; }
+    Mod+U { spawn "helium"; }
     Mod+I { spawn "equibop"; }
     Mod+O { spawn "obsidian"; }
     Mod+P { spawn "zeditor"; }
