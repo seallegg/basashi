@@ -25,12 +25,8 @@
     services = {
       networking = {
         defaultGateway = "192.168.0.1";
-        staticIP = {
-          enp4s0 = "192.168.0.87/24";
-          wlan0 = "192.168.5.87/24";
-        };
+        staticIP = {enp4s0 = "192.168.0.87/24";};
         DoT.enable = true;
-        IPv6.enable = false;
       };
 
       samba.shares = {tank = "/mnt/tank";};
@@ -39,10 +35,7 @@
           tank = "/mnt/tank";
           fast = "/mnt/fast";
         };
-        trustedSubnets = [
-          "192.168.0.0/24"
-          "192.168.5.0/24"
-        ];
+        trustedSubnets = ["192.168.0.0/24"];
       };
     };
 

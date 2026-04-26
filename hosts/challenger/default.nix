@@ -33,7 +33,7 @@
       networking = {
         networkmanager.enable = true;
         DoT.enable = true;
-        IPv6.enable = false;
+        mullvad.enable = true;
       };
       avahi.enable = true;
       plymouth.enable = true;

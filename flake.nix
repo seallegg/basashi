@@ -43,5 +43,8 @@
     qt6ct-kde.inputs.nixpkgs.follows = "nixpkgs";
 
     apple-fonts.url = "github:SeallEgg/apple-fonts-flake";
+
+    mullvad-declarative.url = "github:Daaboulex/mullvad-vpn-nix";
+    mullvad-declarative.inputs.nixpkgs.follows = "nixpkgs";
   };
 }

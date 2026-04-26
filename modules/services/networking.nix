@@ -1,9 +1,10 @@
 {
   config,
+  inputs,
   lib,
   ...
 }: let
-  inherit (lib) mkEnableOption mkIf mkOption types;
+  inherit (lib) mkEnableOption mkIf mkMerge mkOption types;
   cfg = config.cfg.services.networking;
 in {
   options.cfg.services.networking = {
@@ -25,60 +26,78 @@ in {
       enable = mkEnableOption "NetworkManager";
     };
     DoT.enable = mkEnableOption "DNS over TLS";
-    IPv6.enable = mkEnableOption "IPv6 support"; # my ISP does not support it :im_crine:
+    mullvad.enable = mkEnableOption "Mullvad VPN";
   };
 
-  config = {
-    networking = {
-      dhcpcd.enable = false; # both iwd and NM handle this
+  imports = [inputs.mullvad-declarative.nixosModules.default];
 
-      networkmanager = {
-        enable = cfg.networkmanager.enable;
-        wifi.backend = "iwd";
-        dns = mkIf cfg.DoT.enable "systemd-resolved";
+  config = mkMerge [
+    {
+      networking = {
+        interfaces =
+          lib.mapAttrs (name: ip: {
+            useDHCP = false;
+            ipv4.addresses = [
+              {
+                address = builtins.head (lib.splitString "/" ip);
+                prefixLength = lib.toInt (builtins.elemAt (lib.splitString "/" ip) 1);
+              }
+            ];
+          })
+          cfg.staticIP;
+        defaultGateway = mkIf (cfg.defaultGateway != null) cfg.defaultGateway;
+
+        dhcpcd.enable = false;
+        wireless.iwd = {
+          enable = true;
+          settings.Network.EnableNetworkConfiguration = !cfg.networkmanager.enable;
+        };
       };
 
-      interfaces =
-        lib.mapAttrs (name: ip: {
-          useDHCP = false;
-          ipv4.addresses = [
-            {
-              address = builtins.head (lib.splitString "/" ip);
-              prefixLength = lib.toInt (builtins.elemAt (lib.splitString "/" ip) 1);
-            }
+      services.resolved = {
+        enable = true;
+        settings.Resolve = mkIf cfg.DoT.enable {
+          DNS = [
+            "45.90.28.0#bbf3e5.dns.nextdns.io"
+            "2a07:a8c0::bbf3e5#.dns.nextdns.io"
+            "45.90.30.0#bbf3e5.dns.nextdns.io"
+            "2a07:a8c1::#bbf3e5.dns.nextdns.io"
           ];
-        })
-        cfg.staticIP;
-      defaultGateway = mkIf (cfg.defaultGateway != null) cfg.defaultGateway;
+          DNSOverTLS = "opportunistic";
+        };
+      };
+    }
 
-      enableIPv6 = cfg.IPv6.enable;
+    (mkIf cfg.networkmanager.enable {
+      networking.networkmanager = {
+        enable = true;
+        wifi.backend = "iwd";
+        dns = "systemd-resolved";
+      };
+      users.users.${config.cfg.core.username}.extraGroups = ["networkmanager"];
+      programs.nm-applet.enable = true;
+      systemd.services.ModemManager.enable = false;
+    })
 
-      wireless = {
-        iwd = {
-          enable = true;
-          settings = {
-            Network = {
-              EnableIPv6 = cfg.IPv6.enable;
-              EnableNetworkConfiguration = true;
-            };
+    (mkIf cfg.mullvad.enable {
+      services.mullvad-vpn-declarative = {
+        enable = true;
+        settings = {
+          dns = {
+            mode = "custom";
+            customServers = [
+              "2a07:a8c0::bb:f3e5"
+              "2a07:a8c0::bb:f3e5"
+            ];
+          };
+          multihop.enable = false;
+          tunnel = {
+            daita.enable = false;
+            ipv6 = false; # It just does not work otherwise. I do not feel like figuring out why
           };
         };
       };
-    };
-    users.users.${config.cfg.core.username} = mkIf cfg.networkmanager.enable {extraGroups = ["networkmanager"];};
-    programs.nm-applet.enable = cfg.networkmanager.enable;
-    systemd.services.ModemManager.enable = false;
-    services.resolved = mkIf cfg.DoT.enable {
-      enable = true;
-      settings.Resolve = {
-        DNS = [
-          "45.90.28.0#a772b8.dns.nextdns.io"
-          "2a07:a8c0::#a772b8.dns.nextdns.io"
-          "45.90.30.0#a772b8.dns.nextdns.io"
-          "2a07:a8c1::#a772b8.dns.nextdns.io"
-        ];
-        DNSOverTLS = "yes";
-      };
-    };
-  };
+      nixpkgs.overlays = [inputs.mullvad-declarative.overlays.default];
+    })
+  ];
 }
