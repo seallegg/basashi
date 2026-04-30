@@ -16,6 +16,11 @@
       kernel = "custom";
       username = "seal";
       amdgpu.enable = true;
+      hibernation = {
+        enable = true;
+        resumeDevice = "/dev/disk/by-id/nvme-eui.5cdfb8038100270a-part2";
+        resumeOffset = "18442029";
+      };
     };
 
     desktop = {
