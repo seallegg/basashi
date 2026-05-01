@@ -296,6 +296,26 @@
         "type": "github"
       }
     },
+    "haumea": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1777220035,
+        "narHash": "sha256-7bHV1gkqXBz2EBLTjiTp3uJDetjZbk3iMc8sSyUvIOs=",
+        "owner": "nix-community",
+        "repo": "haumea",
+        "rev": "92e9bd71ee42d2c9bf87d0df8ac7b80f624afea9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "haumea",
+        "type": "github"
+      }
+    },
     "helium": {
       "inputs": {
         "nixpkgs": [
@@ -876,6 +896,7 @@
         "cachyos-kernel": "cachyos-kernel",
         "disko": "disko",
         "flake-parts": "flake-parts_2",
+        "haumea": "haumea",
         "helium": "helium",
         "hjem": "hjem",
         "hjem-rum": "hjem-rum",
@@ -884,8 +905,7 @@
         "niri": "niri",
         "nixdg-ninja": "nixdg-ninja",
         "nixpkgs": "nixpkgs_4",
-        "qt6ct-kde": "qt6ct-kde",
-        "systems": "systems_3"
+        "qt6ct-kde": "qt6ct-kde"
       }
     },
     "rust-overlay": {
@@ -1046,21 +1066,6 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
-        "type": "github"
-      }
-    },
-    "systems_3": {
-      "locked": {
-        "lastModified": 1680978846,
-        "narHash": "sha256-Gtqg8b/v49BFDpDetjclCYXm8mAnTrUzR0JnE2nv5aw=",
-        "owner": "nix-systems",
-        "repo": "x86_64-linux",
-        "rev": "2ecfcac5e15790ba6ce360ceccddb15ad16d08a8",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-systems",
-        "repo": "x86_64-linux",
         "type": "github"
       }
     },
