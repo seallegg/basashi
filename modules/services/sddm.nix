@@ -11,7 +11,7 @@
       name=${m.name}
       mode=${m.res}
     '')
-    config.cfg.hardware.monitors;
+    config.basashi.hardware.monitors;
   westonIni =
     ''
       [keyboard]
@@ -19,18 +19,18 @@
     ''
     + outputConfig;
 in {
-  options.cfg.services.sddm.enable = lib.mkEnableOption "SDDM";
-  config = mkIf config.cfg.services.sddm.enable {
+  options.basashi.services.sddm.enable = lib.mkEnableOption "SDDM";
+  config = mkIf config.basashi.services.sddm.enable {
     services.displayManager.sddm = {
       enable = true;
       wayland = {
         enable = true;
         #   compositorCommand =
-        #     mkIf config.cfg.desktop.environment.plasma.enable
+        #     mkIf config.basashi.desktop.environment.plasma.enable
         #     "${lib.getExe pkgs.weston} --shell=kiosk -c ${westonIni}";
       };
     };
-    # systemd.services."display-manager" = mkIf config.cfg.services.plymouth.enable {
+    # systemd.services."display-manager" = mkIf config.basashi.services.plymouth.enable {
     #   conflicts = ["plymouth-quit.service"];
     #   preStart = "${pkgs.plymouth}/bin/plymouth deactivate";
     #   script = "/run/current-system/sw/bin/sddm";

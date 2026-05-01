@@ -6,11 +6,11 @@
   ...
 }: let
 in {
-  options.cfg.desktop.apps.gaming = {
+  options.basashi.desktop.apps.gaming = {
     enable = lib.mkEnableOption "gaming";
   };
 
-  config = lib.mkIf config.cfg.desktop.apps.gaming.enable {
+  config = lib.mkIf config.basashi.desktop.apps.gaming.enable {
     nixpkgs.overlays = [inputs.millennium.overlays.default];
 
     programs.steam = {

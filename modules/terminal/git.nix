@@ -6,7 +6,7 @@
 }: let
   inherit (lib) mkOption types;
 in {
-  options.cfg.terminal.git = {
+  options.basashi.terminal.git = {
     name = mkOption {
       type = types.str;
       default = "";
@@ -23,7 +23,7 @@ in {
       enable = true;
       config = {
         user = {
-          inherit (config.cfg.terminal.git) name email;
+          inherit (config.basashi.terminal.git) name email;
         };
         url."https://github.com/".InsteadOf = ["github:" "gh"];
         init.defaultBranch = "main";

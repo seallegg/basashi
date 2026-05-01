@@ -3,7 +3,7 @@
   lib,
   ...
 }: {
-  options.cfg.services.plymouth.enable = lib.mkEnableOption "Plymouth";
+  options.basashi.services.plymouth.enable = lib.mkEnableOption "Plymouth";
 
   config = {
     boot = {
@@ -18,7 +18,7 @@
         compressorArgs = ["-1" "-T0"];
       };
 
-      plymouth = lib.mkIf config.cfg.services.plymouth.enable {
+      plymouth = lib.mkIf config.basashi.services.plymouth.enable {
         enable = true;
         theme = "bgrt";
       };
@@ -31,7 +31,7 @@
           "systemd.show_status=auto"
           "vt.global_cursor_default=0"
         ]
-        ++ (map (m: "video=${m.name}:${m.res}") config.cfg.hardware.monitors);
+        ++ (map (m: "video=${m.name}:${m.res}") config.basashi.hardware.monitors);
 
       tmp = {
         useTmpfs = true;

@@ -4,8 +4,8 @@
   pkgs,
   ...
 }: {
-  options.cfg.services.swaync.enable = lib.mkEnableOption "swaync";
-  config = lib.mkIf config.cfg.services.swaync.enable {
+  options.basashi.services.swaync.enable = lib.mkEnableOption "swaync";
+  config = lib.mkIf config.basashi.services.swaync.enable {
     environment.systemPackages = with pkgs; [
       swaynotificationcenter
     ];

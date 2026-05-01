@@ -1,7 +1,7 @@
 {lib, ...}: let
   inherit (lib) mkOption types;
 in {
-  options.cfg.hardware = {
+  options.basashi.hardware = {
     monitors = mkOption {
       type = types.listOf (types.submodule {
         options = {

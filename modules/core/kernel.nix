@@ -6,9 +6,9 @@
   pkgs,
   ...
 }: let
-  cfg = config.cfg.core.kernel;
+  cfg = config.basashi.core.kernel;
   kernelArch =
-    if config.cfg.hardware.arch == "znver4"
+    if config.basashi.hardware.arch == "znver4"
     then "zen4"
     else "x86_64-v3"; # really not going to use this on anything older
 
@@ -32,7 +32,7 @@
         }
       );
 in {
-  options.cfg.core.kernel = lib.mkOption {
+  options.basashi.core.kernel = lib.mkOption {
     type = lib.types.enum [
       "lts"
       "latest"

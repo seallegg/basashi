@@ -3,11 +3,11 @@
   lib,
   ...
 }: {
-  options.cfg.core.amdgpu = {
+  options.basashi.core.amdgpu = {
     enable = lib.mkEnableOption "amdgpu";
   };
 
-  config = lib.mkIf config.cfg.core.amdgpu.enable {
+  config = lib.mkIf config.basashi.core.amdgpu.enable {
     hardware = {
       graphics = {
         enable = true;

@@ -5,7 +5,7 @@
   ...
 }: let
   inherit (lib) mkIf;
-  cfg = config.cfg.services.powersaving;
+  cfg = config.basashi.services.powersaving;
 
   powerStateChange = pkgs.writeShellScript "power-state-change" ''
     state=$1
@@ -21,7 +21,7 @@
     esac
   '';
 in {
-  options.cfg.services.powersaving.enable = lib.mkEnableOption "power saving optimizations";
+  options.basashi.services.powersaving.enable = lib.mkEnableOption "power saving optimizations";
 
   config = mkIf cfg.enable {
     boot.kernelParams = ["amd_pstate=active"];
@@ -44,7 +44,7 @@ in {
       SUBSYSTEM=="power_supply", ATTR{online}=="0", RUN+="${powerStateChange} BATTERY"
     '';
 
-    networking.networkmanager.wifi.powersave = config.cfg.services.networking.networkmanager.enable;
+    networking.networkmanager.wifi.powersave = config.basashi.services.networking.networkmanager.enable;
 
     environment.systemPackages = with pkgs; [
       powertop # for monitoring only

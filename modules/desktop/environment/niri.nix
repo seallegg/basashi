@@ -7,7 +7,7 @@
   ...
 }: let
   monitorConfig =
-    if config.cfg.hardware.monitors != []
+    if config.basashi.hardware.monitors != []
     then
       lib.concatStringsSep "\n" (lib.imap0 (i: m: ''
           output "${m.name}" {
@@ -26,14 +26,14 @@
           }
           }
         '')
-        config.cfg.hardware.monitors)
+        config.basashi.hardware.monitors)
     else "";
 in {
-  options.cfg.desktop.environment.niri = {
+  options.basashi.desktop.environment.niri = {
     enable = lib.mkEnableOption "niri";
   };
 
-  config = lib.mkIf config.cfg.desktop.environment.niri.enable {
+  config = lib.mkIf config.basashi.desktop.environment.niri.enable {
     nixpkgs.overlays = [inputs.niri.overlays.niri];
     services.gnome.gnome-keyring.enable = lib.mkForce false; # ew.
     programs.niri = {

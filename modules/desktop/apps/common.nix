@@ -5,7 +5,7 @@
   pkgs,
   ...
 }: let
-  cfg = config.cfg.desktop.environment;
+  cfg = config.basashi.desktop.environment;
 in {
   config = lib.mkIf cfg.niri.enable or cfg.plasma.enable {
     hj.packages = with pkgs; [

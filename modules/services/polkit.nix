@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: {
-  config = lib.mkIf config.cfg.desktop.environment.niri.enable {
+  config = lib.mkIf config.basashi.desktop.environment.niri.enable {
     security.polkit.enable = true;
     systemd.user.services.mate-polkit = {
       enable = true;

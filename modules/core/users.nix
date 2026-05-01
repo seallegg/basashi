@@ -6,9 +6,9 @@
   ...
 }: let
   inherit (lib.modules) mkAliasOptionModule;
-  inherit (config.cfg.core) username;
+  inherit (config.basashi.core) username;
 in {
-  options.cfg.core.username = lib.mkOption {
+  options.basashi.core.username = lib.mkOption {
     type = lib.types.str;
     default = "user";
     description = "Sets the username for the system.";

@@ -42,9 +42,9 @@
               ]
               ++ (lib.lists.optional (arch != null) "gccarch-${arch}");
 
-            cfg.hardware.monitors = hostConfig.monitors or [];
-            cfg.hardware.arch = arch;
-            cfg.hardware.system = system;
+            basashi.hardware.monitors = hostConfig.monitors or [];
+            basashi.hardware.arch = arch;
+            basashi.hardware.system = system;
           }
         ];
       });

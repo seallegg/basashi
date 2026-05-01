@@ -4,8 +4,8 @@
   pkgs,
   ...
 }: {
-  options.cfg.services.g502.enable = lib.mkEnableOption "g502";
-  config = lib.mkIf config.cfg.services.g502.enable {
+  options.basashi.services.g502.enable = lib.mkEnableOption "g502";
+  config = lib.mkIf config.basashi.services.g502.enable {
     hardware.logitech.wireless = {
       enable = true;
       enableGraphical = true;

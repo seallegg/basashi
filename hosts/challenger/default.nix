@@ -11,7 +11,7 @@
     ./partitioning.nix
   ];
 
-  cfg = {
+  basashi = {
     core = {
       kernel = "custom";
       username = "seal";

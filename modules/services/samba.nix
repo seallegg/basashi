@@ -9,18 +9,18 @@
       "read only" = "no";
       "guest ok" = "yes";
       "browseable" = "yes";
-      "force user" = "${config.cfg.core.username}";
+      "force user" = "${config.basashi.core.username}";
     })
-    config.cfg.services.samba.shares;
+    config.basashi.services.samba.shares;
 in {
-  options.cfg.services.samba.shares = lib.mkOption {
+  options.basashi.services.samba.shares = lib.mkOption {
     type = lib.types.attrsOf lib.types.str;
     default = {};
     example = {tank = "/mnt/tank";};
     description = "Attribute set mapping share names to directory paths.";
   };
 
-  config = lib.mkIf (config.cfg.services.samba.shares != {}) {
+  config = lib.mkIf (config.basashi.services.samba.shares != {}) {
     services.samba = {
       enable = true;
       openFirewall = true;
@@ -73,8 +73,8 @@ in {
       </service-group>
     '';
 
-    systemd.tmpfiles.rules = lib.mapAttrsToList (name: path: "d ${path} 0775 ${config.cfg.core.username} users - -") config.cfg.services.samba.shares;
+    systemd.tmpfiles.rules = lib.mapAttrsToList (name: path: "d ${path} 0775 ${config.basashi.core.username} users - -") config.basashi.services.samba.shares;
 
-    cfg.services.avahi.enable = true;
+    basashi.services.avahi.enable = true;
   };
 }

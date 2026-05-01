@@ -5,9 +5,9 @@
   ...
 }: let
   inherit (lib) mkEnableOption mkIf mkMerge mkOption types;
-  cfg = config.cfg.services.networking;
+  cfg = config.basashi.services.networking;
 in {
-  options.cfg.services.networking = {
+  options.basashi.services.networking = {
     staticIP = mkOption {
       type = types.attrsOf types.str;
       default = {};
@@ -74,7 +74,7 @@ in {
         wifi.backend = "iwd";
         dns = "systemd-resolved";
       };
-      users.users.${config.cfg.core.username}.extraGroups = ["networkmanager"];
+      users.users.${config.basashi.core.username}.extraGroups = ["networkmanager"];
       programs.nm-applet.enable = true;
       systemd.services.ModemManager.enable = false;
     })

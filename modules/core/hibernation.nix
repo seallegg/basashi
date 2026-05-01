@@ -4,9 +4,9 @@
   ...
 }: let
   inherit (lib) mkIf mkEnableOption mkOption types;
-  cfg = config.cfg.core.hibernation;
+  cfg = config.basashi.core.hibernation;
 in {
-  options.cfg.core.hibernation = {
+  options.basashi.core.hibernation = {
     enable = mkEnableOption "hibernation support";
     resumeDevice = mkOption {
       type = types.nullOr types.str;
@@ -24,11 +24,11 @@ in {
     assertions = [
       {
         assertion = cfg.resumeDevice != null;
-        message = "cfg.core.hibernation.resumeDevice must be set if hibernation is enabled.";
+        message = "basashi.core.hibernation.resumeDevice must be set if hibernation is enabled.";
       }
       {
         assertion = (lib.hasInfix "/" (cfg.resumeDevice or "")) -> (cfg.resumeOffset != null);
-        message = "cfg.core.hibernation.resumeOffset must be set if resumeDevice is a path to a swapfile.";
+        message = "basashi.core.hibernation.resumeOffset must be set if resumeDevice is a path to a swapfile.";
       }
     ];
 
@@ -36,7 +36,7 @@ in {
       resumeDevice = cfg.resumeDevice;
       kernelParams = mkIf (cfg.resumeOffset != null) ["resume_offset=${cfg.resumeOffset}"];
     };
-    
+
     systemd.sleep.settings.Sleep = {
       AllowHibernation = "yes";
       AllowHybridSleep = "yes";

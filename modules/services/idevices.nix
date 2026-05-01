@@ -4,8 +4,8 @@
   pkgs,
   ...
 }: {
-  options.cfg.services.idevices.enable = lib.mkEnableOption "IOS device support";
-  config = lib.mkIf config.cfg.services.idevices.enable {
+  options.basashi.services.idevices.enable = lib.mkEnableOption "IOS device support";
+  config = lib.mkIf config.basashi.services.idevices.enable {
     services.usbmuxd.enable = true;
     environment.systemPackages = with pkgs; [
       libimobiledevice

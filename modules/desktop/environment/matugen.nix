@@ -5,9 +5,9 @@
   pkgs,
   ...
 }: {
-  options.cfg.desktop.environment.matugen.enable = lib.mkEnableOption "matugen";
+  options.basashi.desktop.environment.matugen.enable = lib.mkEnableOption "matugen";
 
-  config = lib.mkIf config.cfg.desktop.environment.matugen.enable {
+  config = lib.mkIf config.basashi.desktop.environment.matugen.enable {
     hj = {
       packages = with pkgs; [
         matugen

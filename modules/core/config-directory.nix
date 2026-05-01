@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  username = config.cfg.core.username;
+  username = config.basashi.core.username;
   configDir = "/home/${username}/basashi";
 in {
   environment.variables.FLAKE = configDir;

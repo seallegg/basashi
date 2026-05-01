@@ -4,8 +4,8 @@
   pkgs,
   ...
 }: {
-  options.cfg.services.automounting.enable = lib.mkEnableOption "autmomounting";
-  config = lib.mkIf config.cfg.services.automounting.enable {
+  options.basashi.services.automounting.enable = lib.mkEnableOption "autmomounting";
+  config = lib.mkIf config.basashi.services.automounting.enable {
     environment.systemPackages = [pkgs.udiskie];
     services.udisks2.enable = true;
     systemd.user.services.udiskie = {

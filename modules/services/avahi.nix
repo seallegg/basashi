@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.cfg.services.avahi;
+  cfg = config.basashi.services.avahi;
 in {
-  options.cfg.services.avahi = {
+  options.basashi.services.avahi = {
     enable = lib.mkEnableOption "Avahi mDNS/DNS-SD discovery";
   };
 

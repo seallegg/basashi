@@ -14,7 +14,7 @@
     ./partitioning.nix
   ];
 
-  cfg = {
+  basashi = {
     core = {
       kernel = "cachy-lts";
       zfs.enable = true;

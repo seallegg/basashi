@@ -14,7 +14,7 @@
     ];
     sessionVariables.ZDOTDIR = "$XDG_CONFIG_HOME/zsh";
   };
-  users.users.${config.cfg.core.username}.shell = pkgs.zsh;
+  users.users.${config.basashi.core.username}.shell = pkgs.zsh;
   programs.zsh = {
     enable = true;
     histFile = "$ZDOTDIR/zsh_history";

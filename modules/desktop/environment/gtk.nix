@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: {
-  config = lib.mkIf config.cfg.desktop.environment.niri.enable {
+  config = lib.mkIf config.basashi.desktop.environment.niri.enable {
     programs.dconf.profiles.user.databases = [
       {
         lockAll = true;
