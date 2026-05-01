@@ -13,7 +13,7 @@
 
   mkSystem = hostName: let
     hostConfig = import ./${hostName}/host-config.nix;
-    system = hostConfig.system; # used for pre-selecting platforms using flake-parts
+    system = hostConfig.system or "x86_64-linux"; # used for pre-selecting platforms using flake-parts
     arch = hostConfig.arch or null; # for optional tuning
     dotfiles = self + "/dotfiles";
   in
