@@ -44,7 +44,7 @@ in {
       SUBSYSTEM=="power_supply", ATTR{online}=="0", RUN+="${powerStateChange} BATTERY"
     '';
 
-    networking.networkmanager.wifi.powersave = config.basashi.services.networking.networkmanager.enable;
+    networking.networkmanager.wifi.powersave = config.basashi.core.networking.networkmanager.enable;
 
     environment.systemPackages = with pkgs; [
       powertop # for monitoring only

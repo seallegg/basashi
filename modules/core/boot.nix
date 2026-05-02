@@ -3,7 +3,7 @@
   lib,
   ...
 }: {
-  options.basashi.services.plymouth.enable = lib.mkEnableOption "Plymouth";
+  options.basashi.services.plymouth.enable = lib.mkEnableOption "Plymouth splash screen";
 
   config = {
     boot = {
@@ -14,6 +14,7 @@
       };
       initrd = {
         systemd.enable = true;
+        availableKernelModules = ["nvme" "xhci_pci" "ahci" "usbhid" "sd_mod" "ehci_pci" "sdhci_pci"];
         compressor = "zstd";
         compressorArgs = ["-1" "-T0"];
       };
@@ -23,27 +24,24 @@
         theme = "bgrt";
       };
 
-      kernelParams =
-        [
-          "quiet"
-          "loglevel=3"
-          "rd.udev.log_level=3"
-          "systemd.show_status=auto"
-          "vt.global_cursor_default=0"
-        ]
-        ++ (map (m: "video=${m.name}:${m.res}") config.basashi.hardware.monitors);
+      kernelParams = [
+        "quiet"
+        "loglevel=3"
+        "rd.udev.log_level=3"
+        "systemd.show_status=auto"
+        "vt.global_cursor_default=0"
+      ];
 
       tmp = {
         useTmpfs = true;
         tmpfsSize = "50%";
-        tmpfsHugeMemoryPages = "within_size"; # not sure how much of a difference this makes
+        tmpfsHugeMemoryPages = "within_size";
       };
     };
     zramSwap = {
       enable = true;
       algorithm = "lz4";
     };
-    services.lvm.enable = false; # why this is on by default is beyond me
-    hardware.enableRedistributableFirmware = true;
+    services.lvm.enable = false;
   };
 }

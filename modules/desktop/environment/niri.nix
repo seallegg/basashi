@@ -7,7 +7,7 @@
   ...
 }: let
   monitorConfig =
-    if config.basashi.hardware.monitors != []
+    if config.basashi.core.hardware.monitors != []
     then
       lib.concatStringsSep "\n" (lib.imap0 (i: m: ''
           output "${m.name}" {
@@ -26,7 +26,7 @@
           }
           }
         '')
-        config.basashi.hardware.monitors)
+        config.basashi.core.hardware.monitors)
     else "";
 in {
   options.basashi.desktop.environment.niri = {
@@ -43,7 +43,7 @@ in {
     hj.rum.desktops.niri = {
       enable = true;
       package = pkgs.niri-unstable;
-      config = monitorConfig + builtins.readFile "${dotfiles}/niri/config.kdl";
+      config = monitorConfig + builtins.readFile dotfiles.niri.config;
       extraVariables = {
         XDG_SESSION_TYPE = "wayland";
         XDG_CURRENT_DESKTOP = "niri";

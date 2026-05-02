@@ -1,11 +1,13 @@
 {
-  config,
-  lib,
+  inputs,
   pkgs,
   ...
-}: let
-in {
-  config = lib.mkIf config.basashi.desktop.environment.niri.enable {
+}: {
+  imports = [inputs.nixdg-ninja.nixosModules.nixdg-ninja];
+
+  config = {
+    programs.nixdg-ninja.enable = true;
+
     xdg = {
       mime.defaultApplications = {
         "inode/directory" = "org.kde.dolphin.desktop";
@@ -20,7 +22,7 @@ in {
           pkgs.kdePackages.xdg-desktop-portal-kde
           pkgs.xdg-desktop-portal-gtk
         ];
-        config.common.default = ["kde" "gtk"];
+        config.common.default = ["kde"];
       };
     };
   };

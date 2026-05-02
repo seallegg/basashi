@@ -1,13 +1,12 @@
 {
   config,
-  inputs,
   lib,
   ...
 }: let
   inherit (lib) mkEnableOption mkIf mkMerge mkOption types;
-  cfg = config.basashi.services.networking;
+  cfg = config.basashi.core.networking;
 in {
-  options.basashi.services.networking = {
+  options.basashi.core.networking = {
     staticIP = mkOption {
       type = types.attrsOf types.str;
       default = {};
@@ -26,10 +25,7 @@ in {
       enable = mkEnableOption "NetworkManager";
     };
     DoT.enable = mkEnableOption "DNS over TLS";
-    mullvad.enable = mkEnableOption "Mullvad VPN";
   };
-
-  imports = [inputs.mullvad-declarative.nixosModules.default];
 
   config = mkMerge [
     {
@@ -77,27 +73,6 @@ in {
       users.users.${config.basashi.core.username}.extraGroups = ["networkmanager"];
       programs.nm-applet.enable = true;
       systemd.services.ModemManager.enable = false;
-    })
-
-    (mkIf cfg.mullvad.enable {
-      services.mullvad-vpn-declarative = {
-        enable = true;
-        settings = {
-          dns = {
-            mode = "custom";
-            customServers = [
-              "2a07:a8c0::bb:f3e5"
-              "2a07:a8c0::bb:f3e5"
-            ];
-          };
-          multihop.enable = false;
-          tunnel = {
-            daita.enable = false;
-            ipv6 = false; # It just does not work otherwise. I do not feel like figuring out why
-          };
-        };
-      };
-      nixpkgs.overlays = [inputs.mullvad-declarative.overlays.default];
     })
   ];
 }

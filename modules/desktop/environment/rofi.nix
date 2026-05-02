@@ -29,7 +29,7 @@
           }
           @theme "./theme.rasi"
         '';
-        "rofi/theme.rasi".text = builtins.readFile "${dotfiles}/rofi/theme.rasi";
+        "rofi/theme.rasi".text = builtins.readFile dotfiles.rofi.theme;
       };
     };
   };

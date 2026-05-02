@@ -41,10 +41,10 @@
           };
         };
 
-        "matugen/templates/Darkly.template".text = builtins.readFile "${dotfiles}/matugen/Darkly.template";
-        "matugen/templates/rofi.template".text = builtins.readFile "${dotfiles}/matugen/rofi.template";
-        "matugen/templates/kitty.template".text = builtins.readFile "${dotfiles}/matugen/kitty.template";
-        "matugen/templates/niri.template".text = builtins.readFile "${dotfiles}/matugen/niri.template";
+        "matugen/templates/Darkly.template".text = builtins.readFile dotfiles.matugen.Darkly;
+        "matugen/templates/rofi.template".text = builtins.readFile dotfiles.matugen.rofi;
+        "matugen/templates/kitty.template".text = builtins.readFile dotfiles.matugen.kitty;
+        "matugen/templates/niri.template".text = builtins.readFile dotfiles.matugen.niri;
       };
     };
   };

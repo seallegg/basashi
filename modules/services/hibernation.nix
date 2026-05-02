@@ -4,9 +4,9 @@
   ...
 }: let
   inherit (lib) mkIf mkEnableOption mkOption types;
-  cfg = config.basashi.core.hibernation;
+  cfg = config.basashi.services.hibernation;
 in {
-  options.basashi.core.hibernation = {
+  options.basashi.services.hibernation = {
     enable = mkEnableOption "hibernation support";
     resumeDevice = mkOption {
       type = types.nullOr types.str;
@@ -24,11 +24,11 @@ in {
     assertions = [
       {
         assertion = cfg.resumeDevice != null;
-        message = "basashi.core.hibernation.resumeDevice must be set if hibernation is enabled.";
+        message = "basashi.services.hibernation.resumeDevice must be set if hibernation is enabled.";
       }
       {
         assertion = (lib.hasInfix "/" (cfg.resumeDevice or "")) -> (cfg.resumeOffset != null);
-        message = "basashi.core.hibernation.resumeOffset must be set if resumeDevice is a path to a swapfile.";
+        message = "basashi.services.hibernation.resumeOffset must be set if resumeDevice is a path to a swapfile.";
       }
     ];
 

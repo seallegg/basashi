@@ -3,8 +3,12 @@
   lib,
   pkgs,
   ...
-}: {
-  config = lib.mkIf config.basashi.desktop.environment.niri.enable {
+}: let
+  cfg = config.basashi.services.polkit;
+in {
+  options.basashi.services.polkit.enable = lib.mkEnableOption "Polkit agent";
+
+  config = lib.mkIf cfg.enable {
     security.polkit.enable = true;
     systemd.user.services.mate-polkit = {
       enable = true;

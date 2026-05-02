@@ -2,7 +2,6 @@
 {
   inputs,
   lib,
-  pkgs,
   ...
 }: let
   inherit (builtins) mapAttrs;

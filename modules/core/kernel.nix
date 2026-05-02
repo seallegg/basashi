@@ -8,7 +8,7 @@
 }: let
   cfg = config.basashi.core.kernel;
   kernelArch =
-    if config.basashi.hardware.arch == "znver4"
+    if config.basashi.core.hardware.cpu.arch == "znver4"
     then "zen4"
     else "x86_64-v3"; # really not going to use this on anything older
 

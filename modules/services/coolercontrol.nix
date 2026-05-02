@@ -3,11 +3,13 @@
   lib,
   pkgs,
   ...
-}: {
-  options.basashi.desktop.apps.coolercontrol = {
+}: let
+  cfg = config.basashi.services.coolercontrol;
+in {
+  options.basashi.services.coolercontrol = {
     enable = lib.mkEnableOption "CoolerControl";
   };
-  config = lib.mkIf config.basashi.desktop.apps.coolercontrol.enable {
+  config = lib.mkIf cfg.enable {
     programs.coolercontrol.enable = true;
     environment.systemPackages = with pkgs; [
       lm_sensors

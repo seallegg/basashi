@@ -1,0 +1,125 @@
+{inputs, ...}: {
+  services.libinput.enable = true; # touchpad
+
+  basashi = {
+    core = {
+      hardware = {
+        cpu.arch = "znver3";
+        gpu.amd.enable = true;
+        monitors = [
+          {
+            name = "eDP-1";
+            res = "1920x1080@60";
+            pos = {
+              x = 0;
+              y = 0;
+            };
+            scale = 1.125;
+          }
+        ];
+      };
+      kernel = "custom";
+      username = "seal";
+      networking = {
+        networkmanager.enable = true;
+        DoT.enable = true;
+      };
+    };
+
+    desktop = {
+      environment = {
+        niri.enable = true;
+        rofi.enable = true;
+        matugen.enable = true;
+      };
+      apps = {
+        gaming.enable = true;
+      };
+    };
+
+    services = {
+      hibernation = {
+        enable = true;
+        resumeDevice = "/dev/disk/by-id/nvme-eui.5cdfb8038100270a-part2";
+        resumeOffset = "18442029";
+      };
+      mullvad.enable = true;
+      avahi.enable = true;
+      printing.enable = true;
+      polkit.enable = true;
+      plymouth.enable = true;
+      powersaving.enable = true;
+      sddm.enable = true;
+      awww.enable = true;
+      swaync.enable = true;
+      automounting.enable = true;
+    };
+    terminal = {
+      git.name = "SeallEgg";
+      git.email = "seallegg@gmail.com";
+    };
+  };
+
+  # partitioning
+  imports = [
+    inputs.disko.nixosModules.disko
+    {
+      disko.devices = {
+        disk.main = {
+          device = "/dev/disk/by-id/nvme-eui.5cdfb8038100270a";
+          type = "disk";
+          content = {
+            type = "gpt";
+            partitions = {
+              boot = {
+                size = "1G";
+                type = "EF00";
+                content = {
+                  type = "filesystem";
+                  format = "vfat";
+                  mountpoint = "/boot";
+                  mountOptions = ["umask=0077"];
+                };
+              };
+              root = {
+                size = "100%";
+                content = {
+                  type = "btrfs";
+                  extraArgs = ["-f"];
+                  subvolumes = {
+                    "/" = {
+                      mountpoint = "/";
+                      mountOptions = ["subvol=root" "compress=zstd:1" "noatime"];
+                    };
+                    "/nix" = {
+                      mountpoint = "/nix";
+                      mountOptions = ["subvol=nix" "compress-force=zstd:1" "noatime"];
+                    };
+                    "/var" = {
+                      mountpoint = "/var";
+                      mountOptions = ["subvol=var" "compress=zstd:1" "noatime" "nodatacow" "nodatasum"];
+                    };
+                    "/home" = {
+                      mountpoint = "/home";
+                      mountOptions = ["subvol=home" "compress=zstd:1" "noatime"];
+                    };
+                    "/var/lib" = {
+                      mountpoint = "/var/lib";
+                      mountOptions = ["subvol=var/lib" "compress=zstd:1" "noatime"];
+                    };
+                  };
+                };
+              };
+            };
+          };
+        };
+      };
+      swapDevices = [
+        {
+          device = "/var/swap";
+          size = 16 * 1024;
+        }
+      ];
+    }
+  ];
+}
