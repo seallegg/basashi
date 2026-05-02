@@ -21,38 +21,38 @@
       kernel = "custom";
       username = "seal";
       networking = {
-        networkmanager.enable = true;
         DoT.enable = true;
+        networkmanager.enable = true;
       };
     };
 
     desktop = {
-      environment = {
-        niri.enable = true;
-        rofi.enable = true;
-        matugen.enable = true;
-      };
       apps = {
         gaming.enable = true;
+      };
+      environment = {
+        matugen.enable = true;
+        niri.enable = true;
+        rofi.enable = true;
       };
     };
 
     services = {
+      automounting.enable = true;
+      avahi.enable = true;
+      awww.enable = true;
       hibernation = {
         enable = true;
         resumeDevice = "/dev/disk/by-id/nvme-eui.5cdfb8038100270a-part2";
         resumeOffset = "18442029";
       };
       mullvad.enable = true;
-      avahi.enable = true;
-      printing.enable = true;
-      polkit.enable = true;
       plymouth.enable = true;
+      polkit.enable = true;
       powersaving.enable = true;
+      printing.enable = true;
       sddm.enable = true;
-      awww.enable = true;
       swaync.enable = true;
-      automounting.enable = true;
     };
     terminal = {
       git.name = "SeallEgg";

@@ -29,37 +29,37 @@
       kernel = "custom";
       username = "seal";
       networking = {
-        networkmanager.enable = true;
         DoT.enable = true;
+        networkmanager.enable = true;
       };
     };
 
     desktop = {
-      environment = {
-        niri.enable = true;
-        rofi.enable = true;
-        quickshell.enable = true;
-        matugen.enable = true;
-      };
       apps = {
         gaming.enable = true;
+      };
+      environment = {
+        matugen.enable = true;
+        niri.enable = true;
+        quickshell.enable = true;
+        rofi.enable = true;
       };
     };
 
     services = {
-      mullvad.enable = true;
-      printing.enable = true;
-      polkit.enable = true;
-      coolercontrol.enable = true;
-      avahi.enable = true;
-      plymouth.enable = true;
-      sddm.enable = true;
-      awww.enable = true;
-      swaync.enable = true;
-      flatpak.enable = true;
       automounting.enable = true;
-      idevices.enable = true;
+      avahi.enable = true;
+      awww.enable = true;
+      coolercontrol.enable = true;
+      flatpak.enable = true;
       g502.enable = true;
+      idevices.enable = true;
+      mullvad.enable = true;
+      plymouth.enable = true;
+      polkit.enable = true;
+      printing.enable = true;
+      sddm.enable = true;
+      swaync.enable = true;
     };
 
     terminal = {

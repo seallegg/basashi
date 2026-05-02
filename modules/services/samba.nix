@@ -3,6 +3,7 @@
   lib,
   ...
 }: let
+  cfg = config.basashi.services.filesharing.samba;
   mkSambaShares =
     lib.mapAttrs (name: path: {
       "path" = path;
@@ -11,16 +12,16 @@
       "browseable" = "yes";
       "force user" = "${config.basashi.core.username}";
     })
-    config.basashi.services.samba.shares;
+    cfg.shares;
 in {
-  options.basashi.services.samba.shares = lib.mkOption {
+  options.basashi.services.filesharing.samba.shares = lib.mkOption {
     type = lib.types.attrsOf lib.types.str;
     default = {};
     example = {tank = "/mnt/tank";};
     description = "Attribute set mapping share names to directory paths.";
   };
 
-  config = lib.mkIf (config.basashi.services.samba.shares != {}) {
+  config = lib.mkIf (cfg.shares != {}) {
     services.samba = {
       enable = true;
       openFirewall = true;
@@ -73,7 +74,7 @@ in {
       </service-group>
     '';
 
-    systemd.tmpfiles.rules = lib.mapAttrsToList (name: path: "d ${path} 0775 ${config.basashi.core.username} users - -") config.basashi.services.samba.shares;
+    systemd.tmpfiles.rules = lib.mapAttrsToList (name: path: "d ${path} 0775 ${config.basashi.core.username} users - -") cfg.shares;
 
     basashi.services.avahi.enable = true;
   };

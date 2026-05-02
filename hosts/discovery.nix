@@ -7,23 +7,25 @@
         cpu.arch = "znver4";
       };
       kernel = "cachy-lts";
-      zfs.enable = true;
-      username = "admin";
       networking = {
         defaultGateway = "192.168.0.1";
-        staticIP = {enp4s0 = "192.168.0.87/24";};
         DoT.enable = true;
+        staticIP = {enp4s0 = "192.168.0.87/24";};
       };
+      username = "admin";
+      zfs.enable = true;
     };
 
     services = {
-      samba.shares = {tank = "/mnt/tank";};
-      nfs = {
-        shares = {
-          tank = "/mnt/tank";
-          fast = "/mnt/fast";
+      filesharing = {
+        nfs = {
+          shares = {
+            tank = "/mnt/tank";
+            fast = "/mnt/fast";
+          };
+          trustedSubnets = ["192.168.0.0/24"];
         };
-        trustedSubnets = ["192.168.0.0/24"];
+        samba.shares = {tank = "/mnt/tank";};
       };
     };
 

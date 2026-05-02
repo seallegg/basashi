@@ -3,7 +3,7 @@
   lib,
   ...
 }: let
-  cfg = config.basashi.services.nfs;
+  cfg = config.basashi.services.filesharing.nfs;
 
   mkNfsExport = name: path: let
     opts = "(rw,nohide,insecure,no_subtree_check,async,no_root_squash)";
@@ -12,7 +12,7 @@
 
   nfsExports = lib.concatStringsSep "\n" (lib.mapAttrsToList mkNfsExport cfg.shares);
 in {
-  options.basashi.services.nfs = {
+  options.basashi.services.filesharing.nfs = {
     shares = lib.mkOption {
       type = lib.types.attrsOf lib.types.str;
       default = {};
