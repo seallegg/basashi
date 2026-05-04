@@ -1,24 +1,11 @@
 {
   description = "basashi, a dendritic NixOS configuration";
-  outputs = inputs @ {
-    self,
-    flake-parts,
-    ...
-  }:
-    flake-parts.lib.mkFlake {inherit inputs;} {
-      systems = ["x86_64-linux"];
-      imports = [./imports.nix];
-    };
+  outputs = inputs:
+    import ./imports.nix {inherit inputs;};
 
   inputs = {
     # core
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-
-    flake-parts.url = "github:hercules-ci/flake-parts";
-    flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
-
-    haumea.url = "github:nix-community/haumea";
-    haumea.inputs.nixpkgs.follows = "nixpkgs";
 
     hjem.url = "github:feel-co/hjem";
     hjem.inputs.nixpkgs.follows = "nixpkgs";

@@ -16,6 +16,7 @@
       zfs = {
         package = config.boot.kernelPackages.zfs_cachyos;
         forceImportAll = true;
+        forceImportRoot = true;
       };
     };
 

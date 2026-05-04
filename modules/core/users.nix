@@ -1,8 +1,8 @@
 {
   config,
   inputs,
-  inputs',
   lib,
+  pkgs,
   ...
 }: let
   inherit (lib.modules) mkAliasOptionModule;
@@ -29,7 +29,7 @@ in {
       uid = 1000;
     };
     hjem = {
-      linker = inputs'.hjem.packages.smfh;
+      linker = inputs.hjem.packages.${pkgs.stdenv.hostPlatform.system}.smfh;
       clobberByDefault = true;
       users.${username} = {
         enable = true;

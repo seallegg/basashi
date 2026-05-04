@@ -43,7 +43,7 @@ in {
     hj.rum.desktops.niri = {
       enable = true;
       package = pkgs.niri-unstable;
-      config = monitorConfig + builtins.readFile dotfiles.niri.config;
+      config = monitorConfig + dotfiles.niri.config;
       extraVariables = {
         XDG_SESSION_TYPE = "wayland";
         XDG_CURRENT_DESKTOP = "niri";

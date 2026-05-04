@@ -63,5 +63,5 @@
       fi
     '';
   };
-  hj.xdg.config.files."zsh/prompt.toml".text = builtins.readFile dotfiles.ohmyposh.prompt;
+  hj.xdg.config.files."zsh/prompt.toml".text = dotfiles.ohmyposh.prompt;
 }

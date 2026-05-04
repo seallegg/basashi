@@ -11,7 +11,7 @@ in {
     hj.packages = with pkgs; [
       kitty
       floorp-bin
-      inputs.helium.packages.${system}.default
+      inputs.helium.packages.${pkgs.stdenv.hostPlatform.system}.default
       mpv
       obsidian
       equibop
