@@ -34,15 +34,10 @@ in {
   };
 
   config = lib.mkIf config.basashi.desktop.environment.niri.enable {
-    nixpkgs.overlays = [inputs.niri.overlays.niri];
     services.gnome.gnome-keyring.enable = lib.mkForce false; # ew.
-    programs.niri = {
-      enable = true;
-      package = pkgs.niri-unstable;
-    };
+    programs.niri.enable = true;
     hj.rum.desktops.niri = {
       enable = true;
-      package = pkgs.niri-unstable;
       config = monitorConfig + dotfiles.niri.config;
       extraVariables = {
         XDG_SESSION_TYPE = "wayland";

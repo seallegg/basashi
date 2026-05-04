@@ -16,14 +16,11 @@
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
 
-    nixdg-ninja.url = "github:notashelf/nixdg-ninja";
-    nixdg-ninja.inputs.nixpkgs.follows = "nixpkgs";
-
     # other
     cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel";
 
-    niri.url = "github:sodiboo/niri-flake";
-    niri.inputs.nixpkgs.follows = "nixpkgs";
+    nixdg-ninja.url = "github:notashelf/nixdg-ninja";
+    nixdg-ninja.inputs.nixpkgs.follows = "nixpkgs";
 
     helium.url = "github:schembriaiden/helium-browser-nix-flake";
     helium.inputs.nixpkgs.follows = "nixpkgs";
