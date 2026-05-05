@@ -32,19 +32,23 @@
             };
           };
         };
-        "darklyrc".text = ''
-          [Common]
-          CornerRadius=12
-          ScrollBarTransient=true
-
-          [Style]
-          DolphinSidebarOpacity=85
-          MenuBarOpacity=85
-          MenuOpacity=80
-          MnemonicsMode=MN_NEVER
-          TabBarOpacity=85
-          ToolBarOpacity=85
-        '';
+        "darklyrc" = {
+          generator = lib.generators.toINI {};
+          value = {
+            Common = {
+              CornerRadius = 12;
+              ScrollBarTransient = true;
+            };
+            Style = {
+              DolphinSidebarOpacity = 85;
+              MenuBarOpacity = 85;
+              MenuOpacity = 80;
+              MnemonicsMode = "MN_NEVER";
+              TabBarOpacity = 85;
+              ToolBarOpacity = 85;
+            };
+          };
+        };
       };
       rum.desktops.niri.extraVariables.QT_QPA_PLATFORMTHEME = "qt6ct";
     };
