@@ -26,6 +26,5 @@
         };
       };
     };
-    nixpkgs.overlays = [inputs.mullvad-declarative.overlays.default];
   };
 }

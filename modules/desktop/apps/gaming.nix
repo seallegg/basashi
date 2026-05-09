@@ -11,8 +11,6 @@ in {
   };
 
   config = lib.mkIf config.basashi.desktop.apps.gaming.enable {
-    nixpkgs.overlays = [inputs.millennium.overlays.default];
-
     programs.steam = {
       enable = true;
       package = pkgs.millennium-steam;

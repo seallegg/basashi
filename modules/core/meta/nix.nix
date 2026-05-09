@@ -2,6 +2,7 @@
 {
   inputs,
   lib,
+  pkgs,
   ...
 }: let
   inherit (builtins) mapAttrs;
@@ -9,6 +10,7 @@
 in {
   config = {
     nix = {
+      package = pkgs.nixVersions.latest;
       channel.enable = false;
       registry = mapAttrs (_: flake: {inherit flake;}) inputs;
 

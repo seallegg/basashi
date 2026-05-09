@@ -6,7 +6,6 @@
   ...
 }: {
   config = lib.mkIf config.basashi.desktop.environment.niri.enable {
-    nixpkgs.overlays = [inputs.qt6ct-kde.overlays.default];
     qt.style = "darkly";
     qt.platformTheme = "qt6ct";
     hj = {

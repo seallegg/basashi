@@ -10,7 +10,6 @@
   };
 
   config = lib.mkIf config.basashi.core.zfs.enable {
-    nixpkgs.overlays = [inputs.cachyos-kernel.overlays.default];
     boot = {
       supportedFilesystems = ["zfs"];
       zfs = {
