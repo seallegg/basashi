@@ -3,6 +3,7 @@
     enable = true;
     execWheelOnly = true;
     extraConfig = ''
+      Defaults pwfeedback
       Defaults lecture=never
       # Password entry timeout
       Defaults passwd_timeout=0
