@@ -11,10 +11,11 @@
     xdg = {
       mime.defaultApplications = {
         "inode/directory" = "org.kde.dolphin.desktop";
-        "text/*" = "nvim.desktop";
+        "text/*" = "dev.zed.Zed.desktop";
         "image/*" = "org.kde.gwenview.desktop";
         "video/*" = "mpv.desktop";
         "audio/*" = "mpv.desktop";
+        "application/pdf" = "org.kde.okular.desktop";
       };
       portal = {
         enable = true;
