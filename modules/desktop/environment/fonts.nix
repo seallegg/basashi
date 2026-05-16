@@ -13,6 +13,8 @@ in {
       apple-fonts.enable = true;
       packages = with pkgs; [
         corefonts
+        noto-fonts-cjk-sans
+        noto-fonts-cjk-serif
         vista-fonts
         maple-mono.NF
       ];
