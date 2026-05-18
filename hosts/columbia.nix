@@ -32,6 +32,10 @@
         DoT.enable = true;
         networkmanager.enable = true;
       };
+      kernelParams = {
+        unsafe.enable = true;
+        gaming.enable = true;
+      };
     };
 
     desktop = {
@@ -48,13 +52,13 @@
 
     services = {
       automounting.enable = true;
-      avahi.enable = true;
+      #avahi.enable = true;
       awww.enable = true;
       coolercontrol.enable = true;
       flatpak.enable = true;
       g502.enable = true;
       idevices.enable = true;
-      mullvad.enable = true;
+      #mullvad.enable = true;
       plymouth.enable = true;
       polkit.enable = true;
       printing.enable = true;
@@ -67,6 +71,8 @@
       git.email = "seallegg@gmail.com";
     };
   };
+
+  boot.kernelModules = ["nct6775"];
 
   # partitioning
   imports = [

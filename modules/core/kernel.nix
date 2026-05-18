@@ -1,7 +1,6 @@
 # this may or may not be 70% snake oil
 {
   config,
-  inputs,
   lib,
   pkgs,
   ...
@@ -27,7 +26,7 @@
           pname = "linux-cachyos-basashi";
           processorOpt = "${kernelArch}";
           lto = "thin";
-          hugepages = "madvise"; # always (cachy default) doesn't play well with zram
+          hugepage = "madvise";
           autoModules = false;
         }
       );
