@@ -25,8 +25,8 @@
     helium.url = "github:schembriaiden/helium-browser-nix-flake";
     helium.inputs.nixpkgs.follows = "nixpkgs";
 
-    millennium.url = "github:SteamClientHomebrew/Millennium?dir=packages/nix";
-    millennium.inputs.nixpkgs.follows = "nixpkgs";
+    millennium.url = "github:SteamClientHomebrew/Millennium/next?dir=packages/nix";
+    #millennium.inputs.nixpkgs.follows = "nixpkgs";
 
     qt6ct-kde.url = "github:SeallEgg/qt6ct-kde-flake";
     qt6ct-kde.inputs.nixpkgs.follows = "nixpkgs";
