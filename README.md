@@ -1,4 +1,6 @@
 # basashi
+_馬刺し - Thinly sliced, raw horse meat; horse sashimi._
+
 My personal multi-host NixOS configuration. Accidentally organized according to a synaptic pattern through inheriting it from [fazzi's NixOhEss](https://gitlab.com/fazzi/nixohess).
 
 Built by a very sloppy hobbyist, for personal use. Always a WIP. If you like it, cool. If you steal it, also cool.
