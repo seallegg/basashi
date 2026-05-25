@@ -1,12 +1,5 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: {
-  options.basashi.desktop.environment.plasma = {
-    enable = lib.mkEnableOption "KDE plasma";
-  };
+{ config, lib, pkgs, ... }: {
+  options.basashi.desktop.environment.plasma = { enable = lib.mkEnableOption "KDE plasma"; };
 
   config = lib.mkIf config.basashi.desktop.environment.plasma.enable {
     services.displayManager.sddm.enable = true;

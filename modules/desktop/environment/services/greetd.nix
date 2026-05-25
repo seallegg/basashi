@@ -1,9 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: {
+{ config, lib, pkgs, ... }: {
   options.basashi.services.greetd.enable = lib.mkEnableOption "greetd";
   config = lib.mkIf config.basashi.services.greetd.enable {
     services.greetd = {

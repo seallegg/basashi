@@ -1,9 +1,5 @@
-{
-  inputs,
-  pkgs,
-  ...
-}: {
-  imports = [inputs.nixdg-ninja.nixosModules.nixdg-ninja];
+{ inputs, pkgs, ... }: {
+  imports = [ inputs.nixdg-ninja.nixosModules.nixdg-ninja ];
 
   config = {
     programs.nixdg-ninja.enable = true;
@@ -19,11 +15,8 @@
       };
       portal = {
         enable = true;
-        extraPortals = [
-          pkgs.kdePackages.xdg-desktop-portal-kde
-          pkgs.xdg-desktop-portal-gtk
-        ];
-        config.common.default = ["kde"];
+        extraPortals = [ pkgs.kdePackages.xdg-desktop-portal-kde pkgs.xdg-desktop-portal-gtk ];
+        config.common.default = [ "kde" ];
       };
     };
   };

@@ -1,22 +1,12 @@
-{
-  config,
-  inputs,
-  lib,
-  pkgs,
-  ...
-}: {
+{ config, inputs, lib, pkgs, ... }: {
   config = lib.mkIf config.basashi.desktop.environment.niri.enable {
     qt.style = "darkly";
     qt.platformTheme = "qt6ct";
     hj = {
-      packages = with pkgs; [
-        papirus-icon-theme
-        darkly
-        qt6Packages.qt6ct
-      ];
+      packages = with pkgs; [ papirus-icon-theme darkly qt6Packages.qt6ct ];
       xdg.config.files = {
         "qt6ct/qt6ct.conf" = {
-          generator = lib.generators.toINI {};
+          generator = lib.generators.toINI { };
           value = {
             Appearance = {
               color_scheme_path = "~/.local/share/color-schemes/Darkly.colors";
@@ -32,7 +22,7 @@
           };
         };
         "darklyrc" = {
-          generator = lib.generators.toINI {};
+          generator = lib.generators.toINI { };
           value = {
             Common = {
               CornerRadius = 12;

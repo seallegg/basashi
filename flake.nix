@@ -1,7 +1,6 @@
 {
-  description = "basashi, a dendritic NixOS configuration";
-  outputs = inputs:
-    import ./imports.nix {inherit inputs;};
+  description = "basashi, a synaptic NixOS configuration";
+  outputs = inputs: import ./imports.nix { inherit inputs; };
 
   inputs = {
     # core

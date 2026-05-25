@@ -1,10 +1,5 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: let
-  inherit (lib) mkOption types;
+{ config, lib, pkgs, ... }:
+let inherit (lib) mkOption types;
 in {
   options.basashi.terminal.git = {
     name = mkOption {
@@ -22,13 +17,11 @@ in {
     programs.git = {
       enable = true;
       config = {
-        user = {
-          inherit (config.basashi.terminal.git) name email;
-        };
-        url."https://github.com/".InsteadOf = ["github:" "gh"];
+        user = { inherit (config.basashi.terminal.git) name email; };
+        url."https://github.com/".InsteadOf = [ "github:" "gh" ];
         init.defaultBranch = "main";
       };
     };
-    hj.packages = [pkgs.gh];
+    hj.packages = [ pkgs.gh ];
   };
 }

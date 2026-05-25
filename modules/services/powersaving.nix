@@ -1,9 +1,5 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: let
+{ config, lib, pkgs, ... }:
+let
   inherit (lib) mkIf;
   cfg = config.basashi.services.powersaving;
 
@@ -24,7 +20,7 @@ in {
   options.basashi.services.powersaving.enable = lib.mkEnableOption "power saving optimizations";
 
   config = mkIf cfg.enable {
-    boot.kernelParams = ["amd_pstate=active"];
+    boot.kernelParams = [ "amd_pstate=active" ];
 
     services.auto-cpufreq.enable = true;
     services.auto-cpufreq.settings = {

@@ -1,4 +1,4 @@
-{inputs, ...}: {
+{ inputs, ... }: {
   services.libinput.enable = true; # touchpad
 
   basashi = {
@@ -6,19 +6,17 @@
       hardware = {
         cpu.arch = "znver3";
         gpu.amd.enable = true;
-        monitors = [
-          {
-            name = "eDP-1";
-            res = "1920x1080@60";
-            pos = {
-              x = 0;
-              y = 0;
-            };
-            scale = 1.125;
-          }
-        ];
+        monitors = [{
+          name = "eDP-1";
+          res = "1920x1080@60";
+          pos = {
+            x = 0;
+            y = 0;
+          };
+          scale = 1.125;
+        }];
       };
-      kernel = "custom";
+      kernel = "cachy-latest";
       username = "seal";
       networking = {
         DoT.enable = true;
@@ -27,9 +25,7 @@
     };
 
     desktop = {
-      apps = {
-        gaming.enable = true;
-      };
+      apps = { gaming.enable = true; };
       environment = {
         matugen.enable = true;
         niri.enable = true;
@@ -77,34 +73,35 @@
                   type = "filesystem";
                   format = "vfat";
                   mountpoint = "/boot";
-                  mountOptions = ["umask=0077"];
+                  mountOptions = [ "umask=0077" ];
                 };
               };
               root = {
                 size = "100%";
                 content = {
                   type = "btrfs";
-                  extraArgs = ["-f"];
+                  extraArgs = [ "-f" ];
                   subvolumes = {
                     "/" = {
                       mountpoint = "/";
-                      mountOptions = ["subvol=root" "compress=zstd:1" "noatime"];
+                      mountOptions = [ "subvol=root" "compress=zstd:1" "noatime" ];
                     };
                     "/nix" = {
                       mountpoint = "/nix";
-                      mountOptions = ["subvol=nix" "compress-force=zstd:1" "noatime"];
+                      mountOptions = [ "subvol=nix" "compress-force=zstd:1" "noatime" ];
                     };
                     "/var" = {
                       mountpoint = "/var";
-                      mountOptions = ["subvol=var" "compress=zstd:1" "noatime" "nodatacow" "nodatasum"];
+                      mountOptions =
+                        [ "subvol=var" "compress=zstd:1" "noatime" "nodatacow" "nodatasum" ];
                     };
                     "/home" = {
                       mountpoint = "/home";
-                      mountOptions = ["subvol=home" "compress=zstd:1" "noatime"];
+                      mountOptions = [ "subvol=home" "compress=zstd:1" "noatime" ];
                     };
                     "/var/lib" = {
                       mountpoint = "/var/lib";
-                      mountOptions = ["subvol=var/lib" "compress=zstd:1" "noatime"];
+                      mountOptions = [ "subvol=var/lib" "compress=zstd:1" "noatime" ];
                     };
                   };
                 };
@@ -113,12 +110,10 @@
           };
         };
       };
-      swapDevices = [
-        {
-          device = "/var/swap";
-          size = 16 * 1024;
-        }
-      ];
+      swapDevices = [{
+        device = "/var/swap";
+        size = 16 * 1024;
+      }];
     }
   ];
 }

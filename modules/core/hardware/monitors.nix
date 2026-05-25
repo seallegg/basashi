@@ -1,20 +1,16 @@
-{
-  config,
-  lib,
-  ...
-}: let
-  inherit (lib) mkOption types;
+{ config, lib, ... }:
+let inherit (lib) mkOption types;
 in {
   options.basashi.core.hardware.monitors = mkOption {
     type = types.listOf (types.submodule {
       options = {
-        name = mkOption {type = types.str;};
-        res = mkOption {type = types.str;};
+        name = mkOption { type = types.str; };
+        res = mkOption { type = types.str; };
         pos = mkOption {
           type = types.submodule {
             options = {
-              x = mkOption {type = types.int;};
-              y = mkOption {type = types.int;};
+              x = mkOption { type = types.int; };
+              y = mkOption { type = types.int; };
             };
           };
           default = {
@@ -32,7 +28,7 @@ in {
         };
       };
     });
-    default = [];
+    default = [ ];
   };
 
   config = {

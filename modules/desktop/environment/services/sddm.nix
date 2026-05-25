@@ -1,23 +1,15 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: let
+{ config, lib, pkgs, ... }:
+let
   inherit (lib) mkIf;
-  outputConfig =
-    lib.ConcatMapStrings (m: ''
-      [output]
-      name=${m.name}
-      mode=${m.res}
-    '')
-    config.basashi.hardware.monitors;
-  westonIni =
-    ''
-      [keyboard]
-      keymap_layout=${config.services.xserver.xkb.layout}
-    ''
-    + outputConfig;
+  outputConfig = lib.ConcatMapStrings (m: ''
+    [output]
+    name=${m.name}
+    mode=${m.res}
+  '') config.basashi.hardware.monitors;
+  westonIni = ''
+    [keyboard]
+    keymap_layout=${config.services.xserver.xkb.layout}
+  '' + outputConfig;
 in {
   options.basashi.services.sddm.enable = lib.mkEnableOption "SDDM";
   config = mkIf config.basashi.services.sddm.enable {

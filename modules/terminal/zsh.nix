@@ -1,17 +1,6 @@
-{
-  config,
-  dotfiles,
-  pkgs,
-  ...
-}: {
+{ config, dotfiles, pkgs, ... }: {
   environment = {
-    systemPackages = with pkgs; [
-      zinit
-      oh-my-posh
-      fzf
-      zoxide
-      bat
-    ];
+    systemPackages = with pkgs; [ zinit oh-my-posh fzf zoxide bat ];
     sessionVariables.ZDOTDIR = "$XDG_CONFIG_HOME/zsh";
   };
   users.users.${config.basashi.core.username}.shell = pkgs.zsh;

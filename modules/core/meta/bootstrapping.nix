@@ -1,9 +1,5 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: let
+{ config, lib, pkgs, ... }:
+let
   username = config.basashi.core.username;
   configDir = "/home/${username}/basashi";
   repoUrl = "https://github.com/SeallEgg/basashi.git";
@@ -12,7 +8,7 @@ in {
     environment.variables.FLAKE = configDir;
     programs.nh.flake = configDir;
 
-    system.activationScripts.setupConfigRepo = lib.stringAfter ["users"] ''
+    system.activationScripts.setupConfigRepo = lib.stringAfter [ "users" ] ''
       mkdir -p "${configDir}"
       chown ${username}:users "${configDir}"
 

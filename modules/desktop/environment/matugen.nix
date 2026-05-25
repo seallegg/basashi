@@ -1,20 +1,12 @@
-{
-  config,
-  dotfiles,
-  lib,
-  pkgs,
-  ...
-}: {
+{ config, dotfiles, lib, pkgs, ... }: {
   options.basashi.desktop.environment.matugen.enable = lib.mkEnableOption "matugen";
 
   config = lib.mkIf config.basashi.desktop.environment.matugen.enable {
     hj = {
-      packages = with pkgs; [
-        matugen
-      ];
+      packages = with pkgs; [ matugen ];
       xdg.config.files = {
         "matugen/config.toml" = {
-          generator = lib.generators.toINI {};
+          generator = lib.generators.toINI { };
           value = {
             "config.wallpaper" = {
               command = ''"awww img {{ image }}"'';

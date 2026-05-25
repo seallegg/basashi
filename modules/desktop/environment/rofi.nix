@@ -1,17 +1,9 @@
-{
-  config,
-  dotfiles,
-  lib,
-  pkgs,
-  ...
-}: {
-  options.basashi.desktop.environment.rofi = {
-    enable = lib.mkEnableOption "rofi";
-  };
+{ config, dotfiles, lib, pkgs, ... }: {
+  options.basashi.desktop.environment.rofi = { enable = lib.mkEnableOption "rofi"; };
 
   config = lib.mkIf config.basashi.desktop.environment.rofi.enable {
     hj = {
-      packages = [pkgs.rofi];
+      packages = [ pkgs.rofi ];
       xdg.config.files = {
         "rofi/config.rasi".text = ''
           configuration {

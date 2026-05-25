@@ -1,14 +1,9 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: let
-  cfg = config.basashi.desktop.environment;
+{ config, lib, pkgs, ... }:
+let cfg = config.basashi.desktop.environment;
 in {
   config = lib.mkIf cfg.niri.enable or cfg.plasma.enable {
     hj = {
-      packages = [pkgs.kitty];
+      packages = [ pkgs.kitty ];
       xdg.config.files."kitty/kitty.conf".text = ''
         allow_remote_control yes
         shell_integration zsh

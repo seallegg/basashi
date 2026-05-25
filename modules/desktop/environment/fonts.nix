@@ -1,13 +1,7 @@
-{
-  config,
-  inputs,
-  lib,
-  pkgs,
-  ...
-}: let
-  cfg = config.basashi.desktop.environment;
+{ config, inputs, lib, pkgs, ... }:
+let cfg = config.basashi.desktop.environment;
 in {
-  imports = [inputs.apple-fonts.nixosModules.default];
+  imports = [ inputs.apple-fonts.nixosModules.default ];
   config = lib.mkIf cfg.niri.enable or cfg.plasma.enable {
     fonts = {
       apple-fonts.enable = true;
@@ -20,10 +14,10 @@ in {
       ];
       fontconfig = {
         defaultFonts = {
-          sansSerif = ["SF Pro Text"];
-          serif = ["New York"];
-          monospace = ["Maple Mono NF"];
-          emoji = ["Apple Color Emoji"];
+          sansSerif = [ "SF Pro Text" ];
+          serif = [ "New York" ];
+          monospace = [ "Maple Mono NF" ];
+          emoji = [ "Apple Color Emoji" ];
         };
         antialias = true;
         hinting = {

@@ -1,9 +1,10 @@
-{inputs}: let
+{ inputs }:
+let
   inherit (inputs.nixpkgs) lib;
   inherit (inputs.self) outputs;
   inherit (lib) hasSuffix isAttrs mkDefault;
 
-  load = import ./utils/loader.nix {inherit lib;};
+  load = import ./utils/loader.nix { inherit lib; };
 
   modules = load {
     src = ./. + "/modules";
@@ -45,15 +46,14 @@
       ];
     };
 in {
-  nixosModules =
-    modules.tree
-    // {
-      default = {
-        imports = modules.list;
-        _module.args.dotfiles = dotfiles.tree;
-      };
+  nixosModules = modules.tree // {
+    default = {
+      imports = modules.list;
+      _module.args.dotfiles = dotfiles.tree;
     };
-  nixosConfigurations = lib.mapAttrs (name: path: mkSystem name path) (
-    lib.filterAttrs (n: v: !isAttrs v) hosts.tree
-  );
+  };
+  nixosConfigurations =
+    lib.mapAttrs (name: path: mkSystem name path) (lib.filterAttrs (n: v: !isAttrs v) hosts.tree);
+  formatter = lib.genAttrs [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ]
+    (system: inputs.nixpkgs.legacyPackages.${system}.nixfmt-classic);
 }

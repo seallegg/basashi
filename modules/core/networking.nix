@@ -1,18 +1,13 @@
-{
-  config,
-  lib,
-  ...
-}: let
+{ config, lib, ... }:
+let
   inherit (lib) mkEnableOption mkIf mkMerge mkOption types;
   cfg = config.basashi.core.networking;
 in {
   options.basashi.core.networking = {
     staticIP = mkOption {
       type = types.attrsOf types.str;
-      default = {};
-      example = {
-        eno1 = "192.168.1.100/24";
-      };
+      default = { };
+      example = { eno1 = "192.168.1.100/24"; };
       description = "Attribute set mapping specified interface names to static IP addresses.";
     };
     defaultGateway = mkOption {
@@ -21,26 +16,20 @@ in {
       example = "192.168.1.1";
       description = "Default gateway address for the system.";
     };
-    networkmanager = {
-      enable = mkEnableOption "NetworkManager";
-    };
+    networkmanager = { enable = mkEnableOption "NetworkManager"; };
     DoT.enable = mkEnableOption "DNS over TLS";
   };
 
   config = mkMerge [
     {
       networking = {
-        interfaces =
-          lib.mapAttrs (name: ip: {
-            useDHCP = false;
-            ipv4.addresses = [
-              {
-                address = builtins.head (lib.splitString "/" ip);
-                prefixLength = lib.toInt (builtins.elemAt (lib.splitString "/" ip) 1);
-              }
-            ];
-          })
-          cfg.staticIP;
+        interfaces = lib.mapAttrs (name: ip: {
+          useDHCP = false;
+          ipv4.addresses = [{
+            address = builtins.head (lib.splitString "/" ip);
+            prefixLength = lib.toInt (builtins.elemAt (lib.splitString "/" ip) 1);
+          }];
+        }) cfg.staticIP;
         defaultGateway = mkIf (cfg.defaultGateway != null) cfg.defaultGateway;
 
         dhcpcd.enable = false;
@@ -70,7 +59,7 @@ in {
         wifi.backend = "iwd";
         dns = "systemd-resolved";
       };
-      users.users.${config.basashi.core.username}.extraGroups = ["networkmanager"];
+      users.users.${config.basashi.core.username}.extraGroups = [ "networkmanager" ];
       programs.nm-applet.enable = true;
       systemd.services.ModemManager.enable = false;
     })

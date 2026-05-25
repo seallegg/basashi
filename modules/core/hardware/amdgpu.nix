@@ -1,11 +1,5 @@
-{
-  config,
-  lib,
-  ...
-}: {
-  options.basashi.core.hardware.gpu.amd = {
-    enable = lib.mkEnableOption "amdgpu";
-  };
+{ config, lib, ... }: {
+  options.basashi.core.hardware.gpu.amd = { enable = lib.mkEnableOption "amdgpu"; };
 
   config = lib.mkIf config.basashi.core.hardware.gpu.amd.enable {
     hardware = {
@@ -15,6 +9,6 @@
       };
       amdgpu.initrd.enable = true;
     };
-    services.xserver.videoDrivers = ["amdgpu"];
+    services.xserver.videoDrivers = [ "amdgpu" ];
   };
 }

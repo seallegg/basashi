@@ -1,21 +1,14 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: {
-  options.basashi.services.awww = {
-    enable = lib.mkEnableOption "awww";
-  };
+{ config, lib, pkgs, ... }: {
+  options.basashi.services.awww = { enable = lib.mkEnableOption "awww"; };
 
   config = lib.mkIf config.basashi.services.awww.enable {
-    environment.systemPackages = [pkgs.awww];
+    environment.systemPackages = [ pkgs.awww ];
     systemd.user.services.awww = {
       enable = true;
       description = "Wayland wallpaper daemon";
-      partOf = ["graphical-session.target"];
-      wantedBy = ["graphical-session.target"];
-      after = ["graphical-session.target"];
+      partOf = [ "graphical-session.target" ];
+      wantedBy = [ "graphical-session.target" ];
+      after = [ "graphical-session.target" ];
       unitConfig.ConditionEnvironment = "WAYLAND_DISPLAY";
       serviceConfig = {
         ExecStart = "${pkgs.awww}/bin/awww-daemon";

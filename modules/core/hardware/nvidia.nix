@@ -1,14 +1,9 @@
-{
-  config,
-  lib,
-  ...
-}: let
+{ config, lib, ... }:
+let
   inherit (lib) mkIf;
   cfg = config.basashi.core.hardware.gpu.nvidia;
 in {
-  options.basashi.core.hardware.gpu.nvidia = {
-    enable = lib.mkEnableOption "nvidia";
-  };
+  options.basashi.core.hardware.gpu.nvidia = { enable = lib.mkEnableOption "nvidia"; };
 
   config = mkIf cfg.enable {
     hardware = {
@@ -24,7 +19,7 @@ in {
       };
     };
 
-    services.xserver.videoDrivers = ["nvidia"];
+    services.xserver.videoDrivers = [ "nvidia" ];
     nixpkgs.config.cudaSupport = true;
 
     environment.sessionVariables = {
@@ -35,12 +30,7 @@ in {
     };
 
     boot = {
-      initrd.kernelModules = [
-        "nvidia"
-        "nvidia_modeset"
-        "nvidia_uvm"
-        "nvidia_drm"
-      ];
+      initrd.kernelModules = [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
       kernelParams = lib.mkMerge [
         [
           "nvidia.NVreg_UsePageAttributeTable=1"

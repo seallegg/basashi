@@ -1,10 +1,5 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: let
-  cfg = config.basashi.desktop.environment;
+{ config, lib, pkgs, ... }:
+let cfg = config.basashi.desktop.environment;
 in {
   config = lib.mkIf cfg.niri.enable or cfg.plasma.enable {
     environment = {
@@ -17,7 +12,8 @@ in {
         kdePackages.dolphin-plugins
       ];
       # Fix dolphin file associations. How hideous
-      etc."xdg/menus/applications.menu".source = "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
+      etc."xdg/menus/applications.menu".source =
+        "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
     };
     hj = {
       packages = with pkgs; [
@@ -30,7 +26,7 @@ in {
         kdePackages.okular
       ];
       xdg.config.files."kdeglobals" = {
-        generator = lib.generators.toINI {};
+        generator = lib.generators.toINI { };
         value = {
           General = {
             TerminalApplication = "kitty";

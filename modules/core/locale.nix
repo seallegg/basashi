@@ -1,9 +1,5 @@
-{
-  config,
-  lib,
-  ...
-}: let
-  cfg = config.basashi.core.locale;
+{ config, lib, ... }:
+let cfg = config.basashi.core.locale;
 in {
   options.basashi.core.locale = {
     defaultLocale = lib.mkOption {
@@ -21,10 +17,8 @@ in {
   config = {
     i18n = {
       defaultLocale = cfg.defaultLocale;
-      extraLocales = ["all"];
-      extraLocaleSettings = {
-        LC_MONETARY = "pt_BR.UTF-8";
-      };
+      extraLocales = [ "all" ];
+      extraLocaleSettings = { LC_MONETARY = "pt_BR.UTF-8"; };
     };
     time.timeZone = cfg.timeZone;
     services.xserver.xkb = {

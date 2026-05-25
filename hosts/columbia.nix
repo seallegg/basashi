@@ -1,4 +1,4 @@
-{inputs, ...}: {
+{ inputs, ... }: {
   basashi = {
     core = {
       hardware = {
@@ -39,9 +39,7 @@
     };
 
     desktop = {
-      apps = {
-        gaming.enable = true;
-      };
+      apps = { gaming.enable = true; };
       environment = {
         matugen.enable = true;
         niri.enable = true;
@@ -72,7 +70,7 @@
     };
   };
 
-  boot.kernelModules = ["nct6775"];
+  boot.kernelModules = [ "nct6775" ];
 
   # partitioning
   imports = [
@@ -92,34 +90,35 @@
                   type = "filesystem";
                   format = "vfat";
                   mountpoint = "/boot";
-                  mountOptions = ["umask=0077"];
+                  mountOptions = [ "umask=0077" ];
                 };
               };
               root = {
                 size = "100%";
                 content = {
                   type = "btrfs";
-                  extraArgs = ["-f"];
+                  extraArgs = [ "-f" ];
                   subvolumes = {
                     "/" = {
                       mountpoint = "/";
-                      mountOptions = ["subvol=root" "compress=zstd:1" "noatime"];
+                      mountOptions = [ "subvol=root" "compress=zstd:1" "noatime" ];
                     };
                     "/nix" = {
                       mountpoint = "/nix";
-                      mountOptions = ["subvol=nix" "compress-force=zstd:1" "noatime"];
+                      mountOptions = [ "subvol=nix" "compress-force=zstd:1" "noatime" ];
                     };
                     "/var" = {
                       mountpoint = "/var";
-                      mountOptions = ["subvol=var" "compress=zstd:1" "noatime" "nodatacow" "nodatasum"];
+                      mountOptions =
+                        [ "subvol=var" "compress=zstd:1" "noatime" "nodatacow" "nodatasum" ];
                     };
                     "/home" = {
                       mountpoint = "/home";
-                      mountOptions = ["subvol=home" "compress=zstd:1" "noatime"];
+                      mountOptions = [ "subvol=home" "compress=zstd:1" "noatime" ];
                     };
                     "/var/lib" = {
                       mountpoint = "/var/lib";
-                      mountOptions = ["subvol=var/lib" "compress=zstd:1" "noatime"];
+                      mountOptions = [ "subvol=var/lib" "compress=zstd:1" "noatime" ];
                     };
                   };
                 };
@@ -128,12 +127,10 @@
           };
         };
       };
-      swapDevices = [
-        {
-          device = "/var/swap";
-          size = 32 * 1024;
-        }
-      ];
+      swapDevices = [{
+        device = "/var/swap";
+        size = 32 * 1024;
+      }];
     }
   ];
 }

@@ -1,13 +1,9 @@
-{
-  config,
-  lib,
-  ...
-}: let
-  cfg = config.basashi.core.hardware.cpu;
+{ config, lib, ... }:
+let cfg = config.basashi.core.hardware.cpu;
 in {
   options.basashi.core.hardware.cpu = {
     type = lib.mkOption {
-      type = lib.types.enum ["amd" "intel"];
+      type = lib.types.enum [ "amd" "intel" ];
       default = "amd";
       description = "The type of CPU in the system.";
     };
@@ -22,12 +18,12 @@ in {
     (lib.mkIf (cfg.type == "amd") {
       hardware.cpu.amd.updateMicrocode = lib.mkDefault true;
       hardware.enableRedistributableFirmware = lib.mkDefault true;
-      boot.kernelModules = ["kvm-amd"];
+      boot.kernelModules = [ "kvm-amd" ];
     })
     (lib.mkIf (cfg.type == "intel") {
       hardware.cpu.intel.updateMicrocode = lib.mkDefault true;
       hardware.enableRedistributableFirmware = lib.mkDefault true;
-      boot.kernelModules = ["kvm-intel"];
+      boot.kernelModules = [ "kvm-intel" ];
     })
   ];
 }

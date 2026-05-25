@@ -1,14 +1,7 @@
-{
-  config,
-  inputs,
-  lib,
-  pkgs,
-  ...
-}: let
+{ config, inputs, lib, pkgs, ... }:
+let
 in {
-  options.basashi.desktop.apps.gaming = {
-    enable = lib.mkEnableOption "gaming";
-  };
+  options.basashi.desktop.apps.gaming = { enable = lib.mkEnableOption "gaming"; };
 
   config = lib.mkIf config.basashi.desktop.apps.gaming.enable {
     programs.steam = {
@@ -25,11 +18,8 @@ in {
       protonup-qt
 
       (prismlauncher.override {
-        additionalPrograms = [ffmpeg]; # required by some mods
-        jdks = [
-          temurin-jre-bin-8
-          temurin-jre-bin-25
-        ];
+        additionalPrograms = [ ffmpeg ]; # required by some mods
+        jdks = [ temurin-jre-bin-8 temurin-jre-bin-25 ];
       })
     ];
   };

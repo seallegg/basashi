@@ -1,16 +1,15 @@
-{
-  config,
-  lib,
-  ...
-}: let
+{ config, lib, ... }:
+let
   cfg = config.basashi;
   inherit (lib) mkIf mkForce mkMerge;
 in {
   options.basashi = {
     core.kernelParams = {
       quietBoot.enable = lib.mkEnableOption "quiet boot";
-      gaming.enable = lib.mkEnableOption "kernel parameters for better latency (mainly gaming), may reduce performance in some workloads (read boot.nix)";
-      unsafe.enable = lib.mkEnableOption "unsafe kernel parameters for better performance (be careful!)";
+      gaming.enable = lib.mkEnableOption
+        "kernel parameters for better latency (mainly gaming), may reduce performance in some workloads (read boot.nix)";
+      unsafe.enable =
+        lib.mkEnableOption "unsafe kernel parameters for better performance (be careful!)";
     };
     services.plymouth.enable = lib.mkEnableOption "Plymouth splash screen";
   };
@@ -34,9 +33,10 @@ in {
 
         initrd = {
           systemd.enable = true;
-          availableKernelModules = ["nvme" "xhci_pci" "ahci" "usbhid" "sd_mod" "ehci_pci" "sdhci_pci"];
+          availableKernelModules =
+            [ "nvme" "xhci_pci" "ahci" "usbhid" "sd_mod" "ehci_pci" "sdhci_pci" ];
           compressor = "zstd";
-          compressorArgs = ["-1" "-T0"];
+          compressorArgs = [ "-1" "-T0" ];
         };
 
         tmp = {
@@ -69,7 +69,7 @@ in {
     })
 
     (mkIf cfg.core.kernelParams.gaming.enable {
-      boot.kernelParams = ["split_lock_detect=off"]; # can cause crazy stutters in some games
+      boot.kernelParams = [ "split_lock_detect=off" ]; # can cause crazy stutters in some games
       boot.kernel.sysctl = {
         "vm.max_map_count" = 2147483642; # this avoids some proton crashes
         # both of these reduce microstutters

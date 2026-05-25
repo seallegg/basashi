@@ -1,16 +1,14 @@
-{inputs, ...}: {
+{ inputs, ... }: {
   networking.hostId = "7f833560";
 
   basashi = {
     core = {
-      hardware = {
-        cpu.arch = "znver4";
-      };
+      hardware = { cpu.arch = "znver4"; };
       kernel = "cachy-lts";
       networking = {
         defaultGateway = "192.168.0.1";
         DoT.enable = true;
-        staticIP = {enp4s0 = "192.168.0.87/24";};
+        staticIP = { enp4s0 = "192.168.0.87/24"; };
       };
       username = "admin";
       zfs.enable = true;
@@ -23,9 +21,9 @@
             tank = "/mnt/tank";
             fast = "/mnt/fast";
           };
-          trustedSubnets = ["192.168.0.0/24"];
+          trustedSubnets = [ "192.168.0.0/24" ];
         };
-        samba.shares = {tank = "/mnt/tank";};
+        samba.shares = { tank = "/mnt/tank"; };
       };
     };
 
@@ -53,7 +51,7 @@
                   type = "filesystem";
                   format = "vfat";
                   mountpoint = "/boot";
-                  mountOptions = ["umask=0077"];
+                  mountOptions = [ "umask=0077" ];
                 };
               };
               swap = {
@@ -195,18 +193,14 @@
             mode = {
               topology = {
                 type = "topology";
-                vdev = [
-                  {
-                    mode = "raidz1";
-                    members = ["hdd1" "hdd2" "hdd3"];
-                  }
-                ];
-                cache = ["l2arc"];
+                vdev = [{
+                  mode = "raidz1";
+                  members = [ "hdd1" "hdd2" "hdd3" ];
+                }];
+                cache = [ "l2arc" ];
               };
             };
-            options = {
-              ashift = "12";
-            };
+            options = { ashift = "12"; };
             rootFsOptions = {
               compression = "zstd-3";
               xattr = "sa";
