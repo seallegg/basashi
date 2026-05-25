@@ -18,6 +18,7 @@
 
     # other
     cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel";
+    # this CANNOT follow our nixpkgs
 
     nixdg-ninja.url = "github:notashelf/nixdg-ninja";
     nixdg-ninja.inputs.nixpkgs.follows = "nixpkgs";
@@ -32,6 +33,7 @@
     qt6ct-kde.inputs.nixpkgs.follows = "nixpkgs";
 
     apple-fonts.url = "github:SeallEgg/apple-fonts-flake";
+    apple-fonts.inputs.nixpkgs.follows = "nixpkgs";
 
     mullvad-declarative.url = "github:Daaboulex/mullvad-vpn-nix";
     mullvad-declarative.inputs.nixpkgs.follows = "nixpkgs";
