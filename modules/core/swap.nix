@@ -73,7 +73,7 @@ in {
       description = ''
         Kernel preference for swapping to evicting cache from memory (and thus reading the originals disk).
         Ideal value should be equal to swapwrite/diskread+swapwrite * 200.
-        If swap is on disk cache is from, this should be <100, as reads are faster than writes on the same disk.
+        If swap is on the same disk the cache is from, this should be <100, as reads are faster than writes on the same disk.
         If swap is on zram, this should be >100, as zram writes are faster than disk reads.
         Best values for zram vary with hardware & algorithm. They should be tested empirically; defaults are acceptable.
         Zswap has no impact on what this should be set to.'';
