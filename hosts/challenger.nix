@@ -16,12 +16,13 @@
           scale = 1.125;
         }];
       };
-      kernel = "cachy-latest";
+      kernel = "latest";
       username = "seal";
       networking = {
         DoT.enable = true;
         networkmanager.enable = true;
       };
+      swap.zram.enable = true;
     };
 
     desktop = {
@@ -110,10 +111,6 @@
           };
         };
       };
-      swapDevices = [{
-        device = "/var/swap";
-        size = 16 * 1024;
-      }];
     }
   ];
 }

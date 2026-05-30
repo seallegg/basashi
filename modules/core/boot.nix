@@ -1,24 +1,22 @@
 { config, lib, ... }:
 let
   cfg = config.basashi;
-  inherit (lib) mkIf mkForce mkMerge;
+  inherit (lib) mkDefault mkEnableOption mkForce mkIf mkMerge;
 in {
   options.basashi = {
     core.kernelParams = {
-      quietBoot.enable = lib.mkEnableOption "quiet boot";
-      gaming.enable = lib.mkEnableOption
+      quietBoot.enable = mkEnableOption "quiet boot";
+      gaming.enable = mkEnableOption
         "kernel parameters for better latency (mainly gaming), may reduce performance in some workloads (read boot.nix)";
       unsafe.enable =
-        lib.mkEnableOption "unsafe kernel parameters for better performance (be careful!)";
+        mkEnableOption "unsafe kernel parameters for better performance (be careful!)";
     };
-    services.plymouth.enable = lib.mkEnableOption "Plymouth splash screen";
+    services.plymouth.enable = mkEnableOption "Plymouth splash screen";
   };
 
   config = mkMerge [
     {
       basashi.core.kernelParams.quietBoot.enable = lib.mkDefault true;
-
-      zramSwap.enable = true;
 
       boot = {
         loader = {
@@ -41,18 +39,10 @@ in {
 
         tmp = {
           useTmpfs = true;
-          tmpfsHugeMemoryPages = "within_size";
+          tmpfsHugeMemoryPages = mkDefault "always";
         };
 
-        kernel.sysctl = {
-          "vm.swappiness" = 100; # swap more, we're using zram
-          "vm.page-cluster" = 0; # no clustering is better for zram
-          "net.core.default_qdisc" = "fq";
-          "net.ipv4.tcp_congestion_control" = "bbr";
-        };
-        kernelParams = [
-          "transparent_hugepage=madvise" # always doesn't play well with zram
-        ];
+        kernelParams = mkDefault [ "transparent_hugepage=always" ];
       };
 
       services.lvm.enable = false;

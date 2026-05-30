@@ -12,6 +12,13 @@
       };
       username = "admin";
       zfs.enable = true;
+      swap = {
+        file.enable = false;
+        zram = {
+          enable = true;
+          algorithm = "zstd";
+        };
+      };
     };
 
     services = {

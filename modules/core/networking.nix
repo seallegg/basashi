@@ -39,6 +39,8 @@ in {
         };
       };
 
+      boot.kernel.sysctl."net.ipv4.tcp_congestion_control" = "bbr";
+
       services.resolved = {
         enable = true;
         settings.Resolve = mkIf cfg.DoT.enable {

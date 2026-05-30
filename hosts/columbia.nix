@@ -32,6 +32,10 @@
         DoT.enable = true;
         networkmanager.enable = true;
       };
+      swap.zram = {
+        enable = true;
+        algorithm = "lz4";
+      };
       kernelParams = {
         unsafe.enable = true;
         gaming.enable = true;
@@ -127,10 +131,6 @@
           };
         };
       };
-      swapDevices = [{
-        device = "/var/swap";
-        size = 32 * 1024;
-      }];
     }
   ];
 }

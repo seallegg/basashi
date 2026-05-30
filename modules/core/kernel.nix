@@ -20,7 +20,7 @@ let
       pname = "linux-cachyos-basashi";
       processorOpt = "${kernelArch}";
       lto = "thin";
-      hugepage = "madvise";
+      hugepage = if config.basashi.core.swap.zram.enable then "madvise" else "always";
       autoModules = false;
     });
 in {
