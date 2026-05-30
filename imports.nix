@@ -26,10 +26,10 @@ let
       specialArgs = {
         inherit (inputs) self;
         inherit inputs;
-        modules = outputs.nixosModules;
       };
       modules = [
         outputs.nixosModules.default
+        inputs.chaotic.nixosModules.default
         path
         {
           nixpkgs.overlays = with inputs; [

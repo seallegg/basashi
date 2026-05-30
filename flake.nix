@@ -16,6 +16,9 @@
     disko.inputs.nixpkgs.follows = "nixpkgs";
 
     # other
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+    chaotic.inputs.nixpkgs.follows = "nixpkgs";
+
     cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel";
     # this CANNOT follow our nixpkgs
 
