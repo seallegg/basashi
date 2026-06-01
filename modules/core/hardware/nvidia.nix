@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, ... }:
 let
   inherit (lib) mkIf;
   cfg = config.basashi.core.hardware.gpu.nvidia;
@@ -6,7 +6,7 @@ in {
   options.basashi.core.hardware.gpu.nvidia = { enable = lib.mkEnableOption "nvidia"; };
 
   config = mkIf cfg.enable {
-    chaotic.mesa-git.enable = true;
+    # chaotic.mesa-git.enable = true;
     hardware = {
       graphics = {
         enable = true;
@@ -14,7 +14,6 @@ in {
       };
 
       nvidia = {
-        package = pkgs.nvidia_cachyos_lto; # chaotic
         modesetting.enable = true;
         open = true;
         nvidiaSettings = false;
