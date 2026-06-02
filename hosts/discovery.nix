@@ -30,7 +30,11 @@
           };
           trustedSubnets = [ "192.168.0.0/24" ];
         };
-        samba.shares = { tank = "/mnt/tank"; };
+        samba = {
+          shares = { tank = "/mnt/tank"; };
+          trustedSubnets = [ "192.168.0.0/24" ];
+          interface = "enp4s0";
+        };
       };
     };
 

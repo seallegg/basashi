@@ -54,7 +54,6 @@
 
     services = {
       automounting.enable = true;
-      #avahi.enable = true;
       awww.enable = true;
       coolercontrol.enable = true;
       flatpak.enable = true;
