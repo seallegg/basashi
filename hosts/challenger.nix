@@ -52,7 +52,7 @@
     };
     terminal = {
       git.name = "SeallEgg";
-      git.email = "seallegg@gmail.com";
+      git.email = "seallegg@pm.me";
     };
   };
 
