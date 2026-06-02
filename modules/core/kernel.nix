@@ -8,7 +8,7 @@ let
     "x86_64-v3"; # really not going to use this on anything older
 
   kernelPackage = if cfg == "lts" then
-    pkgs.linuxPackages_lts
+    pkgs.linux
   else if cfg == "latest" then
     pkgs.linuxPackages_latest
   else if cfg == "cachy-lts" then
