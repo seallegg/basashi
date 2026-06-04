@@ -36,6 +36,7 @@
 
     services = {
       automounting.enable = true;
+      avahi.enable = true;
       awww.enable = true;
       hibernation = {
         enable = true;
