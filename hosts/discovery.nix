@@ -88,6 +88,10 @@
             partitions = {
               l2arc = {
                 size = "128G";
+                # Pin an explicit partlabel so the cache reference below does not
+                # depend on the disk/partition attr names (default label would be
+                # `disk-secondary-l2arc`).
+                label = "l2arc";
                 content = {
                   type = "zfs";
                   pool = "tankPool";
@@ -208,7 +212,11 @@
                   mode = "raidz1";
                   members = [ "hdd1" "hdd2" "hdd3" ];
                 }];
-                cache = [ "l2arc" ];
+                # This was previously just "l2arc", but disko expands that to
+                # "disk-secondary-l2arc". That folded the ssd into the raidz1
+                # vdev instead of making it a cache device and made my pool
+                # way smaller than it's supposed to be. Fun! I hope this fixes it.
+                cache = [ "/dev/disk/by-partlabel/l2arc" ];
               };
             };
             options = { ashift = "12"; };
