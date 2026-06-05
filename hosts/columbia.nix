@@ -73,6 +73,9 @@
     };
 
     terminal = {
+      fish.enable = true;
+      rusty.enable = true;
+      ohMyPosh.enable = true;
       git.name = "SeallEgg";
       git.email = "seallegg@pm.me";
     };
