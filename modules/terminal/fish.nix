@@ -36,7 +36,7 @@
       shellInit = lib.concatStringsSep "\n" config.basashi.internal.extraFishInit + ''
         set fish_greeting
         if test "$TERM" != "linux"
-          set -gx SUDO_PROMPT ''\e'[1;7m Password  '\e'[0m '\n
+          set -gx SUDO_PROMPT \e'[1;7m Password '\e'[0m '\n
         end
         ${pkgs.fzf}/bin/fzf --fish | source
       '';
