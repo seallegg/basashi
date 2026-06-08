@@ -8,7 +8,7 @@ in {
   # in actuality, I just thought the name was cute
 
   config = mkIf cfg.rusty.enable {
-    environment.systemPackages = with pkgs; [ ripgrep ripgrep-all bat fd eza zoxide ];
+    environment.systemPackages = with pkgs; [ bat fd ripgrep ripgrep-all eza xcp zoxide ];
     programs.fish = mkIf cfg.fish.enable {
       shellAliases = {
         rg = "rg --color=auto";
@@ -16,6 +16,7 @@ in {
         find = "fd";
         ls = "eza --group-directories-first --hyperlink --icons=auto";
         tree = "eza --group-directories-first --hyperlink --tree --icons=auto";
+        cp = "xcp";
       };
       shellAbbrs = {
         # abbreviations run on top of aliases, so this is a little neater

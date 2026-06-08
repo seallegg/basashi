@@ -1,6 +1,4 @@
-{ config, lib, pkgs, ... }:
-let arch = if config.basashi.core.hardware.cpu.arch == "znver4" then "x86_64_v4" else "x86_64_v3";
-in {
+{ config, lib, pkgs, ... }: {
   options.basashi.desktop.apps.gaming = { enable = lib.mkEnableOption "gaming"; };
 
   config = lib.mkIf config.basashi.desktop.apps.gaming.enable {
@@ -9,7 +7,7 @@ in {
       package = pkgs.millennium-steam;
       gamescopeSession.enable = true;
       remotePlay.openFirewall = true;
-      extraCompatPackages = [ pkgs.proton-ge-custom pkgs."proton-cachyos_${arch}" ];
+      extraCompatPackages = [ pkgs.proton-ge-custom pkgs."proton-cachyos_x86_64_v3" ];
     };
 
     programs.gamemode.enable = true;

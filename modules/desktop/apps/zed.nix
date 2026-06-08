@@ -5,8 +5,6 @@ in {
     hj = {
       packages = with pkgs; [
         zed-editor
-        gemini-cli
-        claude-code
         haskellPackages.nixfmt
         statix
         deadnix
