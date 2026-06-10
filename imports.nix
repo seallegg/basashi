@@ -30,13 +30,14 @@ let
       modules = [
         outputs.nixosModules.default
         inputs.chaotic.nixosModules.default
+        inputs.headroom.nixosModules.default
         path
         {
           nixpkgs.overlays = with inputs; [
             cachyos-kernel.overlays.default
             millennium.overlays.default
             qt6ct-kde.overlays.default
-            mullvad-declarative.overlays.default
+            #mullvad-declarative.overlays.default
           ];
 
           networking.hostName = mkDefault hostName;

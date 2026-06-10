@@ -43,7 +43,6 @@
         resumeDevice = "/dev/disk/by-id/nvme-eui.5cdfb8038100270a-part2";
         resumeOffset = "18442029";
       };
-      # mullvad.enable = true; I need to fix this module
       plymouth.enable = true;
       polkit.enable = true;
       powersaving.enable = true;

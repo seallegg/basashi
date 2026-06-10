@@ -24,6 +24,7 @@ in {
             enable = true;
             editor = false; # there is a very dumb vulnerability related to this
             consoleMode = "max";
+            configurationLimit = 5; # let's not keep to many kernels/initrds in the esp
           };
           efi.canTouchEfiVariables = true;
           timeout = 0; # hold space to access boot menu

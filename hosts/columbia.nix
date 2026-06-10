@@ -64,7 +64,6 @@
       flatpak.enable = true;
       g502.enable = true;
       idevices.enable = true;
-      #mullvad.enable = true;
       plymouth.enable = true;
       polkit.enable = true;
       printing.enable = true;

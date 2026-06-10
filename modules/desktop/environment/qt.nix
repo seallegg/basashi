@@ -1,4 +1,4 @@
-{ config, inputs, lib, pkgs, ... }: {
+{ config, lib, pkgs, ... }: {
   config = lib.mkIf config.basashi.desktop.environment.niri.enable {
     qt.style = "darkly";
     qt.platformTheme = "qt6ct";
@@ -39,7 +39,7 @@
           };
         };
       };
-      rum.desktops.niri.extraVariables.QT_QPA_PLATFORMTHEME = "qt6ct";
     };
+    environment.sessionVariables.QT_QPA_PLATFORMTHEME = "qt6ct";
   };
 }

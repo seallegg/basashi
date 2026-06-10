@@ -18,6 +18,7 @@
         "org.gnome.desktop.sound".theme-name = "ocean";
       };
     }];
+    environment.sessionVariables.GTK_THEME = "Colloid-Dark";
     hj = {
       packages = with pkgs; [
         papirus-icon-theme
@@ -37,7 +38,6 @@
             cursor-theme-size = "32";
           };
         };
-        desktops.niri.extraVariables.GTK_THEME = "Colloid-Dark";
       };
     };
   };
