@@ -13,10 +13,10 @@
             x = 0;
             y = 0;
           };
-          scale = 1.125;
+          scale = 1.0;
         }];
       };
-      kernel = "latest";
+      kernel = "cachy-latest";
       username = "seal";
       networking = {
         DoT.enable = true;
