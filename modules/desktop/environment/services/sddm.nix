@@ -1,33 +1,47 @@
 { config, lib, pkgs, ... }:
 let
   inherit (lib) mkIf;
-  outputConfig = lib.ConcatMapStrings (m: ''
+  cfg = config.basashi.services.sddm;
+  monitors = config.basashi.core.hardware.monitors;
+  xkb = config.services.xserver.xkb;
+
+  primary = lib.head monitors; # first listed monitor, same convention niri uses
+
+  # weston kiosk only ever paints the greeter on a single output, and it doesn't
+  # reliably pick the right one. switching the rest off pins it to the main display.
+  outputSections = lib.concatMapStrings (m: ''
+
     [output]
     name=${m.name}
-    mode=${m.res}
-  '') config.basashi.hardware.monitors;
-  westonIni = ''
+    mode=${if m.name == primary.name then m.res else "off"}
+  '') monitors;
+
+  westonIni = pkgs.writeText "weston.ini" (''
+    [shell]
+    background-color=0xff000000
+
+    [libinput]
+    enable-tap=${lib.boolToString config.services.libinput.touchpad.tapping}
+
     [keyboard]
-    keymap_layout=${config.services.xserver.xkb.layout}
-  '' + outputConfig;
+    keymap_layout=${xkb.layout}
+    keymap_variant=${xkb.variant}
+    keymap_options=${xkb.options}
+  '' + lib.optionalString (monitors != [ ]) outputSections);
 in {
   options.basashi.services.sddm.enable = lib.mkEnableOption "SDDM";
-  config = mkIf config.basashi.services.sddm.enable {
+
+  config = mkIf cfg.enable {
     services.displayManager.sddm = {
       enable = true;
+      theme = "${pkgs.elegant-sddm}/sddm/share/themes/Elegant";
+      extraPackages = with pkgs.kdePackages; [ qtmultimedia qtsvg qtvirtualkeyboard qt5compat ];
       wayland = {
         enable = true;
-        #   compositorCommand =
-        #     mkIf config.basashi.desktop.environment.plasma.enable
-        #     "${lib.getExe pkgs.weston} --shell=kiosk -c ${westonIni}";
+        compositorCommand =
+          mkIf (monitors != [ ]) "${lib.getExe pkgs.weston} --shell=kiosk -c ${westonIni}";
       };
     };
-    # systemd.services."display-manager" = mkIf config.basashi.services.plymouth.enable {
-    #   conflicts = ["plymouth-quit.service"];
-    #   preStart = "${pkgs.plymouth}/bin/plymouth deactivate";
-    #   script = "/run/current-system/sw/bin/sddm";
-    #   postStart = "/bin/sh -c 'sleep 5 && ${pkgs.plymouth}/bin/plymouth quit --retain-splash'";
-    #   enable = true;
-    # };
+    environment.systemPackages = [ pkgs.elegant-sddm ];
   };
 }
