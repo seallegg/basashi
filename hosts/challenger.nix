@@ -43,6 +43,7 @@
         resumeDevice = "/dev/disk/by-id/nvme-eui.5cdfb8038100270a-part2";
         resumeOffset = "18442029";
       };
+      pipewire.enable = true;
       plymouth.enable = true;
       polkit.enable = true;
       powersaving.enable = true;
@@ -54,6 +55,7 @@
       fish.enable = true;
       rusty.enable = true;
       ohMyPosh.enable = true;
+      agents.enable = true;
       git.name = "SeallEgg";
       git.email = "seallegg@pm.me";
     };

@@ -64,6 +64,7 @@
       flatpak.enable = true;
       g502.enable = true;
       idevices.enable = true;
+      pipewire.enable = true;
       plymouth.enable = true;
       polkit.enable = true;
       printing.enable = true;
@@ -75,6 +76,7 @@
       fish.enable = true;
       rusty.enable = true;
       ohMyPosh.enable = true;
+      agents.enable = true;
       git.name = "SeallEgg";
       git.email = "seallegg@pm.me";
     };
