@@ -34,7 +34,7 @@ in {
   config = mkIf cfg.enable {
     services.displayManager.sddm = {
       enable = true;
-      theme = "${pkgs.elegant-sddm}/sddm/share/themes/Elegant";
+      theme = "${pkgs.elegant-sddm}/share/sddm/themes/Elegant";
       extraPackages = with pkgs.kdePackages; [ qtmultimedia qtsvg qtvirtualkeyboard qt5compat ];
       wayland = {
         enable = true;
