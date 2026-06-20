@@ -31,6 +31,7 @@ let
         outputs.nixosModules.default
         inputs.chaotic.nixosModules.default
         inputs.headroom.nixosModules.default
+        inputs.disko.nixosModules.disko
         path
         {
           nixpkgs.overlays = with inputs; [

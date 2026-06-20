@@ -8,7 +8,7 @@ let
 in {
   options.basashi.core.swap = {
     file = {
-      enable = mkEnableOption "swapfile on /var/swap (must be properly formatted in btrfs)";
+      enable = mkEnableOption "swapfile on /swap/file (must be properly formatted in btrfs)";
       size = mkOption {
         type = types.int;
         default = 16;
@@ -35,7 +35,7 @@ in {
         enable = mkEnableOption "sending incompressible pages from zram to a block device";
         device = mkOption {
           type = types.str;
-          default = "/var/swap";
+          default = "/swap/file";
         };
       };
     };
@@ -58,7 +58,7 @@ in {
         enable = mkEnableOption "sending pages to swap at all.";
         device = mkOption {
           type = types.str;
-          default = "/var/swap";
+          default = "/swap/file";
         };
       };
     };
@@ -88,7 +88,7 @@ in {
 
     (mkIf cfg.file.enable {
       swapDevices = [{
-        device = "/var/swap";
+        device = "/swap/file";
         size = cfg.file.size * 1024;
       }];
     })
