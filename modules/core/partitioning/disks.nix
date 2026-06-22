@@ -12,8 +12,10 @@ in {
           default = null;
         };
         device = mkOption { type = types.str; };
+        # zfs/bcachefs are pool/fs-centric: they declare devices inline in
+        # basashi.core.partitioning.{pools,bcachefs}, not through this registry
         fs = mkOption {
-          type = types.enum [ "btrfs" "ext4" "bcachefs" "zfs" ];
+          type = types.enum [ "btrfs" "ext4" ];
           default = "btrfs";
         };
         isRoot = mkOption {
@@ -38,7 +40,8 @@ in {
         else
           disks;
       in if length (attrNames (filterAttrs (_: d: d.isRoot) disks')) > 1 then
-        throw "basashi.partitioning: more than one disk is marked root (isRoot = true)!"
+        throw
+        "basashi.partitioning: more than one disk is marked root (isRoot = true)!"
       else
         disks';
   };
@@ -46,7 +49,8 @@ in {
   # exactly one root, unless the module is unused (no disks declared)
   config.assertions = [{
     assertion = cfg == { } || length (attrNames roots) == 1;
-    message = "basashi.partitioning: exactly one disk must be root (isRoot = true); found ${
+    message =
+      "basashi.partitioning: exactly one disk must be root (isRoot = true); found ${
         toString (length (attrNames roots))
       }.";
   }];
