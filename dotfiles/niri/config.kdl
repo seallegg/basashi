@@ -86,6 +86,7 @@ input {
         tap
         scroll-method "two-finger"
         natural-scroll
+        scroll-factor 0.5
     }
     mouse {
         accel-profile "flat"
