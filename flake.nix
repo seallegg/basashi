@@ -31,16 +31,10 @@
     millennium.url = "github:SteamClientHomebrew/Millennium/next?dir=packages/nix";
     millennium.inputs.nixpkgs.follows = "nixpkgs";
 
-    headroom.url = "github:manic-systems/headroom";
-    headroom.inputs.nixpkgs.follows = "nixpkgs";
-
     qt6ct-kde.url = "github:SeallEgg/qt6ct-kde-flake";
     qt6ct-kde.inputs.nixpkgs.follows = "nixpkgs";
 
     apple-fonts.url = "github:SeallEgg/apple-fonts-flake";
     apple-fonts.inputs.nixpkgs.follows = "nixpkgs";
-
-    #mullvad-declarative.url = "github:Daaboulex/mullvad-vpn-nix";
-    #mullvad-declarative.inputs.nixpkgs.follows = "nixpkgs";
   };
 }
