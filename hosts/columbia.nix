@@ -56,12 +56,12 @@
       automounting.enable = true;
       avahi.enable = true;
       awww.enable = true;
+      compat.enable = true;
       coolercontrol.enable = true;
       filesharing.nfs.mounts = {
         "/mnt/tank" = "192.168.0.87:/mnt/tank";
         "/mnt/fast" = "192.168.0.87:/mnt/fast";
       };
-      flatpak.enable = true;
       g502.enable = true;
       idevices.enable = true;
       pipewire.enable = true;
