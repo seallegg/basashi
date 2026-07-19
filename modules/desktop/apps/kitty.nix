@@ -5,7 +5,10 @@ in {
     hj = {
       packages = [ pkgs.kitty ];
       xdg.config.files."kitty/kitty.conf".text = ''
-        allow_remote_control yes
+        allow_remote_control socket-only
+        # path socket instead of abstract: 0700 runtime dir gates who can connect.
+        # kitty appends -PID to the name, so the real socket is kitty.sock-<pid>
+        listen_on unix:''${XDG_RUNTIME_DIR}/kitty.sock
 
         enable_audio_bell yes
         visual_bell_duration 1 ease-out
