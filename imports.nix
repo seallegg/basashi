@@ -36,6 +36,13 @@ let
             cachyos-kernel.overlays.default
             millennium.overlays.default
             qt6ct-kde.overlays.default
+
+            # vmTools now demands the kernel arg carry a .target or an explicit kernelImage
+            # but disko still hands it an aggregateModules tree, so I can't build disko VMs
+            # drop this once disko fixes its shit
+            (final: prev: {
+              vmTools = prev.vmTools.override { kernelImage = final.linux.target; };
+            })
           ];
 
           networking.hostName = mkDefault hostName;
@@ -53,6 +60,6 @@ in {
   };
   nixosConfigurations =
     lib.mapAttrs (name: path: mkSystem name path) (lib.filterAttrs (n: v: !isAttrs v) hosts.tree);
-  formatter = lib.genAttrs [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ]
-    (system: inputs.nixpkgs.legacyPackages.${system}.nixfmt-classic);
+  formatter = lib.genAttrs [ "x86_64-linux" "aarch64-linux" ]
+    (system: inputs.nixpkgs.legacyPackages.${system}.haskellPackages.nixfmt);
 }

@@ -40,6 +40,7 @@
         unsafe.enable = true;
         gaming.enable = true;
       };
+      virtualization.libvirt.enable = true;
     };
 
     desktop = {
