@@ -77,7 +77,7 @@
       rusty.enable = true;
       ohMyPosh.enable = true;
       agents.enable = true;
-      git.name = "SeallEgg";
+      git.name = "seallegg";
       git.email = "seallegg@pm.me";
     };
   };

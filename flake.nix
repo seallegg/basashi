@@ -22,7 +22,7 @@
     cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel";
     # this CANNOT follow our nixpkgs
 
-    nixdg-ninja.url = "github:notashelf/nixdg-ninja";
+    nixdg-ninja.url = "github:seallegg/nixdg-ninja?ref=env-fix";
     nixdg-ninja.inputs.nixpkgs.follows = "nixpkgs";
 
     helium.url = "github:schembriaiden/helium-browser-nix-flake";
@@ -31,10 +31,10 @@
     millennium.url = "github:SteamClientHomebrew/Millennium/next?dir=packages/nix";
     millennium.inputs.nixpkgs.follows = "nixpkgs";
 
-    qt6ct-kde.url = "github:SeallEgg/qt6ct-kde-flake";
+    qt6ct-kde.url = "github:seallegg/qt6ct-kde-flake";
     qt6ct-kde.inputs.nixpkgs.follows = "nixpkgs";
 
-    apple-fonts.url = "github:SeallEgg/apple-fonts-flake";
+    apple-fonts.url = "github:seallegg/apple-fonts-flake";
     apple-fonts.inputs.nixpkgs.follows = "nixpkgs";
   };
 }
