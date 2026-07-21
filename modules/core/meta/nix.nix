@@ -2,12 +2,14 @@
 { inputs, lib, pkgs, ... }:
 let
   inherit (builtins) mapAttrs;
-  nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") inputs;
+  # tack adds __functor to the inputs which has to be filtered
+  flakeInputs = lib.filterAttrs (n: _: n != "__functor") inputs;
+  nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
 in {
   nix = {
     package = pkgs.nixVersions.git;
     channel.enable = false;
-    registry = mapAttrs (_: flake: { inherit flake; }) inputs;
+    registry = mapAttrs (_: flake: { inherit flake; }) flakeInputs;
 
     inherit nixPath;
 

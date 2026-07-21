@@ -1,0 +1,28 @@
+# pins for basashi
+[shorturls]
+gh = "github:{path}"
+me = "github:seallegg/{path}"
+
+# opt out with exclude_follow
+[all_follow]
+nixpkgs = ["nixpkgs", "nixpkgs-darwin"]
+hjem = "hjem"
+
+[inputs]
+# core
+nixpkgs.url = "gh:NixOS/nixpkgs/nixos-unstable"
+hjem.url = "gh:feel-co/hjem"
+hjem-rum.url = "gh:snugnug/hjem-rum"
+disko.url = "gh:nix-community/disko"
+tack.url = "gh:manic-systems/tack"
+
+# mine
+apple-fonts.url = "me:apple-fonts-flake"
+nixdg-ninja.url = "me:nixdg-ninja?ref=env-fix"
+qt6ct-kde.url = "me:qt6ct-kde-flake"
+
+# others
+chaotic.url = "gh:chaotic-cx/nyx/nyxpkgs-unstable"
+helium.url = "gh:schembriaiden/helium-browser-nix-flake"
+millennium = { url = "gh:SteamClientHomebrew/Millennium/next", dir = "packages/nix" }
+cachyos-kernel = { url = "gh:xddxdd/nix-cachyos-kernel", exclude_follow = ["nixpkgs"] }
