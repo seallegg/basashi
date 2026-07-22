@@ -26,6 +26,7 @@
             "org.freedesktop.impl.portal.RemoteDesktop" = [ "gnome" ];
             "org.freedesktop.impl.portal.Screenshot" = [ "gnome" ];
           });
+        };
       };
     };
   };
