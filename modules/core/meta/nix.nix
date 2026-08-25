@@ -8,7 +8,6 @@ let
 in
 {
   nix = {
-    package = pkgs.nixVersions.git;
     channel.enable = false;
     registry = mapAttrs (_: flake: { inherit flake; }) flakeInputs;
 

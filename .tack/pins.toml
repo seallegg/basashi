@@ -24,4 +24,5 @@ qt6ct-kde.url = "me:qt6ct-kde-flake"
 # others
 helium.url = "gh:schembriaiden/helium-browser-nix-flake"
 millennium = { url = "gh:SteamClientHomebrew/Millennium/next", dir = "packages/nix" }
+openlogi.url = "gh:AprilNEA/OpenLogi"
 cachyos-kernel = { url = "gh:xddxdd/nix-cachyos-kernel", exclude_follow = ["nixpkgs"] }

@@ -7,7 +7,7 @@ Built by a very sloppy hobbyist, for personal use. Always a WIP. If you like it,
 
 ### hosts
 - **columbia**: gaming desktop (7800X3D + 4070 Super).
-- **challenger**: university workhorse (Thinkpad L13 Gen 3 AMD).
+- **challenger**: university workhorse (Thinkpad L14 Gen 3 AMD).
 - **discovery**: homelab, NAS and 3D printer controller (ender-6).
 
 ### structure

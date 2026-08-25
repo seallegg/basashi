@@ -24,19 +24,60 @@ in
     boot.kernelParams = [ "amd_pstate=active" ];
 
     services = {
-      # auto-cpufreq.enable = true;
-      # auto-cpufreq.settings = {
-      #   charger = {
-      #     governor = "performance";
-      #     energy_performance_preference = "performance";
-      #   };
-      #   battery = {
-      #     governor = "powersave";
-      #     energy_performance_preference = "power";
-      #     turbo = "never";
-      #   };
-      # };
-      watt = { enable = true; };
+      watt = {
+        enable = true;
+        settings.rule = [
+          {
+            name = "base";
+            priority = 0;
+            cpu = {
+              governor.first-available-governor = [ "schedutil" "powersave" ];
+              energy-performance-preference = {
+                "if".is-energy-performance-preference-available = "balance_performance";
+                "then" = "balance_performance";
+              };
+            };
+          }
+          {
+            name = "ac";
+            priority = 10;
+            "if".not = "?discharging";
+            cpu = {
+              energy-performance-preference = {
+                "if".is-energy-performance-preference-available = "performance";
+                "then" = "performance";
+              };
+              turbo = {
+                "if" = "?turbo-available";
+                "then" = true;
+              };
+            };
+            power.platform-profile = {
+              "if".is-platform-profile-available = "balanced";
+              "then" = "balanced";
+            };
+          }
+          {
+            name = "battery";
+            priority = 20;
+            "if" = "?discharging";
+            cpu = {
+              energy-performance-preference = {
+                "if".is-energy-performance-preference-available = "power";
+                "then" = "power";
+              };
+              turbo = {
+                "if" = "?turbo-available";
+                "then" = false;
+              };
+            };
+            power.platform-profile = {
+              "if".is-platform-profile-available = "low-power";
+              "then" = "low-power";
+            };
+          }
+        ];
+      };
       udev.extraRules = ''
         SUBSYSTEM=="power_supply", ATTR{online}=="1", RUN+="${powerStateChange} AC"
         SUBSYSTEM=="power_supply", ATTR{online}=="0", RUN+="${powerStateChange} BATTERY"

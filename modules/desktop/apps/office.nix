@@ -3,6 +3,6 @@
     lib.mkEnableOption "office and note taking apps";
 
   config = lib.mkIf config.basashi.desktop.apps.office.enable {
-    hj.packages = with pkgs; [ libreoffice-qt-fresh obsidian ];
+    hj.packages = with pkgs; [ libreoffice-qt-stable obsidian ];
   };
 }
