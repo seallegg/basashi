@@ -30,6 +30,7 @@ let
       modules = [
         outputs.nixosModules.default
         inputs.disko.nixosModules.disko
+        inputs.openlogi.nixosModules.default
         path
         {
           nixpkgs.overlays = with inputs; [

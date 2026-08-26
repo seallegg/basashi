@@ -139,9 +139,13 @@ hotkey-overlay {
 input {
     touchpad {
         tap
+        accel-speed 0.4
         scroll-method "two-finger"
         natural-scroll
         scroll-factor 0.5
+        dwt
+        dwtp
+        drag-lock
     }
     mouse {
         accel-profile "flat"

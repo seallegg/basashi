@@ -55,6 +55,5 @@ in {
       terminal.agents.enable = def true;
     };
     environment.systemPackages = [ pkgs.micro-full ]; # clipboard support
-
   };
 }

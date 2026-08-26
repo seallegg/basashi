@@ -2,6 +2,7 @@
 [shorturls]
 gh = "github:{path}"
 me = "github:seallegg/{path}"
+ms = "github:manic-systems/{path}"
 
 # opt out with exclude_follow
 [all_follow]
@@ -14,7 +15,11 @@ nixpkgs.url = "gh:NixOS/nixpkgs/nixos-unstable"
 hjem.url = "gh:feel-co/hjem"
 hjem-rum.url = "gh:snugnug/hjem-rum"
 disko.url = "gh:nix-community/disko"
-tack.url = "gh:manic-systems/tack"
+nix-secrets.url = "gh:unnamed-systems/nix-secrets"
+
+# manic systems
+tack.url = "ms:tack"
+nixos-core.url = "ms:nixos-core"
 
 # mine
 apple-fonts.url = "me:apple-fonts-flake"
