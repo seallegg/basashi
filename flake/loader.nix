@@ -2,8 +2,8 @@
 { lib }:
 let
   inherit (lib)
-    hasPrefix head tail all stringToCharacters splitString foldl' concatLists mapAttrsToList
-    isAttrs;
+    hasPrefix hasSuffix head tail all stringToCharacters splitString foldl' concatLists
+    mapAttrsToList isAttrs;
 
   getStem = name: head (splitString "." name);
   # "but what if the directory starts with a dot?"
@@ -33,9 +33,10 @@ let
     , # called for each file entry, where type is the same as
       # builtins.readDir's values ("regular", "symlink", "unknown").
       # entries returning false are excluded.
-      # e.g. `name: type: hasSuffix ".nix" name`
+      # defaults to nix files, which is what nearly every caller wants;
+      # pass `name: type: true` to take everything.
       # directories are always recursed into, use the _ or . prefixes to exclude them.
-      fileFilter ? (name: type: true)
+      fileFilter ? (name: type: hasSuffix ".nix" name)
     , # transforms file entries into a value, stored in the
       # repsective tree attributes and outputted raw for the list
       mapper ? (name: path: path)

@@ -23,6 +23,9 @@ in
   config = mkIf cfg.enable {
     boot.kernelParams = [ "amd_pstate=active" ];
 
+    # for some reason it's not reading its default config directory unless i do this
+    systemd.services.watt.environment.WATT_CONFIG = "/etc/watt.toml";
+
     services = {
       watt = {
         enable = true;
@@ -52,10 +55,7 @@ in
                 "then" = true;
               };
             };
-            power.platform-profile = {
-              "if".is-platform-profile-available = "balanced";
-              "then" = "balanced";
-            };
+            power.platform-profile.first-available-platform-profile = [ "performance" "balanced" ];
           }
           {
             name = "battery";
@@ -71,10 +71,7 @@ in
                 "then" = false;
               };
             };
-            power.platform-profile = {
-              "if".is-platform-profile-available = "low-power";
-              "then" = "low-power";
-            };
+            power.platform-profile.first-available-platform-profile = [ "low-power" "balanced" ];
           }
         ];
       };

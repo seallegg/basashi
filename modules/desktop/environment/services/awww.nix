@@ -10,9 +10,11 @@
       wantedBy = [ "graphical-session.target" ];
       after = [ "graphical-session.target" ];
       unitConfig.ConditionEnvironment = "WAYLAND_DISPLAY";
+      # the daemon restores the cached wallpaper itself, by exec'ing `awww img`
+      # out of PATH. without this it silently can't, and nothing gets drawn.
+      path = [ pkgs.awww ];
       serviceConfig = {
         ExecStart = "${pkgs.awww}/bin/awww-daemon";
-        ExecStartPost = "${pkgs.awww}/bin/awww restore";
         Type = "simple";
         Restart = "on-failure";
       };

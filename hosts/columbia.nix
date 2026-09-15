@@ -1,9 +1,10 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   # god knows why this can´t be installed as a user package
   environment.systemPackages = [ pkgs.obs-studio ];
 
   basashi = {
-    presets.desktop = true;
+    presets = [ "desktop" "locale" "terminal" ];
 
     core = {
       username = "seal";

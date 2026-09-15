@@ -3,17 +3,17 @@
     "type": "github",
     "owner": "seallegg",
     "repo": "apple-fonts-flake",
-    "rev": "bbd9287d655e42593b5164e666915421602e51a5",
-    "narHash": "sha256-CpKvAAmxcMLFTHBwn4OI8xeUbQwH+dFzD9HlmcdEowE=",
-    "lastModified": 1786052958
+    "rev": "6303db9cf0726bb54253b2177569b1f59bc384e8",
+    "narHash": "sha256-RgWyHjGoYzQspKBqe23eU0tsDn72k2zVkA2VjSEL6g8=",
+    "lastModified": 1789484657
   },
   "cachyos-kernel": {
     "type": "github",
     "owner": "xddxdd",
     "repo": "nix-cachyos-kernel",
-    "rev": "28b6c686c97a44fd2021e999cb9e1752a344bd06",
-    "narHash": "sha256-0rP6wb7taotfTZ+ipmhg/Pj1L83Dq4CQPVgFofiPTKM=",
-    "lastModified": 1787680916
+    "rev": "dd6eabb3ada55958c443e39b659d5fa1a68e0d95",
+    "narHash": "sha256-tllL1QQcfvAJKXeDtysiJewoa1xY7bla1+0DbcU1ODM=",
+    "lastModified": 1789419871
   },
   "disko": {
     "type": "github",
@@ -27,17 +27,17 @@
     "type": "github",
     "owner": "schembriaiden",
     "repo": "helium-browser-nix-flake",
-    "rev": "676e729470897e4e1deda5a7bfaa81517657f014",
-    "narHash": "sha256-ntgw/7S2C5ooCC/IfnRxmeTyXpb+E+D2SAxJNvcZwC8=",
-    "lastModified": 1787621753
+    "rev": "07b2696826ca7b95308902aa901f7a5d235c4f6e",
+    "narHash": "sha256-M6Lg+eBxc1Xa2dDCQC3caY3eblA407+ExxvIry7L6LQ=",
+    "lastModified": 1789273773
   },
   "hjem": {
     "type": "github",
     "owner": "feel-co",
     "repo": "hjem",
-    "rev": "d248f0e4f7abd6e1f0eb9ace778dd7928481943e",
-    "narHash": "sha256-UrAlku7KST0DT+j1bdVGYI8tCz23PWL88uGMer3IZ2U=",
-    "lastModified": 1787500880
+    "rev": "e5e30b4320a8cbcd6cdfc65f044763669a8f0363",
+    "narHash": "sha256-0nvWuRbgL4GEKpR8Y4wsB3kmsVgyd0cW8kLHc2BqlTc=",
+    "lastModified": 1789234255
   },
   "hjem-rum": {
     "type": "github",
@@ -47,53 +47,45 @@
     "narHash": "sha256-LLToYudTlFqNY0NsG//CnE2I/zF0cpktX44ZhFJ2alY=",
     "lastModified": 1787315974
   },
-  "millennium": {
-    "type": "github",
-    "owner": "SteamClientHomebrew",
-    "repo": "Millennium",
-    "rev": "cdffbe6f5847ea93ad57f1a619f4726363969069",
-    "narHash": "sha256-k+rvAqwX9Ww1xh6Lt9UqPiFBxU4B7XA7jTqpCw/i0RQ=",
-    "lastModified": 1787091428
-  },
   "nix-secrets": {
     "type": "github",
     "owner": "unnamed-systems",
     "repo": "nix-secrets",
-    "rev": "454fd4dd413a5309c8868bd77ab799820d88f872",
-    "narHash": "sha256-gg7RT1uNixwASn8F2qDifJH5aND8Wy8jRd7bDNJ5yK0=",
-    "lastModified": 1787740628
+    "rev": "151f264a22b595802647db8fac09a2dbd6cb202c",
+    "narHash": "sha256-rxClV4z02Ev/bk0/FpdT5h9Oq4/o16RA7e6LRl1/QtU=",
+    "lastModified": 1788356805
   },
   "nixdg-ninja": {
     "type": "github",
-    "owner": "seallegg",
+    "owner": "NotAShelf",
     "repo": "nixdg-ninja",
-    "rev": "3cd83840d4613e9c87fe2ca54857ea5eeaf44af4",
+    "rev": "6d296209d0dd406469102b977e3fa870da37bf4d",
     "narHash": "sha256-M4dKtH7Uwfd73TNvwVcgT3nfvCGhSWOqnmFbhIg97AE=",
-    "lastModified": 1783534614
+    "lastModified": 1788885252
   },
   "nixos-core": {
     "type": "github",
     "owner": "manic-systems",
     "repo": "nixos-core",
-    "rev": "2759f02d6bb7d1b5bcf4ae99038ab54148f91698",
-    "narHash": "sha256-yd7gLFMW3tDMFsaX+yBVWys2Aux7l4PLUfkwt5fcPCo=",
-    "lastModified": 1787390698
+    "rev": "c65bbdee8d52c1219a721a39b7427b82ea377b9f",
+    "narHash": "sha256-UU72d6f9S0qBXaVTYL8vmLhIVuugSFONQL2zYQzcP30=",
+    "lastModified": 1788952165
   },
   "nixpkgs": {
     "type": "github",
     "owner": "NixOS",
     "repo": "nixpkgs",
-    "rev": "56c02bc00adcf003215cc4bd996d6efaf4cff188",
-    "narHash": "sha256-9i/VTdusq/+NM/tz+J1Re+ojkMB8MBf0QshnYfzHz30=",
-    "lastModified": 1787498568
+    "rev": "ef34387ddd751e1ab8857adf4676492d32eb24ec",
+    "narHash": "sha256-eiEK7cKZORNEvX0GeF3RtNEF/JXhgf2RqSp3230q13E=",
+    "lastModified": 1789286504
   },
   "openlogi": {
     "type": "github",
     "owner": "AprilNEA",
     "repo": "OpenLogi",
-    "rev": "411c9277f7f1b48ee5743e2f9074b032f6ca3d5c",
-    "narHash": "sha256-sYqhKmtMByqIY2w7btGW68xm+v5k2dBeoY+GcDeeqJs=",
-    "lastModified": 1787749324
+    "rev": "598c5427d14f006ec8d7c2911efb135c2fb7fa5f",
+    "narHash": "sha256-MMtqj+L14YmONwnQNEeyQZf5pvGFnnVNHr0NUwBKmCM=",
+    "lastModified": 1789455622
   },
   "qt6ct-kde": {
     "type": "github",
@@ -107,8 +99,8 @@
     "type": "github",
     "owner": "manic-systems",
     "repo": "tack",
-    "rev": "62a67545adaf01b48d01ee73c0d16353ca68432e",
-    "narHash": "sha256-rTiX4SZ9Sjei3WzsW25nDTZweMRzA7ZunspkhDXkZfY=",
-    "lastModified": 1785878583
+    "rev": "d9c0516ff654c8a48dd4294dd183db51154ffad2",
+    "narHash": "sha256-GxJX6df+SqpZv3fkH+5oLQOVT/wI5CovnMaGGhtpvT0=",
+    "lastModified": 1789107241
   }
 }

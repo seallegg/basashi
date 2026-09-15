@@ -16,7 +16,6 @@ in
   config = mkIf anyEnabled {
     programs.steam = mkIf cfg.steam.enable {
       enable = true;
-      package = pkgs.millennium-steam;
       gamescopeSession.enable = true;
       remotePlay.openFirewall = true;
       extraCompatPackages = [ pkgs.proton-ge-bin ];

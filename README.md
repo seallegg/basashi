@@ -13,7 +13,7 @@ Built by a very sloppy hobbyist, for personal use. Always a WIP. If you like it,
 ### structure
 Might not make much sense, but doesn't make zero sense either.
 
-- **`imports.nix`**: automates the recursive discovery of hosts, modules, and dotfiles.
-- **`modules/`**: self-contained, mostly per-feature modules. Divided into `core`, `desktop`, `services`, and `terminal`. 
+- **`flake/`**: automates the recursive discovery of hosts, modules, and dotfiles; sets up secrets, default overlays, substituters, etc.
+- **`modules/`**: self-contained, mostly per-feature modules. Divided into `core`, `desktop`, `services`, and `terminal`.
 - **`dotfiles/`**: raw configuration files that are too big to go inline in modules comfortably.
 - **`hosts/`**: one machine, one file. hostname is sourced from the filename. feature toggles live at the top, partitioning with disko at the bottom.

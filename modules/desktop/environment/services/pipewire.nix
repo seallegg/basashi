@@ -14,7 +14,7 @@ in
   options.basashi.services.pipewire = {
     enable = lib.mkEnableOption "pipewire and associate utilities";
     noJackDetectAlc4080 =
-      lib.mkEnableOption "disable front headphone jack detection on alc4080 (columbia)";
+      lib.mkEnableOption "disable front headphone jack detection on alc4080";
   };
 
   config = lib.mkIf cfg.enable {

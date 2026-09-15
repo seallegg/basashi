@@ -23,11 +23,10 @@ nixos-core.url = "ms:nixos-core"
 
 # mine
 apple-fonts.url = "me:apple-fonts-flake"
-nixdg-ninja.url = "me:nixdg-ninja?ref=env-fix"
 qt6ct-kde.url = "me:qt6ct-kde-flake"
 
 # others
 helium.url = "gh:schembriaiden/helium-browser-nix-flake"
-millennium = { url = "gh:SteamClientHomebrew/Millennium/next", dir = "packages/nix" }
+nixdg-ninja.url = "gh:NotAShelf/nixdg-ninja"
 openlogi.url = "gh:AprilNEA/OpenLogi"
 cachyos-kernel = { url = "gh:xddxdd/nix-cachyos-kernel", exclude_follow = ["nixpkgs"] }

@@ -1,11 +1,9 @@
+{ ... }:
 {
   networking.hostId = "7f833560";
 
   basashi = {
-    presets = {
-      server = true;
-      terminal = true;
-    };
+    presets = [ "locale" "server" "terminal" ];
 
     core = {
       username = "admin";

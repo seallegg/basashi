@@ -1,4 +1,5 @@
 // Visual
+include optional=true "./colors.kdl"
 prefer-no-csd
 layout {
     gaps 12
@@ -23,13 +24,15 @@ layout {
     border {
         width 1
     }
+    // MacOS Tahoe-ish
     shadow {
         on
-        softness 15
+        color "#000000d0"
+        softness 1
         spread 1
-        offset x=0 y=5
+        offset x=0 y=0
     }
-
+    background-color "#000000"
 }
 
 blur {
@@ -41,6 +44,7 @@ blur {
 
 window-rule {
     geometry-corner-radius 16
+    draw-border-with-background false
     clip-to-geometry true
     background-effect {
         blur true

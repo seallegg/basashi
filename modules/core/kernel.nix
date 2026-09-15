@@ -10,7 +10,7 @@ let
 
   kernelPackage =
     if cfg == "lts" then
-      pkgs.linux
+      pkgs.linuxPackages
     else if cfg == "latest" then
       pkgs.linuxPackages_latest
     else if cfg == "cachy-lts" then
@@ -33,11 +33,6 @@ in
     description = "Kernel type to use";
   };
   config = {
-    nix.settings = lib.mkIf (cfg != "lts" && cfg != "latest") {
-      substituters = [ "https://attic.xuyh0120.win/lantian" ];
-      trusted-public-keys = [ "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc=" ];
-    };
-
     boot.kernelPackages = kernelPackage;
   };
 }

@@ -12,7 +12,6 @@
               color_scheme_path = "~/.local/share/color-schemes/Darkly.colors";
               custom_palette = "true";
               icon_theme = "Papirus-Dark";
-              standard_dialogs = "xdgdesktopportal";
               style = "Darkly";
             };
             Fonts = {

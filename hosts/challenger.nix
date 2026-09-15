@@ -1,10 +1,11 @@
+{ ... }:
 {
   basashi = {
-    presets.laptop = true;
+    presets = [ "desktop" "laptop" "locale" "terminal" ];
 
     core = {
       username = "seal";
-      kernel = "cachy-latest";
+      kernel = "cachy-lts";
       hardware = {
         cpu.type = "amd";
         cpu.arch = "znver3";

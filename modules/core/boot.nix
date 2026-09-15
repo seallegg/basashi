@@ -25,7 +25,7 @@ in
             enable = true;
             editor = false; # there is a very dumb vulnerability related to this
             consoleMode = "max";
-            configurationLimit = 5; # let's not keep to many kernels/initrds in the esp
+            configurationLimit = 3; # let's not keep to many kernels/initrds in the esp
           };
           efi.canTouchEfiVariables = true;
           timeout = 0; # hold space to access boot menu
@@ -51,9 +51,9 @@ in
     }
 
     (mkIf cfg.core.kernelParams.quietBoot.enable {
+      boot.consoleLogLevel = 3;
       boot.kernelParams = [
         "quiet"
-        "loglevel=3"
         "rd.udev.log_level=3"
         "systemd.show_status=auto"
         "vt.global_cursor_default=0"

@@ -1,6 +1,7 @@
+{ ... }:
 {
   basashi = {
-    presets.terminal = true;
+    presets = [ "terminal" ];
 
     core = {
       username = "seal";

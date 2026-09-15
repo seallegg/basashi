@@ -120,5 +120,9 @@ in
         kernelParams = mkIf (!cfg.zswap.writeback.enable) [ "zswap.writeback=0" ];
       };
     })
+
+    # cachy (and others) ship zswap on by default, and boot.zswap only passes params
+    # when it's enabled, so it has to be turned off explicitly
+    (mkIf (!cfg.zswap.enable) { boot.kernelParams = [ "zswap.enabled=0" ]; })
   ];
 }
